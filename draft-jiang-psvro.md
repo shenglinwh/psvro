@@ -3,7 +3,7 @@ title: "Problem Statement and Requirements for Verifiable Routing Origin"
 abbrev: "PSVRO"
 category: info
 
-docname: draft-jiang-p-latest
+docname: draft-jiang-psvro-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
