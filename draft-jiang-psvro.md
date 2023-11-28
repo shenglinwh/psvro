@@ -10,7 +10,7 @@ date:
 consensus: true
 v: 3
 # area: AREA
-# workgroup: WG Working Group
+workgroup: Network Working Group
 # keyword:
 #  - next generation
 #  - unicorn
@@ -67,3 +67,4 @@ This document has no IANA actions.
 {:numbered="false"}
 
 TODO acknowledge.
+
