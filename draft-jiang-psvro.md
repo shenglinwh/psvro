@@ -11,10 +11,10 @@ consensus: true
 v: 3
 # area: AREA
 # workgroup: WG Working Group
-keyword:
- - next generation
- - unicorn
- - sparkling distributed ledger
+# keyword:
+#  - next generation
+#  - unicorn
+#  - sparkling distributed ledger
 venue:
 #  group: WG
 #  type: Working Group
