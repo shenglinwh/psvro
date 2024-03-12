@@ -19,11 +19,11 @@
 # Change the file extension to match the format (.xml for XML, etc...)
 #
 ###
-title: "TODO - Your title"
-abbrev: "TODO - Abbreviation"
+title: "Enhanced Route Origin Validation Using Multi-Source Information: Problem Statement and Requirements"
+abbrev: "PSVRO"
 category: info
 
-docname: draft-todo-yourname-protocol-latest
+docname: draft-jiang-sidrops-psvro-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
