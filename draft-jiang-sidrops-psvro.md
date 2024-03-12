@@ -26,8 +26,8 @@ venue:
 author:
  -
     fullname: "shenglinwh"
-    organization: Your Organization Here
-    email: "shenglinwh@gmail.com"
+    organization: Zhongguancun Laboratory
+    email: "jiangshl@zgclab.edu.cn"
 
 normative:
 
@@ -53,13 +53,12 @@ TODO Introduction
 
 # Security Considerations
 
-TODO Security
+There is no security consideration in this draft.
 
 
 # IANA Considerations
 
-This document has no IANA actions.
-
+There is no IANA consideration in this draft.
 
 --- back
 
