@@ -10,7 +10,7 @@ date:
 consensus: true
 v: 3
 area: "Operations and Management"
-workgroup: "SIDR Operations"
+workgroup: "SIDROPS"
 keyword:
  - routing security
  - prefix hijacking
@@ -42,35 +42,23 @@ informative:
         date: 2024
         seriesinfo: "Network and Distributed System Security (NDSS) Symposium 2024"
         authors:
-        -
-            ins: "Minhyeok Kang"
-        -
-            ins: "Weitong Li"
-        -
-            ins: "Roland van Rijswijk-Deij"
-        -
-            ins: "Ted \"Taekyoung\" Kwon"
-        -
-            ins: "Taejoong Chung"
+          - ins: "M. Kang"
+          - ins: "W. Li"
+          - ins: "R. van Rijswijk-Deij"
+          - ins: "T. \"Taekyoung\" Kwon"
+          - ins: "T. Chung"
     IRRegularities:
         title: "IRRegularities in the internet routing registry"
         date: 2023
         seriesinfo: "Proceedings of the 2023 ACM on internet measurement conference"
         authors:
-        -
-            ins: "Ben Du"
-        -
-            ins: "Katherine Izhikevich"
-        -
-            ins: "Sumanth Rao"
-        -
-            ins: "Guatam Akiwate"
-        -
-            ins: "Cecilia Testart"
-        -
-            ins: "Alex C. Snoeren"
-        -
-            ins: "kc claffy"
+          - ins: "B. Du"
+          - ins: "K. Izhikevich"
+          - ins: "S. Rao"
+          - ins: "G. Akiwate"
+          - ins: "C. Testart"
+          - ins: "A. C. Snoeren"
+          - ins: "k. claffy"
     CAIDA:
         title: "RouteViews Prefix to AS mappings"
         date: 2024
