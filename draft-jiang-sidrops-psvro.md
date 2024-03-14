@@ -42,23 +42,23 @@ informative:
         date: 2024
         seriesinfo: "Network and Distributed System Security (NDSS) Symposium 2024"
         authors:
-          - ins: "M. Kang"
-          - ins: "W. Li"
-          - ins: "R. van Rijswijk-Deij"
-          - ins: "T. \"Taekyoung\" Kwon"
-          - ins: "T. Chung"
+          - ins: M. Kang
+          - ins: W. Li
+          - ins: R. van Rijswijk-Deij
+          - ins: TT. Kwon
+          - ins: T. Chung
     IRRegularities:
         title: "IRRegularities in the internet routing registry"
         date: 2023
         seriesinfo: "Proceedings of the 2023 ACM on internet measurement conference"
         authors:
-          - ins: "B. Du"
-          - ins: "K. Izhikevich"
-          - ins: "S. Rao"
-          - ins: "G. Akiwate"
-          - ins: "C. Testart"
-          - ins: "A. C. Snoeren"
-          - ins: "k. claffy"
+          - ins: B. Du
+          - ins: K. Izhikevich
+          - ins: S. Rao
+          - ins: G. Akiwate
+          - ins: C. Testart
+          - ins: AC. Snoeren
+          - ins: kc claffy
     CAIDA:
         title: "RouteViews Prefix to AS mappings"
         date: 2024
