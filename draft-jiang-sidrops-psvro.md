@@ -30,45 +30,51 @@ author:
     email: "jiangshl@zgclab.edu.cn"
 
 normative:
-RFC6480:
-RFC1930:
-RFC8182:
-RFC9319:
+    RFC6480: 
+    RFC1930: 
+    RFC8182: 
+    RFC9319: 
+    I-D.-ietf-grow-nrtm-v4: 
 
 informative:
-IRRedicator:
-    title: "IRRedicator\: Pruning IRR with RPKI-Valid BGP Insights"
-    date: 2024
-    booktitle: "Network and Distributed System Security (NDSS) Symposium 2024"
-    authors:
-        - name: "Minhyeok Kang"
-        - name: "Weitong Li"
-        - name: "Roland van Rijswijk-Deij"
-        - name: "Ted \"Taekyoung\" Kwon"
-        - name: "Taejoong Chung"
-IRRegularities:
-    title: "IRRegularities in the internet routing registry"
-    date: 2023
-    booktitle: "Proceedings of the 2023 ACM on internet measurement conference"
-    authors:
-        -
-            name: "Ben Du"
-        -
-            name: "Katherine Izhikevich"
-        -
-            name: "Sumanth Rao"
-        -
-            name: "Guatam Akiwate"
-        -
-            name: "Cecilia Testart"
-        -
-            name: "Alex C. Snoeren"
-        -
-            name: "kc claffy"
-CAIDA:
-    title: "RouteViews Prefix to AS mappings"
-    date: 2024
-    target: https://catalog.caida.org/dataset/routeviews_prefix2as
+    IRRedicator:
+        title: "IRRedicator\: Pruning IRR with RPKI-Valid BGP Insights"
+        date: 2024
+        booktitle: "Network and Distributed System Security (NDSS) Symposium 2024"
+        authors:
+            - 
+                name: "Minhyeok Kang"
+            -
+                name: "Weitong Li"
+            -
+                name: "Roland van Rijswijk-Deij"
+            -
+                name: "Ted \"Taekyoung\" Kwon"
+            -
+                name: "Taejoong Chung"
+    IRRegularities:
+        title: "IRRegularities in the internet routing registry"
+        date: 2023
+        booktitle: "Proceedings of the 2023 ACM on internet measurement conference"
+        authors:
+            -
+                name: "Ben Du"
+            -
+                name: "Katherine Izhikevich"
+            -
+                name: "Sumanth Rao"
+            -
+                name: "Guatam Akiwate"
+            -
+                name: "Cecilia Testart"
+            -
+                name: "Alex C. Snoeren"
+            -
+                name: "kc claffy"
+    CAIDA:
+        title: "RouteViews Prefix to AS mappings"
+        date: 2024
+        target: https://catalog.caida.org/dataset/routeviews_prefix2as
 
 
 
