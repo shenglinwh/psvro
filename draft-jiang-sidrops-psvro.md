@@ -42,7 +42,7 @@ informative:
         date: 2024
         booktitle: "Network and Distributed System Security (NDSS) Symposium 2024"
         authors:
-            - 
+            -
                 name: "Minhyeok Kang"
             -
                 name: "Weitong Li"
