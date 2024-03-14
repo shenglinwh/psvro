@@ -38,7 +38,7 @@ normative:
 
 informative:
     IRRedicator:
-        title: "IRRedicator\: Pruning IRR with RPKI-Valid BGP Insights"
+        title: "IRRedicator: Pruning IRR with RPKI-Valid BGP Insights"
         date: 2024
         booktitle: "Network and Distributed System Security (NDSS) Symposium 2024"
         authors:
