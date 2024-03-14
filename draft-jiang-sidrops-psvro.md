@@ -34,7 +34,6 @@ RFC6480:
 RFC1930:
 RFC8182:
 RFC9319:
-I-D.-ietf-grow-nrtm-v4: 
 
 informative:
 IRRedicator:
