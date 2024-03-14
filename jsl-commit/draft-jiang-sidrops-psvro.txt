@@ -2,7 +2,7 @@
 
 
 
-SIDR Operations                                              J. Shenglin
+SIDROPS                                                      J. Shenglin
 Internet-Draft                                   Zhongguancun Laboratory
 Intended status: Informational                             14 March 2024
 Expires: 15 September 2024
