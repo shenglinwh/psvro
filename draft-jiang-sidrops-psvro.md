@@ -84,6 +84,7 @@ Prefix hijacking has emerged as a major security threat in the Border Gateway Pr
 
 --- middle
 
+
 # Introduction
 
 The Border Gateway Protocol (BGP) is widely used for inter-domain routing in the Internet. However, due to the lack of built-in routing security mechanisms, BGP is vulnerable to various security threats such as prefix hijacking. To mitigate such attacks, the global Internet infrastructure needs to create a database to record the mapping of IP prefixes to authorized origin ASes, which can be used to determine whether BGP announcements are propagated or discarded.
@@ -97,6 +98,7 @@ This document aims to provide insights and recommendations to network operators,
 ## Requirements Language
 
 {::boilerplate bcp14-tagged}
+
 
 # Problem Statement
 
@@ -122,6 +124,7 @@ As analyzed in section 2.1, relying on a single source of route origin database 
 Leveraging multiple sources of information can effectively improve the coverage of routing data for Internet numbering resources. However, according to recent measurement{{IRRegularities}}, there are inconsistencies among the Route object across different IRR databases. This may be due to chronic neglect on the part of the IRR customers, resulting in outdated and stale Route objects. For instance, the company register route objects in multiple IRR databases, but it often updates Route objects in only a subset of those IRR databases, while neglecting the others.
 
 Further analysis of the consistency between IRR Route objects and RPKI reveals that as of February 2024, the IRR databases maintained by the five RIRs, as well as JPIRR, IDNIC, and other IRR databases maintained by Local Internet Registries (LIRs), exhibit a higher level of consistency with RPKI. On the other hand, IRR databases maintained by third parties such as RADB, TC, and NTTCOM show lower levels of consistency with RPKI, with ineffective RPKI validation. Other IRR databases show significant differences with RPKI, such as PANIX, BELL, REACH, WCGDB, primarily manifested as low route object overlap and high route validation ineffectiveness. Considering that RPKI contains the validation mechanism and each object has validity period, IRR databases that are inconsistent with RPKI may exhibit significant discrepancies.
+
 
 # Requirements
 
