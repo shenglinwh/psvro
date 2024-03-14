@@ -25,7 +25,7 @@ venue:
 
 author:
  -
-    fullname: "shenglinwh"
+    fullname: "Jiang Shenglin"
     organization: Zhongguancun Laboratory
     email: "jiangshl@zgclab.edu.cn"
 
@@ -34,43 +34,43 @@ normative:
     RFC1930:
     RFC8182:
     RFC9319:
-    I-D.-ietf-grow-nrtm-v4:
+    NRTMv4: I-D.ietf-grow-nrtm-v4
 
 informative:
     IRRedicator:
         title: "IRRedicator: Pruning IRR with RPKI-Valid BGP Insights"
         date: 2024
-        booktitle: "Network and Distributed System Security (NDSS) Symposium 2024"
+        seriesinfo: "Network and Distributed System Security (NDSS) Symposium 2024"
         authors:
-            -
-                name: "Minhyeok Kang"
-            -
-                name: "Weitong Li"
-            -
-                name: "Roland van Rijswijk-Deij"
-            -
-                name: "Ted \"Taekyoung\" Kwon"
-            -
-                name: "Taejoong Chung"
+        -
+            ins: "Minhyeok Kang"
+        -
+            ins: "Weitong Li"
+        -
+            ins: "Roland van Rijswijk-Deij"
+        -
+            ins: "Ted \"Taekyoung\" Kwon"
+        -
+            ins: "Taejoong Chung"
     IRRegularities:
         title: "IRRegularities in the internet routing registry"
         date: 2023
-        booktitle: "Proceedings of the 2023 ACM on internet measurement conference"
+        seriesinfo: "Proceedings of the 2023 ACM on internet measurement conference"
         authors:
-            -
-                name: "Ben Du"
-            -
-                name: "Katherine Izhikevich"
-            -
-                name: "Sumanth Rao"
-            -
-                name: "Guatam Akiwate"
-            -
-                name: "Cecilia Testart"
-            -
-                name: "Alex C. Snoeren"
-            -
-                name: "kc claffy"
+        -
+            ins: "Ben Du"
+        -
+            ins: "Katherine Izhikevich"
+        -
+            ins: "Sumanth Rao"
+        -
+            ins: "Guatam Akiwate"
+        -
+            ins: "Cecilia Testart"
+        -
+            ins: "Alex C. Snoeren"
+        -
+            ins: "kc claffy"
     CAIDA:
         title: "RouteViews Prefix to AS mappings"
         date: 2024
@@ -142,7 +142,7 @@ For certain requirements such as Multi-homing and multinational companies (MOAS)
 
 ## Automated Updates
 
-The introduction of incremental update protocols such as RRDP{{RFC8182}} and NRTM{{I-D.-ietf-grow-nrtm-v4}} reduces the interval for data source updates. However, similar to mirror protocols, these protocols only synchronize data without performing validation, even if there may be differences with their own data. To address revocation and update issues caused by the granularity of RPKI management, current solutions such as Minimal-ROA{{RFC9319}} have been proposed.
+The introduction of incremental update protocols such as RRDP{{RFC8182}} and NRTM{{NRTMv4}} reduces the interval for data source updates. However, similar to mirror protocols, these protocols only synchronize data without performing validation, even if there may be differences with their own data. To address revocation and update issues caused by the granularity of RPKI management, current solutions such as Minimal-ROA{{RFC9319}} have been proposed.
 
 During fusion of multiple sources of information and enhance route origin validation, preliminary verification of data can be performed while promoting automated incremental updates. This ensures consistency of global route origin and automatically raises concerns about discrepant data. Through multi-party consensus and negotiation, data accuracy and consistency can be advanced. Additionally, to ensure flexibility in data updates and revocations, efforts should be made to accelerate development of innovative route origin management, ensuring efficient and timely completion of relevant updates based on state changes.
 
