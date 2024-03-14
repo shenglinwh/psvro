@@ -2,7 +2,7 @@
 
 
 
-SIDR Operations                                               shenglinwh
+SIDR Operations                                              J. Shenglin
 Internet-Draft                                   Zhongguancun Laboratory
 Intended status: Informational                             14 March 2024
 Expires: 15 September 2024
@@ -281,13 +281,12 @@ Table of Contents
 3.3.  Automated Updates
 
    The introduction of incremental update protocols such as
-   RRDP[RFC8182] and NRTM[I-D.-ietf-grow-nrtm-v4] reduces the interval
-   for data source updates.  However, similar to mirror protocols, these
-   protocols only synchronize data without performing validation, even
-   if there may be differences with their own data.  To address
-   revocation and update issues caused by the granularity of RPKI
-   management, current solutions such as Minimal-ROA[RFC9319] have been
-   proposed.
+   RRDP[RFC8182] and NRTM[NRTMv4] reduces the interval for data source
+   updates.  However, similar to mirror protocols, these protocols only
+   synchronize data without performing validation, even if there may be
+   differences with their own data.  To address revocation and update
+   issues caused by the granularity of RPKI management, current
+   solutions such as Minimal-ROA[RFC9319] have been proposed.
 
    During fusion of multiple sources of information and enhance route
    origin validation, preliminary verification of data can be performed
@@ -334,8 +333,12 @@ Table of Contents
 
 6.1.  Normative References
 
-   [I-D.-ietf-grow-nrtm-v4]
-              "*** BROKEN REFERENCE ***".
+   [NRTMv4]   Romijn, S., Snijders, J., Shryane, E., and S.
+              Konstantaras, "Near Real Time Mirroring (NRTM) version 4",
+              Work in Progress, Internet-Draft, draft-ietf-grow-nrtm-
+              v4-03, 26 November 2023,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-grow-
+              nrtm-v4-03>.
 
    [RFC1930]  Hawkinson, J. and T. Bates, "Guidelines for creation,
               selection, and registration of an Autonomous System (AS)",
@@ -373,10 +376,13 @@ Table of Contents
 
    [IRRedicator]
               "IRRedicator: Pruning IRR with RPKI-Valid BGP Insights",
-              2024.
+              Network and Distributed System Security (NDSS) Symposium
+              2024 , 2024.
 
    [IRRegularities]
-              "IRRegularities in the internet routing registry", 2023.
+              "IRRegularities in the internet routing registry",
+              Proceedings of the 2023 ACM on internet measurement
+              conference , 2023.
 
 Acknowledgments
 
@@ -384,6 +390,6 @@ Acknowledgments
 
 Author's Address
 
-   shenglinwh
+   Jiang Shenglin
    Zhongguancun Laboratory
    Email: jiangshl@zgclab.edu.cn
