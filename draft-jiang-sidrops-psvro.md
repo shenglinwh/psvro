@@ -42,16 +42,11 @@ IRRedicator:
     date: 2024
     booktitle: "Network and Distributed System Security (NDSS) Symposium 2024"
     authors:
-        - 
-            name: "Minhyeok Kang"
-        -
-            name: "Weitong Li"
-        -
-            name: "Roland van Rijswijk-Deij"
-        -
-            name: "Ted \"Taekyoung\" Kwon"
-        -
-            name: "Taejoong Chung"
+        - name: "Minhyeok Kang"
+        - name: "Weitong Li"
+        - name: "Roland van Rijswijk-Deij"
+        - name: "Ted \"Taekyoung\" Kwon"
+        - name: "Taejoong Chung"
 IRRegularities:
     title: "IRRegularities in the internet routing registry"
     date: 2023
