@@ -30,11 +30,11 @@ author:
     email: "jiangshl@zgclab.edu.cn"
 
 normative:
-    RFC6480: 
-    RFC1930: 
-    RFC8182: 
-    RFC9319: 
-    I-D.-ietf-grow-nrtm-v4: 
+    RFC6480:
+    RFC1930:
+    RFC8182:
+    RFC9319:
+    I-D.-ietf-grow-nrtm-v4:
 
 informative:
     IRRedicator:
@@ -86,13 +86,13 @@ Prefix hijacking has emerged as a major security threat in the Border Gateway Pr
 
 # Introduction
 
-The Border Gateway Protocol (BGP) is widely used for inter-domain routing in the Internet. However, due to the lack of built-in routing security mechanisms, BGP is vulnerable to various security threats such as prefix hijacking. To mitigate such attacks, the global Internet infrastructure needs to create a database to record the mapping of IP prefixes to authorized origin ASes, which can be used to determine whether BGP announcements are propagated or discarded. 
+The Border Gateway Protocol (BGP) is widely used for inter-domain routing in the Internet. However, due to the lack of built-in routing security mechanisms, BGP is vulnerable to various security threats such as prefix hijacking. To mitigate such attacks, the global Internet infrastructure needs to create a database to record the mapping of IP prefixes to authorized origin ASes, which can be used to determine whether BGP announcements are propagated or discarded.
 
 Currently, network operators primarily rely on Internet Routing Registry (IRR) and Resource Public Key Infrastructure (RPKI){{RFC6480}} as data sources for route validation. However, IRR suffers from a lack of effective validation mechanisms and incentives for resource holders to update objects, leading to the prevalence of outdated objects. On the other hand, RPKI faces challenges in terms of complex operations, the negative impact of misissued ROA, and the certificate dependencies in the hierarchy of RPKI, which hinder its widespread deployment.
 
 To fully leverage existing data sources and improve the accuracy of route validation, enhance the robustness and security of the global routing system. Mutually Agreed Norms for Routing Security (MANRS) have advocated for the simultaneous use of IRR and RPKI, incorporating them into relevant actions for network operators. Currently, some organizations are attempting to filter outdated objects by implementing specific rules, such as JPIRR removing IRR objects that have not been updated within a given timeframe. Additionally, certain organizations and software, like RIPE NCC and Irrd v4, employ RPKI to filter out IRR objects that fail RPKI validation. Moreover, research efforts, such as the introduction of algorithms like {{IRRedicator}}, aim to filter IRR objects effectively. On the other hand, mechanisms like SLURM allow ISPs to establish a local RPKI view by enabling local filtering and additions based on specific requirements.
 
-This document aims to provide insights and recommendations to network operators, researchers, and policymakers for improving the security and robustness of the global routing system by analyzing the issues and challenges associated with route origin validation, particularly the integration of multi-source information. 
+This document aims to provide insights and recommendations to network operators, researchers, and policymakers for improving the security and robustness of the global routing system by analyzing the issues and challenges associated with route origin validation, particularly the integration of multi-source information.
 
 ## Requirements Language
 
@@ -100,7 +100,7 @@ This document aims to provide insights and recommendations to network operators,
 
 # Problem Statement
 
-## Integrity and Accuracy of Route Origin 
+## Integrity and Accuracy of Route Origin
 As more ISPs participate in route origin databases, the coverage of address space by these databases has gradually increased. As of February 2024, the RADB database has the highest IPv4 address space coverage, reaching up to 42%. In contrast, the NESTEGG database only has four Route object data. However, the IPv4 address space coverage of RPKI is only 35%. Therefore, relying solely on a single IRR or RPKI database for route filtering and validation is insufficient due to the limited address space coverage.
 
 There are significant differences in the update activity of Route objects among active IRR databases. Some databases maintain a high level of update activity, with recent updates occurring within the past year, such as LACNIC, JPIRR, and RADB. On the other hand, there are databases that have seen little to no updates to Route objects in the past five years, such as WCGDB, NESTEGG, PANIX, and REACH. The remaining databases also contain a significant number of Route objects that have not been updated in the short term. This situation leads to a large amount of outdated and stale Route objects, which affects the reliability of the data sources.
