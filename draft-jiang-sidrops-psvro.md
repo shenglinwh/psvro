@@ -41,7 +41,7 @@ informative:
         title: "IRRedicator: Pruning IRR with RPKI-Valid BGP Insights"
         date: 2024
         seriesinfo: "Network and Distributed System Security (NDSS) Symposium 2024"
-        authors:
+        author:
           - ins: M. Kang
           - ins: W. Li
           - ins: R. van Rijswijk-Deij
@@ -51,7 +51,7 @@ informative:
         title: "IRRegularities in the internet routing registry"
         date: 2023
         seriesinfo: "Proceedings of the 2023 ACM on internet measurement conference"
-        authors:
+        author:
           - ins: B. Du
           - ins: K. Izhikevich
           - ins: S. Rao
