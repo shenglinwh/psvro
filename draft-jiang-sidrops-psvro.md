@@ -9,23 +9,23 @@ number:
 date:
 consensus: true
 v: 3
-area: "Operations and Management"
+# area: "Operations and Management"
 workgroup: "SIDROPS"
-keyword:
- - routing security
- - prefix hijacking
- - route origin validation
-venue:
-  group: "SIDR Operations"
-  type: "Working Group"
-  mail: "sidrops@ietf.org"
-  arch: "https://mailarchive.ietf.org/arch/browse/sidrops/"
-  github: "shenglinwh/psvro"
-  latest: "https://shenglinwh.github.io/psvro/draft-jiang-sidrops-psvro.html"
+# keyword:
+#  - routing security
+#  - prefix hijacking
+#  - route origin validation
+# venue:
+#   group: "SIDR Operations"
+#   type: "Working Group"
+#   mail: "sidrops@ietf.org"
+#   arch: "https://mailarchive.ietf.org/arch/browse/sidrops/"
+#   github: "shenglinwh/psvro"
+#   latest: "https://shenglinwh.github.io/psvro/draft-jiang-sidrops-psvro.html"
 
 author:
  -
-    fullname: "Jiang Shenglin"
+    fullname: "Shenglin Jiang"
     organization: Zhongguancun Laboratory
     email: "jiangshl@zgclab.edu.cn"
 
@@ -34,6 +34,7 @@ normative:
     RFC1930:
     RFC8182:
     RFC9319:
+    RFC8416:
     NRTMv4: I-D.ietf-grow-nrtm-v4
 
 informative:
@@ -68,20 +69,25 @@ informative:
 
 --- abstract
 
-Prefix hijacking has emerged as a major security threat in the Border Gateway Protocol (BGP), garnering widespread attention. To mitigate such attacks, Internet Routing Registries (IRR) and Resource Public Key Infrastructure (RPKI) have been developed, providing reliable mappings of IP prefixes to authorized Autonomous Systems (ASes). Nonetheless, challenges persist due to outdated Route objects within IRR and the limited deployment rates of RPKI. Recently, several organizations have adopted the approach of integrating IRR, RPKI, and local data to enhance the quality of routing source data. This document describes problem statement and requirements for enhanced route origin validation using multi-source information.
+Prefix hijacking has emerged as a major security threat in the Border Gateway Protocol (BGP), garnering widespread attention. To mitigate such attacks, Internet Routing Registries (IRR) and Resource Public Key Infrastructure (RPKI) have been developed, providing reliable mappings of IP prefixes to authorized Autonomous Systems (ASes). Nonetheless, challenges persist due to outdated Route objects within IRR and the limited deployment rates of RPKI. Recently, several organizations have adopted the approach of integrating IRR, RPKI, and local data to enhance the quality of route origin. This document describes problem statement and requirements for enhanced route origin validation using multi-source information.
 
 --- middle
 
 
 # Introduction
 
-The Border Gateway Protocol (BGP) is widely used for inter-domain routing in the Internet. However, due to the lack of built-in routing security mechanisms, BGP is vulnerable to various security threats such as prefix hijacking. To mitigate such attacks, the global Internet infrastructure needs to create a database to record the mapping of IP prefixes to authorized origin ASes, which can be used to determine whether BGP announcements are propagated or discarded.
+The Border Gateway Protocol (BGP) is widely used for inter-domain route. However, due to the lack of built-in routing security mechanisms, BGP is vulnerable to various security threats such as prefix hijacking. To mitigate such attacks, the global Internet infrastructure needs to create a database to record the mapping of IP prefixes to authorized origin ASes, which can be used to determine whether BGP announcements are propagated or discarded.
 
-Currently, network operators primarily rely on Internet Routing Registry (IRR) and Resource Public Key Infrastructure (RPKI){{RFC6480}} as data sources for route validation. However, IRR suffers from a lack of effective validation mechanisms and incentives for resource holders to update objects, leading to the prevalence of outdated objects. On the other hand, RPKI faces challenges in terms of complex operations, the negative impact of misissued ROA, and the certificate dependencies in the hierarchy of RPKI, which hinder its widespread deployment.
+Currently, network operators primarily rely on Internet Routing Registry (IRR) and Resource Public Key Infrastructure (RPKI){{RFC6480}} as route origin sources. However, IRR suffers from a lack of effective validation mechanisms and incentives for resource holders to update objects, leading to the prevalence of outdated objects. On the other hand, RPKI faces challenges in terms of complex operations, misissued ROA, and the certificate dependencies in the hierarchy of RPKI, which hinder its widespread deployment.
 
-To fully leverage existing data sources and improve the accuracy of route validation, enhance the robustness and security of the global routing system. Mutually Agreed Norms for Routing Security (MANRS) have advocated for the simultaneous use of IRR and RPKI, incorporating them into relevant actions for network operators. Currently, some organizations are attempting to filter outdated objects by implementing specific rules, such as JPIRR removing IRR objects that have not been updated within a given timeframe. Additionally, certain organizations and software, like RIPE NCC and Irrd v4, employ RPKI to filter out IRR objects that fail RPKI validation. Moreover, research efforts, such as the introduction of algorithms like {{IRRedicator}}, aim to filter IRR objects effectively. On the other hand, mechanisms like SLURM allow ISPs to establish a local RPKI view by enabling local filtering and additions based on specific requirements.
+To fully leverage existing sources and improve the accuracy of route validation, enhance the robustness and security of the global routing system. Many suggestions and solutions have been proposed, for example:
+* Mutually Agreed Norms for Routing Security (MANRS) have recommended the use of both IRR and RPKI.
+* JPIRR removing IRR Route objects that have not been updated within a given timeframe.
+* RIPE NCC and IRRdv4 utilize RPKI (Resource Public Key Infrastructure) to validate and filter IRR Route objects.
+* {{IRRedicator}} leverages machine learning algorithms to identify stale Route objects, aiming to enhance the consistency between IRR and RPKI.
+* SLURM{{RFC8416}} allow ISPs to establish a local RPKI view by enabling local filtering and additions based on specific requirements.
 
-This document aims to provide insights and recommendations to network operators, researchers, and policymakers for improving the security and robustness of the global routing system by analyzing the issues and challenges associated with route origin validation, particularly the integration of multi-source information.
+This document aims to provide insights and recommendations to network operators, researchers, and policymakers for improving the security and robustness of the global routing system by analyzing the problems associated with route origin validation, particularly the integration of multi-source information.
 
 ## Requirements Language
 
@@ -93,25 +99,26 @@ This document aims to provide insights and recommendations to network operators,
 ## Integrity and Accuracy of Route Origin
 As more ISPs participate in route origin databases, the coverage of address space by these databases has gradually increased. As of February 2024, the RADB database has the highest IPv4 address space coverage, reaching up to 42%. In contrast, the NESTEGG database only has four Route object data. However, the IPv4 address space coverage of RPKI is only 35%. Therefore, relying solely on a single IRR or RPKI database for route filtering and validation is insufficient due to the limited address space coverage.
 
-There are significant differences in the update activity of Route objects among active IRR databases. Some databases maintain a high level of update activity, with recent updates occurring within the past year, such as LACNIC, JPIRR, and RADB. On the other hand, there are databases that have seen little to no updates to Route objects in the past five years, such as WCGDB, NESTEGG, PANIX, and REACH. The remaining databases also contain a significant number of Route objects that have not been updated in the short term. This situation leads to a large amount of outdated and stale Route objects, which affects the reliability of the data sources.
+There are significant differences in the update activity of Route objects among active IRR databases. Some databases maintain a high level of update activity, with recent updates occurring within the past year, such as LACNIC, JPIRR, and RADB. On the other hand, there are databases whose Route objects have not been updated in the past five years, such as WCGDB, NESTEGG, PANIX, and REACH. The other databases also contain a larger percentage of Route objects that have not been updated in the short term. This state leads to a large amount of outdated and stale Route objects, which affects the reliability of the data sources.
 
-According to measurements from {{IRRegularities}}, Route objects from JPIRR, RIPE, ARIN, ALTDB, and LACNIC have overlap rates in recent BGP announcements exceeding 60%, while databases such as APNIC, NTTCOM, WCGDB, PANIX, and ARIN-NA have rates below 20%. This indicates that some databases have lower activity and may contain a higher proportion of outdated data. The RADB database, which has the highest address space coverage, has 29.8% of its Route objects appearing in BGP announcements.
+According to measurements from {{IRRegularities}}, Route objects from JPIRR, RIPE, ARIN, ALTDB, and LACNIC have overlap rates in recent BGP announcements exceeding 60%, while databases such as APNIC, NTTCOM, WCGDB, PANIX, and ARIN-NA have rates below 20%. This indicates that some databases have lower activity and may contain a higher proportion of outdated data. The RADB database, which has the highest overlap rate, has 29.8% of its Route objects appearing in BGP announcements.
 
 ## Lack of Support for MOAS
 
-{{RFC1930}} suggests that a prefix should only have a single AS as its origin with a few exceptions. However, according to routing data from Routeviews{{CAIDA}}, MOAS (Multi-origin ASes) has been a common phenomenon. MOAS can arise due to reasons such as multi-homing, Internet exchange points, and multinational companies, as well as due to misconfigurations or prefix hijacking.
+{{RFC1930}} suggests that a prefix should only have a single AS as its origin with a few exceptions. However, according to routing data from Routeviews{{CAIDA}}, MOAS (Multi-origin ASes) 
+MOAS has become a common phenomenon, which can be due to multi-homing, Internet exchange points, and multinational companies, as well as due to misconfigurations or prefix hijacking.
 
-Analyzing the MOAS state, as of 2024, the currently active IRR databases can provide complete coverage for only 31% of IPv4 MOAS and 4% of IPv6 MOAS. The RPKI database can provide complete coverage for 26% of IPv4 MOAS and 3.55% of IPv6 MOAS. Differentiating between legitimate MOAS and those caused by misconfigurations or route hijacking poses a significant challenge for existing route origin databases.
+Analyzing the MOAS state, as of 2024, the currently active IRR databases can provide full coverage for only 31% of IPv4 MOAS and 4% of IPv6 MOAS. The RPKI database can provide full coverage for 26% of IPv4 MOAS and 3.55% of IPv6 MOAS. Differentiating between legitimate MOAS and those caused by misconfigurations or route hijacking poses a significant challenge for existing route origin databases.
 
-Legitimate MOAS is primarily caused by factors such as multinational companies and multi-homing. However, the current authoritative IRR and RPKI databases typically only allow registration of address blocks managed by the respective RIR. This poses a significant obstacle to supporting legitimate MOAS. On the other hand, misconfigurations usually occur within the same ISP, i.e., the ISP has multiple ASNs and IP prefixes, resulting from confusion during the configuration/update process. These cases can bypass the current validation mechanisms.
+Legitimate MOAS is primarily caused by factors such as multinational companies and multi-homing. However, the current authoritative IRR and RPKI databases typically only allow registration of address blocks managed by the respective RIR. This poses a significant obstacle to support legitimate MOAS. On the other hand, misconfigurations usually occur within the same ISP, i.e., the ISP has multiple ASNs and IP prefixes, resulting from confusion during the configuration/update Route or ROA objects. These cases can bypass the current validation mechanisms.
 
 ## Inconsistency Among Multiple Sources
 
-As analyzed in section 2.1, relying on a single source of route origin database is insufficient for data validation. However, by integrating multiple active IRR databases, the IPv4 address coverage can reach 67%. Further combining the RPKI database, the IPv4 address coverage can reach 70%, covering a significant portion of available addresses. Moreover, In addition, the number of ASes participating in IRR or RPKI accounted for 86.5% of the total number of assigned ASes.
+As analyzed in section 2.1, relying on a single source of route origin database is insufficient for route origin validation. However, the IPv4 address coverage can reach 67% by integrating multiple active IRR databases. Further, the IPv4 address coverage can reach 70% with the addition of the RPKI database. Moreover, the number of ASes participating in IRR or RPKI accounted for 86.5% of the total number of assigned ASes.
 
-Leveraging multiple sources of information can effectively improve the coverage of routing data for Internet numbering resources. However, according to recent measurement{{IRRegularities}}, there are inconsistencies among the Route object across different IRR databases. This may be due to chronic neglect on the part of the IRR customers, resulting in outdated and stale Route objects. For instance, the company register route objects in multiple IRR databases, but it often updates Route objects in only a subset of those IRR databases, while neglecting the others.
+Leveraging database from multiple sources can effectively improve the coverage of routing origin for Internet numbering resources. However, according to recent measurement{{IRRegularities}}, there are inconsistencies among the Route object across different IRR databases, which may be due to chronic neglect on the part of the IRR customers. For instance, the company register Route objects in multiple IRR databases, but it updates Route objects in only a subset of those IRR databases, while neglecting the others, resulting in outdated and stale Route objects.
 
-Further analysis of the consistency between IRR Route objects and RPKI reveals that as of February 2024, the IRR databases maintained by the five RIRs, as well as JPIRR, IDNIC, and other IRR databases maintained by Local Internet Registries (LIRs), exhibit a higher level of consistency with RPKI. On the other hand, IRR databases maintained by third parties such as RADB, TC, and NTTCOM show lower levels of consistency with RPKI, with ineffective RPKI validation. Other IRR databases show significant differences with RPKI, such as PANIX, BELL, REACH, WCGDB, primarily manifested as low route object overlap and high route validation ineffectiveness. Considering that RPKI contains the validation mechanism and each object has validity period, IRR databases that are inconsistent with RPKI may exhibit significant discrepancies.
+We found that in February 2024, the IRR databases maintained by the five RIRs, as well as JPIRR, IDNIC, and maintained by Local Internet Registries (LIRs), exhibit a higher consistency with RPKI. On the other hand, IRR databases maintained by third parties such as RADB, TC, and NTTCOM have lower consistency with RPKI, with ineffective RPKI validation. Other IRR databases show significant differences with RPKI, such as PANIX, BELL, REACH, WCGDB, primarily manifested as low Route object overlap and high ineffective rate of route validation. Because RPKI contains the validation mechanism and each object has validity period, IRR databases that are inconsistent with RPKI may contains more stale Route objects.
 
 
 # Requirements
