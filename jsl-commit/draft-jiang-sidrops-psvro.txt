@@ -4,8 +4,8 @@
 
 SIDROPS                                                      J. Shenglin
 Internet-Draft                                   Zhongguancun Laboratory
-Intended status: Informational                             14 March 2024
-Expires: 15 September 2024
+Intended status: Informational                             15 March 2024
+Expires: 16 September 2024
 
 
 Problem Statement and Requirements for Enhanced Route Origin Validation
@@ -58,7 +58,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 15 September 2024.
+   This Internet-Draft will expire on 16 September 2024.
 
 Copyright Notice
 
@@ -375,14 +375,16 @@ Table of Contents
               <https://catalog.caida.org/dataset/routeviews_prefix2as>.
 
    [IRRedicator]
-              "IRRedicator: Pruning IRR with RPKI-Valid BGP Insights",
-              Network and Distributed System Security (NDSS) Symposium
-              2024 , 2024.
+              Kang, M., Li, W., van Rijswijk-Deij, R., TT Kwon, and T.
+              Chung, "IRRedicator: Pruning IRR with RPKI-Valid BGP
+              Insights", Network and Distributed System Security (NDSS)
+              Symposium 2024 , 2024.
 
    [IRRegularities]
-              "IRRegularities in the internet routing registry",
-              Proceedings of the 2023 ACM on internet measurement
-              conference , 2023.
+              Du, B., Izhikevich, K., Rao, S., Akiwate, G., Testart, C.,
+              AC Snoeren, and kc claffy, "IRRegularities in the internet
+              routing registry", Proceedings of the 2023 ACM on internet
+              measurement conference , 2023.
 
 Acknowledgments
 
