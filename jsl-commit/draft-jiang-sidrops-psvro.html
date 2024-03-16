@@ -1182,13 +1182,25 @@ svg :is([fill="white"], [fill^="#fff"]) {
       </h2>
 <p id="section-1-1">The Border Gateway Protocol (BGP) is widely used for inter-domain route. However, due to the lack of built-in routing security mechanisms, BGP is vulnerable to various security threats such as prefix hijacking. To mitigate such attacks, the global Internet infrastructure needs to create a database to record the mapping of IP prefixes to authorized origin ASes, which can be used to determine whether BGP announcements are propagated or discarded.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">Currently, network operators primarily rely on Internet Routing Registry (IRR) and Resource Public Key Infrastructure (RPKI)<span>[<a href="#RFC6480" class="cite xref">RFC6480</a>]</span> as route origin sources. However, IRR suffers from a lack of effective validation mechanisms and incentives for resource holders to update objects, leading to the prevalence of outdated objects. On the other hand, RPKI faces challenges in terms of complex operations, misissued ROA, and the certificate dependencies in the hierarchy of RPKI, which hinder its widespread deployment.<a href="#section-1-2" class="pilcrow">¶</a></p>
-<p id="section-1-3">To fully leverage existing sources and improve the accuracy of route validation, enhance the robustness and security of the global routing system. Many suggestions and solutions have been proposed, for example:
-* Mutually Agreed Norms for Routing Security (MANRS) have recommended the use of both IRR and RPKI.
-* JPIRR removing IRR Route objects that have not been updated within a given timeframe.
-* RIPE NCC and IRRdv4 utilize RPKI (Resource Public Key Infrastructure) to validate and filter IRR Route objects.
-* <span>[<a href="#IRRedicator" class="cite xref">IRRedicator</a>]</span> leverages machine learning algorithms to identify stale Route objects, aiming to enhance the consistency between IRR and RPKI.
-* SLURM<span>[<a href="#RFC8416" class="cite xref">RFC8416</a>]</span> allow ISPs to establish a local RPKI view by enabling local filtering and additions based on specific requirements.<a href="#section-1-3" class="pilcrow">¶</a></p>
-<p id="section-1-4">This document aims to provide insights and recommendations to network operators, researchers, and policymakers for improving the security and robustness of the global routing system by analyzing the problems associated with route origin validation, particularly the integration of multi-source information.<a href="#section-1-4" class="pilcrow">¶</a></p>
+<p id="section-1-3">To fully leverage existing sources and improve the accuracy of route validation, enhance the robustness and security of the global routing system. Many suggestions and solutions have been proposed, for example:<a href="#section-1-3" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-1-4.1">
+          <p id="section-1-4.1.1">Mutually Agreed Norms for Routing Security (MANRS) have recommended the use of both IRR and RPKI.<a href="#section-1-4.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-1-4.2">
+          <p id="section-1-4.2.1">JPIRR removing IRR Route objects that have not been updated within a given timeframe.<a href="#section-1-4.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-1-4.3">
+          <p id="section-1-4.3.1">RIPE NCC and IRRdv4 utilize RPKI (Resource Public Key Infrastructure) to validate and filter IRR Route objects.<a href="#section-1-4.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-1-4.4">
+          <p id="section-1-4.4.1"><span>[<a href="#IRRedicator" class="cite xref">IRRedicator</a>]</span> leverages machine learning algorithms to identify stale Route objects, aiming to enhance the consistency between IRR and RPKI.<a href="#section-1-4.4.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-1-4.5">
+          <p id="section-1-4.5.1">SLURM<span>[<a href="#RFC8416" class="cite xref">RFC8416</a>]</span> allow ISPs to establish a local RPKI view by enabling local filtering and additions based on specific requirements.<a href="#section-1-4.5.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="section-1-5">This document aims to provide insights and recommendations to network operators, researchers, and policymakers for improving the security and robustness of the global routing system by analyzing the problems associated with route origin validation, particularly the integration of multi-source information.<a href="#section-1-5" class="pilcrow">¶</a></p>
 <div id="requirements-language">
 <section id="section-1.1">
         <h3 id="name-requirements-language">
