@@ -81,11 +81,12 @@ The Border Gateway Protocol (BGP) is widely used for inter-domain route. However
 Currently, network operators primarily rely on Internet Routing Registry (IRR) and Resource Public Key Infrastructure (RPKI){{RFC6480}} as route origin sources. However, IRR suffers from a lack of effective validation mechanisms and incentives for resource holders to update objects, leading to the prevalence of outdated objects. On the other hand, RPKI faces challenges in terms of complex operations, misissued ROA, and the certificate dependencies in the hierarchy of RPKI, which hinder its widespread deployment.
 
 To fully leverage existing sources and improve the accuracy of route validation, enhance the robustness and security of the global routing system. Many suggestions and solutions have been proposed, for example:
-* Mutually Agreed Norms for Routing Security (MANRS) have recommended the use of both IRR and RPKI.
-* JPIRR removing IRR Route objects that have not been updated within a given timeframe.
-* RIPE NCC and IRRdv4 utilize RPKI (Resource Public Key Infrastructure) to validate and filter IRR Route objects.
-* {{IRRedicator}} leverages machine learning algorithms to identify stale Route objects, aiming to enhance the consistency between IRR and RPKI.
-* SLURM{{RFC8416}} allow ISPs to establish a local RPKI view by enabling local filtering and additions based on specific requirements.
+
+- Mutually Agreed Norms for Routing Security (MANRS) have recommended the use of both IRR and RPKI.
+- JPIRR removing IRR Route objects that have not been updated within a given timeframe.
+- RIPE NCC and IRRdv4 utilize RPKI (Resource Public Key Infrastructure) to validate and filter IRR Route objects.
+- {{IRRedicator}} leverages machine learning algorithms to identify stale Route objects, aiming to enhance the consistency between IRR and RPKI.
+- SLURM{{RFC8416}} allow ISPs to establish a local RPKI view by enabling local filtering and additions based on specific requirements.
 
 This document aims to provide insights and recommendations to network operators, researchers, and policymakers for improving the security and robustness of the global routing system by analyzing the problems associated with route origin validation, particularly the integration of multi-source information.
 
