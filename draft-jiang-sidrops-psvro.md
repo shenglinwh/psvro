@@ -1,5 +1,5 @@
 ---
-title: "Problem Statement and Requirements for Enhanced Route Origin Validation Using Multi-Source Information"
+title: "Problem Statement and Requirements for Enhancing Route Origin Validation Using Multi-Source Information"
 abbrev: "PSVRO"
 category: info
 
@@ -69,7 +69,7 @@ informative:
 
 --- abstract
 
-Prefix hijacking has emerged as a major security threat in the Border Gateway Protocol (BGP), garnering widespread attention. To mitigate such attacks, Internet Routing Registries (IRR) and Resource Public Key Infrastructure (RPKI) have been developed, providing reliable mappings of IP prefixes to authorized Autonomous Systems (ASes). Nonetheless, challenges persist due to outdated Route objects within IRR and the limited deployment rates of RPKI. Recently, several organizations have adopted the approach of integrating IRR, RPKI, and local data to enhance the quality of route origin. This document describes problem statement and requirements for enhanced route origin validation using multi-source information.
+Prefix hijacking has emerged as a major security threat in the Border Gateway Protocol (BGP), garnering widespread attention. To mitigate such attacks, Internet Routing Registries (IRR) and Resource Public Key Infrastructure (RPKI) have been developed, providing reliable mappings of IP prefixes to authorized Autonomous Systems (ASes). Nonetheless, challenges persist due to outdated Route objects within IRR and the limited deployment rates of RPKI. Recently, several organizations have adopted the approach of integrating IRR, RPKI, and local data to enhance the quality of route origin. This document describes problem statement and requirements for enhancing route origin validation using multi-source information.
 
 --- middle
 
@@ -105,8 +105,7 @@ According to measurements from {{IRRegularities}}, Route objects from JPIRR, RIP
 
 ## Lack of Support for MOAS
 
-{{RFC1930}} suggests that a prefix should only have a single AS as its origin with a few exceptions. However, according to routing data from Routeviews{{CAIDA}}, MOAS (Multi-origin ASes) 
-MOAS has become a common phenomenon, which can be due to multi-homing, Internet exchange points, and multinational companies, as well as due to misconfigurations or prefix hijacking.
+{{RFC1930}} suggests that a prefix should only have a single AS as its origin with a few exceptions. However, according to routing data from Routeviews{{CAIDA}}, MOAS (Multi-origin ASes) has become a common phenomenon, which can be due to multi-homing, Internet exchange points, and multinational companies, as well as due to misconfigurations or prefix hijacking.
 
 Analyzing the MOAS state, as of 2024, the currently active IRR databases can provide full coverage for only 31% of IPv4 MOAS and 4% of IPv6 MOAS. The RPKI database can provide full coverage for 26% of IPv4 MOAS and 3.55% of IPv6 MOAS. Differentiating between legitimate MOAS and those caused by misconfigurations or route hijacking poses a significant challenge for existing route origin databases.
 
@@ -125,27 +124,27 @@ We found that in February 2024, the IRR databases maintained by the five RIRs, a
 
 ## Verifiability of Route Origin Data
 
-Several Internet registries have attempted to address the issue of outdated objects in their IRR databases by implementing filtering rules. For example, JPIRR removes IRR objects that have not been updated within a specified period, typically one year. While simple rule-based validation can partially improve data quality of current routing origin, more innovative mechanisms are needed for intentionally malicious prefix hijacking.
+Internet registries have attempted to address the issue of outdated objects in their IRR databases by implementing filtering rules. For example, JPIRR removes IRR objects that have not been updated within a specified period, typically one year. While simple rule-based validation can partially improve quality of current routing origin, more innovative mechanisms are required for intentionally malicious prefix hijacking.
 
-There is a requirement for verifiable route origin sources to enhance data quality and instill confidence in network operators when using these data for validation. Additionally, it is important to leverage the collective oversight of the Internet community by providing a mechanism for customers to provide negative feedback, allowing the filtering of relevant outdated and stale data. This will improve the current reliance on resource holders for resource registration and further enhance the availability of route origin data for validation.
+There is a requirement for verifiable route origin sources to enhance quality of route origin database and instill confidence in network operators when validating using route origin. Additionally, it is important to leverage the collective oversight of the Internet registries by providing a negative feedback mechanism for theirs customers, which filters out relevant outdated and stale data, improves current registration and maintenance dependencies on resource holders, and further enhances the availability of route origin for validation.
 
 ## Fusion of Multiple Sources of Information
 
-To improve the accuracy of route origin, many organizations currently disable IRR Route objects using authoritative RPKI or local sources. These solutions contribute to enhancing data reliability and provide customized services to some extent.
+To improve the accuracy of route origin, several organizations currently disable IRR Route objects using authoritative RPKI or local sources, which contribute to enhancing route origin reliability and provide customized services for route validation.
 
-For certain requirements such as Multi-homing and multinational companies (MOAS), the introduction of multidimensional and multi-source information, such as commercial relationships, geographic relationships, and adjacency relationships, can further assist in source information validation. Additionally, as the Internet is a network maintained by multiple networks, the quality of route origins can be advanced through consensus and collaboration, utilizing the privately maintained data of each network.
+Route origin should integrate multidimensional and multi-source information, such as commercial relationships, geographic relationships, and adjacency relationships, which can further assist in route origin validation for multi-homing and multinational companies, etc. Additionally, we can utilize maintained data of each ISP to improve the quality of route origins through consensus and collaboration, since the Internet consists of multiple networks.
 
 ## Automated Updates
 
-The introduction of incremental update protocols such as RRDP{{RFC8182}} and NRTM{{NRTMv4}} reduces the interval for data source updates. However, similar to mirror protocols, these protocols only synchronize data without performing validation, even if there may be differences with their own data. To address revocation and update issues caused by the granularity of RPKI management, current solutions such as Minimal-ROA{{RFC9319}} have been proposed.
+The introduction of incremental update protocols such as RRDP{{RFC8182}} and NRTM{{NRTMv4}} reduces the interval for data source updates. However, these protocols only synchronize data without performing validation, even if there may be differences with their own data. To address revocation and update issues caused by the granularity of RPKI management, current solutions such as Minimal-ROA{{RFC9319}} have been proposed.
 
-During fusion of multiple sources of information and enhance route origin validation, preliminary verification of data can be performed while promoting automated incremental updates. This ensures consistency of global route origin and automatically raises concerns about discrepant data. Through multi-party consensus and negotiation, data accuracy and consistency can be advanced. Additionally, to ensure flexibility in data updates and revocations, efforts should be made to accelerate development of innovative route origin management, ensuring efficient and timely completion of relevant updates based on state changes.
+During fusion of multiple sources, route origin can performed preliminary verification while promoting automated incremental updates, which ensures consistency of global route origin and automatically raises concerns about discrepant data. We can advance data accuracy and consistency, through multi-party consensus and negotiation for discrepant data. Additionally, to ensure flexibility in data updates and revocations, we should accelerate development of innovative route origin management, ensuring efficient and timely updates based on state changes.
 
 ## Multi-Party Collaboration Mechanism
 
-MANRS, through a community-based approach, aims to make the global routing infrastructure more robust and secure. MANRS calls upon different roles within the Internet community to take corresponding actions and promote multi-party collaboration. While MANRS proposes and advocates for multi-party collaboration, the actual implementation still relies on individual optimization of respective data, with monitoring of individual execution using the MANRS OBSERVATORY metrics, but lacks effective communication and collaboration mechanisms between parties.
+MANRS make the global routing infrastructure more robust and secure by community-based approach. While MANRS proposes and advocates for multi-party collaboration, the actual implementation still relies on individual optimization of respective data, with monitoring of individual execution using the MANRS OBSERVATORY metrics, but lacks effective communication and collaboration mechanisms between parties.
 
-To ensure the reliability of route origin data, the introduction of an automated multi-party collaboration mechanism is necessary. This mechanism should maintain multi-party consensus and a globally consistent view of route origin validation, serving as the basis for relevant route origin validation. Additionally, this collaboration mechanism should fully consider the deployment benefits during partial or incremental deployment stages, attracting more participants to join the automated multi-party collaboration framework.
+To ensure the reliability of route origin, we should introduce automated multi-party collaboration mechanism, which maintains multi-party consensus and a globally consistent view of route origin validation, serving as the basis for relevant route origin validation. Additionally, this collaboration mechanism should fully consider the deployment benefits during partial or incremental deployment stages, attracting more participants to join the automated multi-party collaboration framework.
 
 
 # Security Considerations
