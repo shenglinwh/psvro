@@ -1,6 +1,6 @@
-# Problem Statement and Requirements for Enhanced Route Origin Validation Using Multi-Source Information
+# Problem Statement and Requirements for Enhancing Route Origin Validation Using Multi-Source Information
 
-This is the working area for the individual Internet-Draft, "Problem Statement and Requirements for Enhanced Route Origin Validation Using Multi-Source Information".
+This is the working area for the individual Internet-Draft, "Problem Statement and Requirements for Enhancing Route Origin Validation Using Multi-Source Information".
 
 * [Editor's Copy](https://shenglinwh.github.io/psvro/#go.draft-jiang-sidrops-psvro.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-jiang-sidrops-psvro)
