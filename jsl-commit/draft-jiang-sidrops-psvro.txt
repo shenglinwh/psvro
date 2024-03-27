@@ -4,8 +4,8 @@
 
 SIDROPS                                                         S. Jiang
 Internet-Draft                                   Zhongguancun Laboratory
-Intended status: Informational                             16 March 2024
-Expires: 17 September 2024
+Intended status: Informational                             27 March 2024
+Expires: 28 September 2024
 
 
 Problem Statement and Requirements for Enhancing Route Origin Validation
@@ -24,7 +24,7 @@ Abstract
    organizations have adopted the approach of integrating IRR, RPKI, and
    local data to enhance the quality of route origin.  This document
    describes problem statement and requirements for enhancing route
-   origin validation using multi-source information.
+   origin validation using multi-source Information.
 
 Status of This Memo
 
@@ -41,7 +41,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 17 September 2024.
+   This Internet-Draft will expire on 28 September 2024.
 
 Copyright Notice
 
@@ -63,12 +63,12 @@ Table of Contents
      1.1.  Requirements Language
    2.  Problem Statement
      2.1.  Integrity and Accuracy of Route Origin
-     2.2.  Lack of Support for MOAS
+     2.2.  Support for Multi-origin ASes
      2.3.  Inconsistency Among Multiple Sources
    3.  Requirements
-     3.1.  Verifiability of Route Origin Data
-     3.2.  Fusion of Multiple Sources of Information
-     3.3.  Automated Updates
+     3.1.  Verifiability of Route Origin
+     3.2.  Fusion of Multi-Source Information
+     3.3.  Automated Updates and Validation
      3.4.  Multi-Party Collaboration Mechanism
    4.  Security Considerations
    5.  IANA Considerations
@@ -90,17 +90,17 @@ Table of Contents
 
    Currently, network operators primarily rely on Internet Routing
    Registry (IRR) and Resource Public Key Infrastructure (RPKI)[RFC6480]
-   as route origin sources.  However, IRR suffers from a lack of
-   effective validation mechanisms and incentives for resource holders
-   to update objects, leading to the prevalence of outdated objects.  On
-   the other hand, RPKI faces challenges in terms of complex operations,
-   misissued ROA, and the certificate dependencies in the hierarchy of
-   RPKI, which hinder its widespread deployment.
+   as route origin.  However, IRR suffers from a lack of effective
+   validation mechanisms and incentives for resource holders to update
+   objects, leading to the prevalence of outdated objects.  On the other
+   hand, RPKI faces challenges in terms of complex operations, misissued
+   ROA, and the certificate dependencies in the hierarchy of RPKI, which
+   hinder its widespread deployment.
 
    To fully leverage existing sources and improve the accuracy of route
-   validation, enhance the robustness and security of the global routing
-   system.  Many suggestions and solutions have been proposed, for
-   example:
+   origin validation, enhance the robustness and security of the global
+   routing system.  Many suggestions and solutions have been proposed,
+   for example:
 
    *  Mutually Agreed Norms for Routing Security (MANRS) have
       recommended the use of both IRR and RPKI.
@@ -123,7 +123,7 @@ Table of Contents
    operators, researchers, and policymakers for improving the security
    and robustness of the global routing system by analyzing the problems
    associated with route origin validation, particularly the integration
-   of multi-source information.
+   of multi-source Information.
 
 1.1.  Requirements Language
 
@@ -141,7 +141,7 @@ Table of Contents
    address space by these databases has gradually increased.  As of
    February 2024, the RADB database has the highest IPv4 address space
    coverage, reaching up to 42%. In contrast, the NESTEGG database only
-   has four Route object data.  However, the IPv4 address space coverage
+   has four Route object data.  Besides, the IPv4 address space coverage
    of RPKI is only 35%. Therefore, relying solely on a single IRR or
    RPKI database for route filtering and validation is insufficient due
    to the limited address space coverage.
@@ -166,7 +166,7 @@ Table of Contents
    highest overlap rate, has 29.8% of its Route objects appearing in BGP
    announcements.
 
-2.2.  Lack of Support for MOAS
+2.2.  Support for Multi-origin ASes
 
    [RFC1930] suggests that a prefix should only have a single AS as its
    origin with a few exceptions.  However, according to routing data
@@ -182,15 +182,14 @@ Table of Contents
    MOAS and those caused by misconfigurations or route hijacking poses a
    significant challenge for existing route origin databases.
 
-   Legitimate MOAS is primarily caused by factors such as multinational
-   companies and multi-homing.  However, the current authoritative IRR
-   and RPKI databases typically only allow registration of address
-   blocks managed by the respective RIR.  This poses a significant
-   obstacle to support legitimate MOAS.  On the other hand,
-   misconfigurations usually occur within the same ISP, i.e., the ISP
-   has multiple ASNs and IP prefixes, resulting from confusion during
-   the configuration/update Route or ROA objects.  These cases can
-   bypass the current validation mechanisms.
+   Legitimate MOAS is primarily caused by multinational companies and
+   multi-homing.  However, the current authoritative IRR and RPKI
+   databases typically only allow registration of address blocks managed
+   by the respective RIR.  This poses a significant obstacle to support
+   legitimate MOAS.  On the other hand, misconfigurations usually occur
+   within the same ISP, i.e., the ISP has multiple ASNs and IP prefixes,
+   resulting from confusion during the configuration/update Route or ROA
+   objects.  These cases can bypass the current validation mechanisms.
 
 2.3.  Inconsistency Among Multiple Sources
 
@@ -206,52 +205,51 @@ Table of Contents
    coverage of routing origin for Internet numbering resources.
    However, according to recent measurement[IRRegularities], there are
    inconsistencies among the Route object across different IRR
-   databases, which may be due to chronic neglect on the part of the IRR
-   customers.  For instance, the company register Route objects in
-   multiple IRR databases, but it updates Route objects in only a subset
-   of those IRR databases, while neglecting the others, resulting in
-   outdated and stale Route objects.
+   databases, which may be due to chronic neglect on IRR customers.  For
+   instance, the company register Route objects in multiple IRR
+   databases, but it updates Route objects in only a subset of those IRR
+   databases, while neglecting the others, resulting in outdated and
+   stale Route objects.
 
    We found that in February 2024, the IRR databases maintained by the
    five RIRs, as well as JPIRR, IDNIC, and maintained by Local Internet
    Registries (LIRs), exhibit a higher consistency with RPKI.  On the
    other hand, IRR databases maintained by third parties such as RADB,
-   TC, and NTTCOM have lower consistency with RPKI, with ineffective
-   RPKI validation.  Other IRR databases show significant differences
-   with RPKI, such as PANIX, BELL, REACH, WCGDB, primarily manifested as
-   low Route object overlap and high ineffective rate of route
-   validation.  Because RPKI contains the validation mechanism and each
-   object has validity period, IRR databases that are inconsistent with
-   RPKI may contains more stale Route objects.
+   TC, and NTTCOM have lower consistency with RPKI.  Other IRR databases
+   show significant differences with RPKI, such as PANIX, BELL, REACH,
+   WCGDB, primarily manifested as low Route object overlap and high
+   ineffective rate of route origin validation.  Because RPKI contains
+   the validation mechanism and each object has validity period, IRR
+   databases that are inconsistent with RPKI may contains more stale
+   Route objects.
 
 3.  Requirements
 
-3.1.  Verifiability of Route Origin Data
+3.1.  Verifiability of Route Origin
 
    Internet registries have attempted to address the issue of outdated
    objects in their IRR databases by implementing filtering rules.  For
    example, JPIRR removes IRR objects that have not been updated within
-   a specified period, typically one year.  While simple rule-based
-   validation can partially improve quality of current routing origin,
-   more innovative mechanisms are required for intentionally malicious
-   prefix hijacking.
+   a specified period, typically one year.  While rule-based validation
+   can partially improve quality of current routing origin, more
+   innovative mechanisms are required for intentionally malicious prefix
+   hijacking.
 
-   There is a requirement for verifiable route origin sources to enhance
-   quality of route origin database and instill confidence in network
-   operators when validating using route origin.  Additionally, it is
-   important to leverage the collective oversight of the Internet
-   registries by providing a negative feedback mechanism for theirs
-   customers, which filters out relevant outdated and stale data,
-   improves current registration and maintenance dependencies on
-   resource holders, and further enhances the availability of route
-   origin for validation.
+   There is a requirement for verifiable route origin to enhance quality
+   of route origin database and instill confidence in network operators
+   when validating using route origin.  Additionally, it is important to
+   leverage the collective oversight of the Internet registries by
+   providing a negative feedback mechanism for theirs customers, which
+   filters out relevant outdated and stale data, improves current
+   registration and maintenance dependencies on resource holders, and
+   further enhances the availability of route origin.
 
-3.2.  Fusion of Multiple Sources of Information
+3.2.  Fusion of Multi-Source Information
 
    To improve the accuracy of route origin, several organizations
    currently disable IRR Route objects using authoritative RPKI or local
-   sources, which contribute to enhancing route origin reliability and
-   provide customized services for route validation.
+   data, which contribute to enhancing route origin reliability and
+   provide customized services for route origin validation.
 
    Route origin should integrate multidimensional and multi-source
    information, such as commercial relationships, geographic
@@ -261,7 +259,7 @@ Table of Contents
    ISP to improve the quality of route origins through consensus and
    collaboration, since the Internet consists of multiple networks.
 
-3.3.  Automated Updates
+3.3.  Automated Updates and Validation
 
    The introduction of incremental update protocols such as
    RRDP[RFC8182] and NRTM[NRTMv4] reduces the interval for data source
@@ -277,9 +275,9 @@ Table of Contents
    automatically raises concerns about discrepant data.  We can advance
    data accuracy and consistency, through multi-party consensus and
    negotiation for discrepant data.  Additionally, to ensure flexibility
-   in data updates and revocations, we should accelerate development of
-   innovative route origin management, ensuring efficient and timely
-   updates based on state changes.
+   in route origin updates and revocations, we should accelerate
+   development of innovative route origin management, ensuring efficient
+   and timely updates based on state changes.
 
 3.4.  Multi-Party Collaboration Mechanism
 
@@ -292,12 +290,11 @@ Table of Contents
 
    To ensure the reliability of route origin, we should introduce
    automated multi-party collaboration mechanism, which maintains multi-
-   party consensus and a globally consistent view of route origin
-   validation, serving as the basis for relevant route origin
-   validation.  Additionally, this collaboration mechanism should fully
-   consider the deployment benefits during partial or incremental
-   deployment stages, attracting more participants to join the automated
-   multi-party collaboration framework.
+   party consensus and a globally consistent view of route origin.
+   Additionally, this collaboration mechanism should fully consider the
+   deployment benefits during partial or incremental deployment stages,
+   attracting more participants to join the automated multi-party
+   collaboration framework.
 
 4.  Security Considerations
 
