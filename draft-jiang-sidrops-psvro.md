@@ -70,11 +70,11 @@ informative:
         date: 2022
         seriesinfo: "Proceedings of the 22nd ACM Internet Measurement Conference"
         author:
-          - ins: B. Du  
-          - ins: C. Testart 
-          - ins: R. Fontugne 
-          - ins: G. Akiwate 
-          - ins: AC. Snoeren 
+          - ins: B. Du
+          - ins: C. Testart
+          - ins: R. Fontugne
+          - ins: G. Akiwate
+          - ins: AC. Snoeren
           - ins: Kc Claffy
     RPKIMeasurements:
         title: "The Resource Public Key Infrastructure (RPKI): A Survey on Measurements and Future Prospects"
@@ -83,7 +83,7 @@ informative:
         author:
           - ins: N. Rodday
           - ins: {\'I}. Cunha
-          - ins: R. Bush 
+          - ins: R. Bush
           - ins: E. Katz-Bassett
           - ins: G. Rodosek
           - ins: T. Schmidt
@@ -95,8 +95,8 @@ informative:
         author:
           - ins: L. Qin
           - ins: L. Chen
-          - ins: D. Li 
-          - ins: H. Ye 
+          - ins: D. Li
+          - ins: H. Ye
           - ins: Y. Wang
 
 --- abstract
@@ -131,14 +131,14 @@ With the exception of a few databases, most other IRR databases have a low updat
 
 ## Support for Multi-origin ASes
 
-{{RFC1930}} suggests that a prefix should only have a single AS as its origin with a few exceptions. However, according to routing data from Routeviews{{CAIDA}}, MOAS (Multi-origin ASes) has become a common phenomenon, which can be due to multi-homing, Internet exchange points, and multinational companies, as well as due to misconfigurations or prefix hijacking. Analyzing the MOAS state, the currently active IRR databases can provide lower full coverage for MOAS, especially IPv6 MOAS. 
+{{RFC1930}} suggests that a prefix should only have a single AS as its origin with a few exceptions. However, according to routing data from Routeviews{{CAIDA}}, MOAS (Multi-origin ASes) has become a common phenomenon, which can be due to multi-homing, Internet exchange points, and multinational companies, as well as due to misconfigurations or prefix hijacking. Analyzing the MOAS state, the currently active IRR databases can provide lower full coverage for MOAS, especially IPv6 MOAS.
 
 Besides, Legitimate MOAS is primarily caused by multinational companies and multi-homing. However, the current authoritative IRR and RPKI databases typically only allow registration of address blocks managed by the respective RIR. This poses a significant obstacle to support legitimate MOAS. On the other hand, misconfigurations usually occur within the same ISP, i.e., the ISP has multiple ASNs and IP prefixes, resulting from confusion during the configuration/update Route or ROA objects. These cases can bypass the current validation mechanisms.
 
 
 # Limitations of Multi-source Fusion
 
-As analyzed in above section, relying on a single source of route origin database is insufficient for route origin validation. However, the IP address space coverage and the percentage of AS participation in route origin can be effectively improved by integrating RPKI database and multiple active IRR databases. 
+As analyzed in above section, relying on a single source of route origin database is insufficient for route origin validation. However, the IP address space coverage and the percentage of AS participation in route origin can be effectively improved by integrating RPKI database and multiple active IRR databases.
 
 ## Inconsistency Among Multiple Sources
 
