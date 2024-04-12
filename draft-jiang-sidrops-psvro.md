@@ -82,12 +82,12 @@ informative:
         seriesinfo: "IEEE Transactions on Network and Service Management"
         author:
           - ins: N. Rodday
-          - ins: {\'I}. Cunha
+          - ins: I. Cunha
           - ins: R. Bush
           - ins: E. Katz-Bassett
           - ins: G. Rodosek
           - ins: T. Schmidt
-          - ins: M. W{\"a}hlisch
+          - ins: M. Wahlisch
     ROVDep:
         title:
         date: 2024
