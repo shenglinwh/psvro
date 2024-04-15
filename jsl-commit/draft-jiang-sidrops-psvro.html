@@ -7,7 +7,7 @@
 <title>Problem Statement for Verifiable Route Origin</title>
 <meta content="Shenglin Jiang" name="author">
 <meta content="
-       Prefix hijacking has emerged as a major security threat in the Border Gateway Protocol (BGP), garnering widespread attention. To mitigate such attacks, Internet Routing Registries (IRR) and Resource Public Key Infrastructure (RPKI) have been developed, providing reliable mappings of IP prefixes to authorized Autonomous Systems (ASes). Nonetheless, challenges persist due to outdated Route objects within IRR and the limited deployment rates of RPKI. Recently, several organizations have adopted the approach of integrating IRR, RPKI, and local data to enhance the quality of route origin. This document describes problem statement for verifiable route origin. 
+       Prefix hijacking has emerged as a major security threat in the Border Gateway Protocol (BGP), garnering widespread attention. To mitigate such attacks, Internet Routing Registries (IRR) and Resource Public Key Infrastructure (RPKI) have been developed, providing reliable mappings of IP prefixes to authorized Autonomous Systems (ASes). Nonetheless, challenges persist due to outdated Route objects within IRR and the limited deployment rates of RPKI. This document serves to outline the current state and problem statement for verifiable route origin. 
     " name="description">
 <meta content="xml2rfc 3.20.1" name="generator">
 <meta content="draft-jiang-sidrops-psvro-latest" name="ietf.draft">
@@ -1028,7 +1028,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Jiang</td>
-<td class="center">Expires 14 October 2024</td>
+<td class="center">Expires 17 October 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1041,12 +1041,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-jiang-sidrops-psvro-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-04-12" class="published">12 April 2024</time>
+<time datetime="2024-04-15" class="published">15 April 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-10-14">14 October 2024</time></dd>
+<dd class="expires"><time datetime="2024-10-17">17 October 2024</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1059,7 +1059,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <h1 id="title">Problem Statement for Verifiable Route Origin</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">Prefix hijacking has emerged as a major security threat in the Border Gateway Protocol (BGP), garnering widespread attention. To mitigate such attacks, Internet Routing Registries (IRR) and Resource Public Key Infrastructure (RPKI) have been developed, providing reliable mappings of IP prefixes to authorized Autonomous Systems (ASes). Nonetheless, challenges persist due to outdated Route objects within IRR and the limited deployment rates of RPKI. Recently, several organizations have adopted the approach of integrating IRR, RPKI, and local data to enhance the quality of route origin. This document describes problem statement for verifiable route origin.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">Prefix hijacking has emerged as a major security threat in the Border Gateway Protocol (BGP), garnering widespread attention. To mitigate such attacks, Internet Routing Registries (IRR) and Resource Public Key Infrastructure (RPKI) have been developed, providing reliable mappings of IP prefixes to authorized Autonomous Systems (ASes). Nonetheless, challenges persist due to outdated Route objects within IRR and the limited deployment rates of RPKI. This document serves to outline the current state and problem statement for verifiable route origin.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <div id="status-of-memo">
 <section id="section-boilerplate.1">
@@ -1080,7 +1080,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 14 October 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 17 October 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1116,13 +1116,13 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-requirements-language" class="internal xref">Requirements Language</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
-            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-integrity-and-accuracy-of-r" class="internal xref">Integrity and Accuracy of Route Origin</a></p>
+            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-current-state-of-route-orig" class="internal xref">Current State of Route Origin within RPKI and IRR</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
-                <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-integrity-of-route-origin" class="internal xref">Integrity of Route Origin</a></p>
+                <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-ensuring-integrity-and-accu" class="internal xref">Ensuring Integrity and Accuracy of Route Origin</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
-                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-accuracy-of-route-origin" class="internal xref">Accuracy of Route Origin</a></p>
+                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-integrity-and-accuracy-of-r" class="internal xref">Integrity and Accuracy of Route Origin</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-support-for-multi-origin-as" class="internal xref">Support for Multi-origin ASes</a></p>
@@ -1130,22 +1130,19 @@ svg :is([fill="white"], [fill^="#fff"]) {
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
-            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-limitations-of-multi-source" class="internal xref">Limitations of Multi-source Fusion</a></p>
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-limitations-of-multi-source" class="internal xref">Limitations of Multi-source Route Origin Fusion</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
-                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-inconsistency-among-multipl" class="internal xref">Inconsistency Among Multiple Sources</a></p>
+                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-inconsistency-of-data-withi" class="internal xref">Inconsistency of Data within Multiple Sources</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
-                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-rule-based-filtering" class="internal xref">Rule-based Filtering</a></p>
+                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-cross-validation-between-mu" class="internal xref">Cross-validation between Multiple Sources</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
-                <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-cross-validation-between-mu" class="internal xref">Cross-validation between Multiple Sources</a></p>
+                <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-route-object-management-and" class="internal xref">Route Object Management and Synchronization</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.4">
-                <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="auto internal xref">4.4</a>.  <a href="#name-route-object-management-and" class="internal xref">Route Object Management and Synchronization</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.5">
-                <p id="section-toc.1-1.4.2.5.1"><a href="#section-4.5" class="auto internal xref">4.5</a>.  <a href="#name-multi-party-collaboration-m" class="internal xref">Multi-Party Collaboration Mechanisms</a></p>
+                <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="auto internal xref">4.4</a>.  <a href="#name-multi-party-collaboration-m" class="internal xref">Multi-Party Collaboration Mechanisms</a></p>
 </li>
             </ul>
 </li>
@@ -1181,9 +1178,9 @@ svg :is([fill="white"], [fill^="#fff"]) {
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">The Border Gateway Protocol (BGP) is widely used for inter-domain route. However, due to the lack of built-in routing security mechanisms, BGP is vulnerable to various security threats such as prefix hijacking<span>[<a href="#RFC7908" class="cite xref">RFC7908</a>]</span>. To mitigate such attacks, the global Internet infrastructure needs to create a database to record the mapping of IP prefixes to authorized origin ASes, which can be used to determine whether BGP announcements are propagated or discarded.<a href="#section-1-1" class="pilcrow">¶</a></p>
-<p id="section-1-2">Currently, network operators primarily rely on Internet Routing Registry (IRR) and Resource Public Key Infrastructure (RPKI)<span>[<a href="#RFC6480" class="cite xref">RFC6480</a>]</span> as route origin. However, IRR suffers from a lack of effective validation mechanisms and incentives for resource holders to update objects, leading to the prevalence of outdated objects. On the other hand, RPKI faces challenges in terms of complex operations, misissued ROA, and the certificate dependencies in the hierarchy of RPKI, which hinder its widespread deployment.<a href="#section-1-2" class="pilcrow">¶</a></p>
-<p id="section-1-3">This document aims to provide insights and recommendations to network operators, researchers, and policymakers for improving the security and robustness of the global routing system by analyzing the problems associated with route origin validation.<a href="#section-1-3" class="pilcrow">¶</a></p>
+<p id="section-1-1">The Border Gateway Protocol (BGP) is widely utilized for inter-domain routing. However, its lack of built-in security mechanisms makes it vulnerable to various threats, such as prefix hijacking<span>[<a href="#RFC7908" class="cite xref">RFC7908</a>]</span>. To address this issue, the global Internet infrastructure needs to establish a database that records the mapping of IP prefixes to authorized origin Autonomous Systems (ASes). This database would enable the verification of BGP announcements and facilitate the identification of unauthorized routing.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">Currently, network operators primarily rely on the Internet Routing Registry (IRR) and Resource Public Key Infrastructure (RPKI) for route origin validation. However, IRR lacks effective validation mechanisms and fails to incentivize resource holders to update objects, resulting in outdated information. Similarly, RPKI faces challenges related to complex operations, misissued Route Origin Authorizations (ROAs), and the hierarchical dependencies of certificates, limiting its widespread deployment.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-3">The purpose of this document is to offer insights and recommendations to network operators, researchers, and policymakers. By analyzing the problems associated with route origin validation, it aims to improve the security and robustness of the global routing system.<a href="#section-1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="requirements-language">
@@ -1197,25 +1194,26 @@ described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</s
 appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="integrity-and-accuracy-of-route-origin">
+<div id="current-state-of-route-origin-within-rpki-and-irr">
 <section id="section-3">
-      <h2 id="name-integrity-and-accuracy-of-r">
-<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-integrity-and-accuracy-of-r" class="section-name selfRef">Integrity and Accuracy of Route Origin</a>
+      <h2 id="name-current-state-of-route-orig">
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-current-state-of-route-orig" class="section-name selfRef">Current State of Route Origin within RPKI and IRR</a>
       </h2>
-<div id="integrity-of-route-origin">
+<div id="ensuring-integrity-and-accuracy-of-route-origin">
 <section id="section-3.1">
-        <h3 id="name-integrity-of-route-origin">
-<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-integrity-of-route-origin" class="section-name selfRef">Integrity of Route Origin</a>
-        </h3>
-<p id="section-3.1-1">As the adoption of Resource Public Key Infrastructure (RPKI) increases, the number of address prefixes registered with RPKI gradually increases, but the address space covered by RPKI remains low percentage. On the other hand according to <span>[<a href="#IRRegularities" class="cite xref">IRRegularities</a>]</span>, there are some IRR databases with a decreasing trend in address space coverage with the emphasis on data accuracy, the coverage rate of IP address space coverage is low for each IRR database. Therefore, relying solely on a single IRR or RPKI database for route filtering and validation is insufficient due to the limited address space coverage. Meanwhile, <span>[<a href="#RPKIMeasurements" class="cite xref">RPKIMeasurements</a>]</span> shows that the protection rate of route origin validation has been at a much lower percentage compared to routing source coverage.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+        <h3 id="name-ensuring-integrity-and-accu">
+<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-ensuring-integrity-and-accu" class="section-name selfRef">Ensuring Integrity and Accuracy of Route Origin</a>
+      </h3>
 </section>
 </div>
-<div id="accuracy-of-route-origin">
+<div id="integrity-and-accuracy-of-route-origin">
 <section id="section-3.2">
-        <h3 id="name-accuracy-of-route-origin">
-<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-accuracy-of-route-origin" class="section-name selfRef">Accuracy of Route Origin</a>
+        <h3 id="name-integrity-and-accuracy-of-r">
+<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-integrity-and-accuracy-of-r" class="section-name selfRef">Integrity and Accuracy of Route Origin</a>
         </h3>
-<p id="section-3.2-1">With the exception of a few databases, most other IRR databases have a low update activity level. There are databases whose Route objects have not been updated in the recent years. According to measurements from <span>[<a href="#IRRegularities" class="cite xref">IRRegularities</a>]</span>, Route objects from IRR databases with low update activity have lower overlap rates in recent BGP announcements than those with high activity. This indicates that some databases have lower activity and may contain a higher proportion of outdated and stale Route objects, which affects the reliability of the data sources.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.2-1">As the adoption of Resource Public Key Infrastructure (RPKI) continues to grow, the number of address prefixes registered with RPKI is gradually increasing. However, the coverage of address space within RPKI remains relatively low. Relying solely on RPKI database for route filtering and validation is insufficient due to this limited address space coverage. Notably, the protection rate of route origin validation, as indicated by RoVista<span>[<a href="#RoVista" class="cite xref">RoVista</a>]</span>, is significantly lower compared to routing origin coverage.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.2-2">As mentioned in <span>[<a href="#RFC7682" class="cite xref">RFC7682</a>]</span>, the lack of certification and incentives for maintaining up-to-date data within Internet Routing Registry (IRR) database leads to lower accuracy and integrity of the information. While a few databases exhibit regular updates, many others have low activity levels, with Route objects remaining unchanged for several years. Measurements<span>[<a href="#IRRegularities" class="cite xref">IRRegularities</a>]</span> reveal that IRR databases with low update activity exhibit lower overlap rates in recent BGP announcements compared to those with higher activity. This indicates that databases with lower activity may contain a higher proportion of outdated and stale Route objects, thereby impacting the reliability of the data sources. Additionally, <span>[<a href="#IRRegularities" class="cite xref">IRRegularities</a>]</span> also notes a decreasing trend in address space coverage in certain IRR databases, emphasizing the need to prioritize data accuracy.<a href="#section-3.2-2" class="pilcrow">¶</a></p>
+<p id="section-3.2-3">In summary, while the adoption of RPKI is growing, the limited coverage of address space within RPKI and the challenges associated with maintaining up-to-date data in IRR databases underscore the need for a comprehensive and accurate approach to route filtering and validation. Efforts should focus on improving the accuracy, integrity, and coverage of data sources to ensure the reliability and security of the global routing infrastructure.<a href="#section-3.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="support-for-multi-origin-ases">
@@ -1223,57 +1221,76 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
         <h3 id="name-support-for-multi-origin-as">
 <a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-support-for-multi-origin-as" class="section-name selfRef">Support for Multi-origin ASes</a>
         </h3>
-<p id="section-3.3-1"><span>[<a href="#RFC1930" class="cite xref">RFC1930</a>]</span> suggests that a prefix should only have a single AS as its origin with a few exceptions. However, according to routing data from Routeviews<span>[<a href="#CAIDA" class="cite xref">CAIDA</a>]</span>, MOAS (Multi-origin ASes) has become a common phenomenon, which can be due to multi-homing, Internet exchange points, and multinational companies, as well as due to misconfigurations or prefix hijacking. Analyzing the MOAS state, the currently active IRR databases can provide lower full coverage for MOAS, especially IPv6 MOAS.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
-<p id="section-3.3-2">Besides, Legitimate MOAS is primarily caused by multinational companies and multi-homing. However, the current authoritative IRR and RPKI databases typically only allow registration of address blocks managed by the respective RIR. This poses a significant obstacle to support legitimate MOAS. On the other hand, misconfigurations usually occur within the same ISP, i.e., the ISP has multiple ASNs and IP prefixes, resulting from confusion during the configuration/update Route or ROA objects. These cases can bypass the current validation mechanisms.<a href="#section-3.3-2" class="pilcrow">¶</a></p>
+<p id="section-3.3-1"><span>[<a href="#RFC1930" class="cite xref">RFC1930</a>]</span> suggests that a prefix should typically have a single Autonomous System (AS) as its origin, with a few exceptions. However, analysis of routing data from Routeviews, conducted by CAIDA<span>[<a href="#CAIDA" class="cite xref">CAIDA</a>]</span>, reveals that Multi-origin ASes (MOAS) have become a common phenomenon. This can be attributed to factors such as multi-homing, traffic engineering, multinational companies, as well as misconfigurations or prefix hijacking incidents. When examining the MOAS state, it becomes evident that currently active IRR databases offer limited full coverage for MOAS, particularly in the case of IPv6 MOAS.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.3-2">Moreover, legitimate MOAS primarily arises from multinational companies and multi-homing scenarios. However, the existing authoritative IRR (maintained by regional Internet registries) and RPKI databases typically only allow registration of address blocks for self-managed purposes. This poses a significant obstacle in supporting legitimate MOAS. On the other hand, misconfigurations often occur within the same Internet Service Provider (ISP) when they have multiple ASNs and IP prefixes. These cases result from confusion during the configuration or updating of Route or Route Origin Authorization (ROA) objects, thereby bypassing the current validation mechanisms.<a href="#section-3.3-2" class="pilcrow">¶</a></p>
+<p id="section-3.3-3">In summary, the prevalence of MOAS in practice highlights the need for addressing the challenges associated with managing and supporting MOAS effectively. This includes improving the coverage of MOAS in IRR and RPKI databases, accommodating legitimate instances of MOAS and addressing misconfigurations.<a href="#section-3.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
-<div id="limitations-of-multi-source-fusion">
+<div id="limitations-of-multi-source-route-origin-fusion">
 <section id="section-4">
       <h2 id="name-limitations-of-multi-source">
-<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-limitations-of-multi-source" class="section-name selfRef">Limitations of Multi-source Fusion</a>
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-limitations-of-multi-source" class="section-name selfRef">Limitations of Multi-source Route Origin Fusion</a>
       </h2>
-<p id="section-4-1">As analyzed in above section, relying on a single source of route origin database is insufficient for route origin validation. However, the IP address space coverage and the percentage of AS participation in route origin can be effectively improved by integrating RPKI database and multiple active IRR databases.<a href="#section-4-1" class="pilcrow">¶</a></p>
-<div id="inconsistency-among-multiple-sources">
+<div id="inconsistency-of-data-within-multiple-sources">
 <section id="section-4.1">
-        <h3 id="name-inconsistency-among-multipl">
-<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-inconsistency-among-multipl" class="section-name selfRef">Inconsistency Among Multiple Sources</a>
+        <h3 id="name-inconsistency-of-data-withi">
+<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-inconsistency-of-data-withi" class="section-name selfRef">Inconsistency of Data within Multiple Sources</a>
         </h3>
-<p id="section-4.1-1">According to <span>[<a href="#IRRegularities" class="cite xref">IRRegularities</a>]</span>, there are inconsistencies among the Route object across different IRR databases, which may be due to chronic neglect on IRR customers. For instance, the company register Route objects in multiple IRR databases, but it updates Route objects in only a subset of those IRR databases, while neglecting the others, resulting in outdated and stale Route objects. Futhermore, more IRR databases have lower consistency with RPKI. Because RPKI contains the validation mechanism and each object has validity period, IRR databases that are inconsistent with RPKI may contains more stale Route objects.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="rule-based-filtering">
-<section id="section-4.2">
-        <h3 id="name-rule-based-filtering">
-<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-rule-based-filtering" class="section-name selfRef">Rule-based Filtering</a>
-        </h3>
-<p id="section-4.2-1">To fully leverage existing sources and improve the accuracy of route origin validation, enhance the robustness and security of the global routing system. Many suggestions and solutions have been proposed.Internet registries have attempted to address the issue of outdated objects in their IRR databases by implementing filtering rules. For example, JPIRR removes IRR objects that have not been updated within a specified timeframe, typically one year. While rule-based validation can partially improve quality of current routing origin, more innovative mechanisms are required for intentionally malicious prefix hijacking.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+<p id="section-4.1-1">Based on the analysis presented in the previous section, it is evident that relying solely on a single source of route origin database is insufficient and leads to inaccuracies in route origin validation. To address this issue effectively, it is recommended to integrate the RPKI database and multiple active IRR databases. This integration would not only enhance the IP address space coverage and AS participation rate but also improve the accuracy of route origin.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.1-2">However, it is important to note that this fusion approach may encounter several limitations. As highlighted in <span>[<a href="#IRRegularities" class="cite xref">IRRegularities</a>]</span>, inconsistencies exist among the Route objects across different IRR databases. This inconsistency can be attributed to the chronic neglect of IRR customers. For instance, some companies may register Route objects in multiple IRR databases but fail to update them in all the databases, resulting in outdated and stale Route objects.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
+<p id="section-4.1-3">Furthermore, it is observed that a higher number of IRR databases exhibit lower consistency with RPKI. Since RPKI incorporates a validation mechanism and each object has a validity period, IRR databases that are inconsistent with RPKI are more likely to contain stale Route objects.<a href="#section-4.1-3" class="pilcrow">¶</a></p>
+<p id="section-4.1-4">In summary, while integrating the RPKI database and multiple active IRR databases can improve the effectiveness of route origin validation, it is essential to address the issues of inconsistencies and outdated Route objects within the IRR databases.<a href="#section-4.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="cross-validation-between-multiple-sources">
-<section id="section-4.3">
+<section id="section-4.2">
         <h3 id="name-cross-validation-between-mu">
-<a href="#section-4.3" class="section-number selfRef">4.3. </a><a href="#name-cross-validation-between-mu" class="section-name selfRef">Cross-validation between Multiple Sources</a>
+<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-cross-validation-between-mu" class="section-name selfRef">Cross-validation between Multiple Sources</a>
         </h3>
-<p id="section-4.3-1">To improve the accuracy of route origin, several organizations currently disable IRR Route objects using authoritative RPKI or local data. RIPE NCC and IRRdv4 utilize RPKI (Resource Public Key Infrastructure) to validate and filter IRR Route objects. {IRRedicator} leverages machine learning algorithms to identify stale Route objects, aiming to enhance the consistency between IRR and RPKI. SLURM<span>[<a href="#RFC8416" class="cite xref">RFC8416</a>]</span> allow ISPs to establish a local RPKI view by enabling local filtering and additions based on specific requirements.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
-<p id="section-4.3-2">Although, these solutions contribute to enhancing route origin reliability and provide customized services for route origin validation, data enhancement has not been performed globally in the routing system.<a href="#section-4.3-2" class="pilcrow">¶</a></p>
+<p id="section-4.2-1">To fully capitalize on the existing route origin sources and enhance the accuracy of route origin validation, several suggestions and solutions have been proposed. These initiatives aim to strengthen the robustness and security of the global routing system. Here are some notable approaches:<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4.2-2.1">
+            <p id="section-4.2-2.1.1">Internet registries have taken steps to address the issue of outdated objects in IRR databases by implementing filtering rules. For instance, JPIRR removes IRR objects that have not been updated within a specified timeframe, typically one year.<a href="#section-4.2-2.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.2-2.2">
+            <p id="section-4.2-2.2.1">Some organizations employ authoritative RPKI or local data to disable IRR Route objects. This approach, adopted by RIPE NCC and IRRdv4, utilizes RPKI (Resource Public Key Infrastructure) to validate and filter IRR Route objects.<a href="#section-4.2-2.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.2-2.3">
+            <p id="section-4.2-2.3.1">The <span>[<a href="#IRRedicator" class="cite xref">IRRedicator</a>]</span> solution leverages machine learning algorithms to identify stale Route objects. Its goal is to enhance the consistency between IRR and RPKI, thus improving the overall accuracy of route origin validation.<a href="#section-4.2-2.3.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.2-2.4">
+            <p id="section-4.2-2.4.1">The use of SLURM<span>[<a href="#RFC8416" class="cite xref">RFC8416</a>]</span> enables ISPs to establish a local RPKI view. This allows for local filtering and additions based on specific requirements, contributing to a more tailored and optimized routing system.<a href="#section-4.2-2.4.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<p id="section-4.2-3">While rule-based validation can partially enhance the quality and reliability of current routing origins, it is important to acknowledge that inconsistencies and data inaccuracies persist, as highlighted in the measured measurements<span>[<a href="#IRRegularities" class="cite xref">IRRegularities</a>]</span>. Additionally, optimizing methods in response to only partial utilization may result in inconsistent behavior of the global routing system for the same announcement.<a href="#section-4.2-3" class="pilcrow">¶</a></p>
+<p id="section-4.2-4">In conclusion, while these proposed solutions offer promising avenues for improvement, there is still a need to address the challenges posed by inconsistencies and inaccuracies in route origin data within the global routing system.<a href="#section-4.2-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="route-object-management-and-synchronization">
-<section id="section-4.4">
+<section id="section-4.3">
         <h3 id="name-route-object-management-and">
-<a href="#section-4.4" class="section-number selfRef">4.4. </a><a href="#name-route-object-management-and" class="section-name selfRef">Route Object Management and Synchronization</a>
+<a href="#section-4.3" class="section-number selfRef">4.3. </a><a href="#name-route-object-management-and" class="section-name selfRef">Route Object Management and Synchronization</a>
         </h3>
-<p id="section-4.4-1">The introduction of incremental update protocols such as RRDP<span>[<a href="#RFC8182" class="cite xref">RFC8182</a>]</span> and NRTM<span>[<a href="#NRTMv4" class="cite xref">NRTMv4</a>]</span> reduces the interval for data source updates. Besides, to address revocation and update issues caused by the granularity of RPKI management, current solutions such as Minimal-ROA<span>[<a href="#RFC9319" class="cite xref">RFC9319</a>]</span> have been proposed. However, these protocols only synchronize and manage route object without performing validation, even if there may be differences with their own data.<a href="#section-4.4-1" class="pilcrow">¶</a></p>
+<p id="section-4.3-1">Currently, IRRs use the Near-Real-Time Mirroring (NRTM) protocol<span>[<a href="#NRTMv4" class="cite xref">NRTMv4</a>]</span> to replicate and synchronize object data from other IRRs, and RPKIs synchronize and update data via the RPKI Repository Delta Protocol (RRDP)<span>[<a href="#RFC8182" class="cite xref">RFC8182</a>]</span>. However, these network protocols have several weaknesses, including a lack of validation of replicated data from mirrored data sources and essentially no application security mechanisms, even if there may be conflict with its own data. In addition, there is no mechanism to notify other mirrors when an update occurs, which can easily lead to lags in synchronization and data inconsistency issues.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
+<p id="section-4.3-2">To address revocation and update issues caused by coarse-grained management, current solutions such as Minimal-ROA<span>[<a href="#RFC9319" class="cite xref">RFC9319</a>]</span> have been proposed. Although it improves coding efficiency and scalability by minimizing the use of the maxLength parameter, it lacks support for efficient incremental updates.<a href="#section-4.3-2" class="pilcrow">¶</a></p>
+<p id="section-4.3-3">The current practice in IRRs involves the use of the Near-Real-Time Mirroring (NRTM) protocol<span>[<a href="#NRTMv4" class="cite xref">NRTMv4</a>]</span> to replicate and synchronize object data from other IRRs. Similarly, RPKIs rely on the RPKI Repository Delta Protocol (RRDP)<span>[<a href="#RFC8182" class="cite xref">RFC8182</a>]</span> to synchronize and update data. However, these network protocols exhibit several weaknesses that need to be addressed.<a href="#section-4.3-3" class="pilcrow">¶</a></p>
+<p id="section-4.3-4">Firstly, the lack of validation of replicated data from mirrored sources in both IRRs and RPKIs is a significant concern. This leaves room for potential inconsistencies and conflicts with the existing data, compromising the integrity of the system. Secondly, the absence of application security mechanisms within these protocols is another area of vulnerability. This lack of security measures exposes the system to potential threats and unauthorized access. Furthermore, the absence of a mechanism to notify other mirrors when updates occur results in synchronization delays and data inconsistency issues. This can be problematic when timeliness and accuracy are crucial.<a href="#section-4.3-4" class="pilcrow">¶</a></p>
+<p id="section-4.3-5">To address revocation and update issues by coarse-grained management, alternative solutions such as Minimal-ROA<span>[<a href="#RFC9319" class="cite xref">RFC9319</a>]</span> have been proposed. While Minimal-ROA enhances coding efficiency and scalability by minimizing the use of the maxLength parameter, it falls short in supporting efficient incremental updates. This limitation hampers the system's ability to efficiently handle and incorporate incremental changes.<a href="#section-4.3-5" class="pilcrow">¶</a></p>
+<p id="section-4.3-6">In summary, there is a need to address the weaknesses in current network protocols used by IRRs and RPKIs. Validating replicated data, implementing application security mechanisms, and establishing a mechanism for timely notification of updates are crucial steps towards ensuring the integrity and accuracy of the routing system. Additionally, finding solutions that support efficient incremental updates, like addressing the limitations of Minimal-ROA, is essential for maintaining an efficient and scalable system.<a href="#section-4.3-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="multi-party-collaboration-mechanisms">
-<section id="section-4.5">
+<section id="section-4.4">
         <h3 id="name-multi-party-collaboration-m">
-<a href="#section-4.5" class="section-number selfRef">4.5. </a><a href="#name-multi-party-collaboration-m" class="section-name selfRef">Multi-Party Collaboration Mechanisms</a>
+<a href="#section-4.4" class="section-number selfRef">4.4. </a><a href="#name-multi-party-collaboration-m" class="section-name selfRef">Multi-Party Collaboration Mechanisms</a>
         </h3>
-<p id="section-4.5-1">MANRS make the global routing infrastructure more robust and secure by community-based approach. While MANRS proposes and advocates for multi-party collaboration, the actual implementation still relies on individual optimization of respective data, with monitoring of individual execution using the MANRS OBSERVATORY metrics, but lacks effective communication mechanisms between parties. Measurement<span>[<a href="#MANRS" class="cite xref">MANRS</a>]</span> shows, while not all MANRS members fully comply with all required actions, MANRS participants are more likely to implement routing security practices. But, according to recent measurement<span>[<a href="#ROVDep" class="cite xref">ROVDep</a>]</span>, a large number of networks still do not fully deploy ROV or propagate illegitimate announcements of their customers.<a href="#section-4.5-1" class="pilcrow">¶</a></p>
+<p id="section-4.4-1">Mutually Agreed Norms for Routing Security(MANRS) make the global routing infrastructure more robust and secure by community-based approach. While MANRS proposes and advocates for multi-party collaboration, the actual implementation still relies on individual optimization of respective data, with monitoring of individual execution using the MANRS OBSERVATORY metrics, but lacks effective communication mechanisms between parties. Recent measurement<span>[<a href="#MANRS" class="cite xref">MANRS</a>]</span> shows, while not all MANRS members fully comply with all required actions, MANRS participants are more likely to implement routing security practices. But, according to recent measurement<span>[<a href="#ROVDep" class="cite xref">ROVDep</a>]</span>, a large number of networks still do not fully deploy ROV or propagate illegitimate announcements of their customers. To further improve the effectiveness of collaboration, there is a need for more robust, intelligent and automated collaboration.<a href="#section-4.4-1" class="pilcrow">¶</a></p>
+<p id="section-4.4-2">Mutually Agreed Norms for Routing Security (MANRS) is a community-based approach that aims to enhance the robustness and security of the global routing infrastructure. While MANRS promotes multi-party collaboration, the actual implementation currently relies on individual optimization of respective data. The monitoring of individual execution is facilitated through the use of MANRS OBSERVATORY metrics. However, one area that requires improvement is the lack of effective communication mechanisms between participating parties.<a href="#section-4.4-2" class="pilcrow">¶</a></p>
+<p id="section-4.4-3">Recent measurements<span>[<a href="#MANRS" class="cite xref">MANRS</a>]</span> indicate that participants are more likely to implement routing security practices compared to non-participants. Nevertheless, according to a recent measurement<span>[<a href="#ROVDep" class="cite xref">ROVDep</a>]</span>, a significant number of networks still do not fully deploy Route Origin Validation (ROV) or fail to propagate illegitimate announcements from their customers.<a href="#section-4.4-3" class="pilcrow">¶</a></p>
+<p id="section-4.4-4">To further enhance the effectiveness of collaboration, it is imperative to develop more robust, intelligent, and automated mechanisms. These mechanisms can streamline communication and facilitate seamless collaboration between MANRS participants.<a href="#section-4.4-4" class="pilcrow">¶</a></p>
+<p id="section-4.4-5">In conclusion, while MANRS has made strides in promoting collaboration and enhancing routing security, there is a need to strengthen communication mechanisms and develop more intelligent and automated approaches. These advancements will contribute to the continued improvement of the global routing infrastructure's robustness and security.<a href="#section-4.4-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1316,9 +1333,9 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
         <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="RFC6480">[RFC6480]</dt>
+<dt id="RFC7682">[RFC7682]</dt>
         <dd>
-<span class="refAuthor">Lepinski, M.</span> and <span class="refAuthor">S. Kent</span>, <span class="refTitle">"An Infrastructure to Support Secure Internet Routing"</span>, <span class="seriesInfo">RFC 6480</span>, <span class="seriesInfo">DOI 10.17487/RFC6480</span>, <time datetime="2012-02" class="refDate">February 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6480">https://www.rfc-editor.org/rfc/rfc6480</a>&gt;</span>. </dd>
+<span class="refAuthor">McPherson, D.</span>, <span class="refAuthor">Amante, S.</span>, <span class="refAuthor">Osterweil, E.</span>, <span class="refAuthor">Blunk, L.</span>, and <span class="refAuthor">D. Mitchell</span>, <span class="refTitle">"Considerations for Internet Routing Registries (IRRs) and Routing Policy Configuration"</span>, <span class="seriesInfo">RFC 7682</span>, <span class="seriesInfo">DOI 10.17487/RFC7682</span>, <time datetime="2015-12" class="refDate">December 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7682">https://www.rfc-editor.org/rfc/rfc7682</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC7908">[RFC7908]</dt>
         <dd>
@@ -1359,19 +1376,19 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <dd class="break"></dd>
 <dt id="IRRegularities">[IRRegularities]</dt>
         <dd>
-<span class="refAuthor">Du, B.</span>, <span class="refAuthor">Izhikevich, K.</span>, <span class="refAuthor">Rao, S.</span>, <span class="refAuthor">Akiwate, G.</span>, <span class="refAuthor">Testart, C.</span>, <span class="refAuthor">AC Snoeren</span>, and <span class="refAuthor">Kc claffy</span>, <span class="refTitle">"IRRegularities in the internet routing registry"</span>, <span class="seriesInfo">Proceedings of the 2023 ACM on internet measurement conference </span>, <time datetime="2023" class="refDate">2023</time>. </dd>
+<span class="refAuthor">Du, B.</span>, <span class="refAuthor">Izhikevich, K.</span>, <span class="refAuthor">Rao, S.</span>, <span class="refAuthor">Akiwate, G.</span>, <span class="refAuthor">Testart, C.</span>, <span class="refAuthor">AC Snoeren</span>, and <span class="refAuthor">K. Claffy</span>, <span class="refTitle">"IRRegularities in the internet routing registry"</span>, <span class="seriesInfo">Proceedings of the 2023 ACM on internet measurement conference </span>, <time datetime="2023" class="refDate">2023</time>. </dd>
 <dd class="break"></dd>
 <dt id="MANRS">[MANRS]</dt>
         <dd>
-<span class="refAuthor">Du, B.</span>, <span class="refAuthor">Testart, C.</span>, <span class="refAuthor">Fontugne, R.</span>, <span class="refAuthor">Akiwate, G.</span>, <span class="refAuthor">AC Snoeren</span>, and <span class="refAuthor">Kc Claffy</span>, <span class="refTitle">"Mind your MANRS: measuring the MANRS ecosystem"</span>, <span class="seriesInfo">Proceedings of the 22nd ACM Internet Measurement Conference </span>, <time datetime="2022" class="refDate">2022</time>. </dd>
+<span class="refAuthor">Du, B.</span>, <span class="refAuthor">Testart, C.</span>, <span class="refAuthor">Fontugne, R.</span>, <span class="refAuthor">Akiwate, G.</span>, <span class="refAuthor">AC Snoeren</span>, and <span class="refAuthor">K. Claffy</span>, <span class="refTitle">"Mind your MANRS: measuring the MANRS ecosystem"</span>, <span class="seriesInfo">Proceedings of the 22nd ACM Internet Measurement Conference </span>, <time datetime="2022" class="refDate">2022</time>. </dd>
 <dd class="break"></dd>
 <dt id="ROVDep">[ROVDep]</dt>
         <dd>
 <span class="refAuthor">Qin, L.</span>, <span class="refAuthor">Chen, L.</span>, <span class="refAuthor">Li, D.</span>, <span class="refAuthor">Ye, H.</span>, and <span class="refAuthor">Y. Wang</span>, <span class="refTitle">"Understanding Route Origin Validation (ROV) Deployment in the Real World and Why MANRS Action 1 Is Not Followed"</span>, <span class="seriesInfo">Network and Distributed System Security (NDSS) Symposium 2024 </span>, <time datetime="2024" class="refDate">2024</time>. </dd>
 <dd class="break"></dd>
-<dt id="RPKIMeasurements">[RPKIMeasurements]</dt>
+<dt id="RoVista">[RoVista]</dt>
       <dd>
-<span class="refAuthor">Rodday, N.</span>, <span class="refAuthor">Cunha, I.</span>, <span class="refAuthor">Bush, R.</span>, <span class="refAuthor">Katz-Bassett, E.</span>, <span class="refAuthor">Rodosek, G.</span>, <span class="refAuthor">Schmidt, T.</span>, and <span class="refAuthor">M. Wahlisch</span>, <span class="refTitle">"The Resource Public Key Infrastructure (RPKI): A Survey on Measurements and Future Prospects"</span>, <span class="seriesInfo">IEEE Transactions on Network and Service Management </span>, <time datetime="2023" class="refDate">2023</time>. </dd>
+<span class="refAuthor">Li, W.</span>, <span class="refAuthor">Lin, Z.</span>, <span class="refAuthor">MI Ashiq</span>, <span class="refAuthor">Aben, E.</span>, <span class="refAuthor">Fontugne, R.</span>, <span class="refAuthor">Phokeer, A.</span>, and <span class="refAuthor">T. Chung</span>, <span class="refTitle">"RoVista: Measuring and analyzing the route origin validation (ROV) in RPKI"</span>, <span class="seriesInfo">Proceedings of the 2023 ACM on Internet Measurement Conference </span>, <time datetime="2023" class="refDate">2023</time>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
