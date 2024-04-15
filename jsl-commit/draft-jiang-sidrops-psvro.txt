@@ -251,23 +251,6 @@ Table of Contents
 
 4.3.  Route Object Management and Synchronization
 
-   Currently, IRRs use the Near-Real-Time Mirroring (NRTM)
-   protocol[NRTMv4] to replicate and synchronize object data from other
-   IRRs, and RPKIs synchronize and update data via the RPKI Repository
-   Delta Protocol (RRDP)[RFC8182].  However, these network protocols
-   have several weaknesses, including a lack of validation of replicated
-   data from mirrored data sources and essentially no application
-   security mechanisms, even if there may be conflict with its own data.
-   In addition, there is no mechanism to notify other mirrors when an
-   update occurs, which can easily lead to lags in synchronization and
-   data inconsistency issues.
-
-   To address revocation and update issues caused by coarse-grained
-   management, current solutions such as Minimal-ROA[RFC9319] have been
-   proposed.  Although it improves coding efficiency and scalability by
-   minimizing the use of the maxLength parameter, it lacks support for
-   efficient incremental updates.
-
    The current practice in IRRs involves the use of the Near-Real-Time
    Mirroring (NRTM) protocol[NRTMv4] to replicate and synchronize object
    data from other IRRs.  Similarly, RPKIs rely on the RPKI Repository
@@ -305,21 +288,6 @@ Table of Contents
    for maintaining an efficient and scalable system.
 
 4.4.  Multi-Party Collaboration Mechanisms
-
-   Mutually Agreed Norms for Routing Security(MANRS) make the global
-   routing infrastructure more robust and secure by community-based
-   approach.  While MANRS proposes and advocates for multi-party
-   collaboration, the actual implementation still relies on individual
-   optimization of respective data, with monitoring of individual
-   execution using the MANRS OBSERVATORY metrics, but lacks effective
-   communication mechanisms between parties.  Recent measurement[MANRS]
-   shows, while not all MANRS members fully comply with all required
-   actions, MANRS participants are more likely to implement routing
-   security practices.  But, according to recent measurement[ROVDep], a
-   large number of networks still do not fully deploy ROV or propagate
-   illegitimate announcements of their customers.  To further improve
-   the effectiveness of collaboration, there is a need for more robust,
-   intelligent and automated collaboration.
 
    Mutually Agreed Norms for Routing Security (MANRS) is a community-
    based approach that aims to enhance the robustness and security of
