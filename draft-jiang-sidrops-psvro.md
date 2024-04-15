@@ -30,7 +30,6 @@ author:
     email: "jiangshl@zgclab.edu.cn"
 
 normative:
-    RFC6480:
     RFC1930:
     RFC8182:
     RFC9319:
@@ -77,18 +76,6 @@ informative:
           - ins: G. Akiwate
           - ins: AC. Snoeren
           - ins: K. Claffy
-    RPKIMeasurements:
-        title: "The Resource Public Key Infrastructure (RPKI): A Survey on Measurements and Future Prospects"
-        date: 2023
-        seriesinfo: "IEEE Transactions on Network and Service Management"
-        author:
-          - ins: N. Rodday
-          - ins: I. Cunha
-          - ins: R. Bush
-          - ins: E. Katz-Bassett
-          - ins: GD. Rodosek
-          - ins: TC. Schmidt
-          - ins: M. Wahlisch
     RoVista:
         title: "RoVista: Measuring and analyzing the route origin validation (ROV) in RPKI"
         date: 2023
@@ -201,7 +188,7 @@ Mutually Agreed Norms for Routing Security (MANRS) is a community-based approach
 
 Recent measurements{{MANRS}} indicate that participants are more likely to implement routing security practices compared to non-participants. Nevertheless, according to a recent measurement{{ROVDep}}, a significant number of networks still do not fully deploy Route Origin Validation (ROV) or fail to propagate illegitimate announcements from their customers.
 
-To further enhance the effectiveness of collaboration, it is imperative to develop more robust, intelligent, and automated mechanisms. These mechanisms can streamline communication and facilitate seamless collaboration between MANRS participants. 
+To further enhance the effectiveness of collaboration, it is imperative to develop more robust, intelligent, and automated mechanisms. These mechanisms can streamline communication and facilitate seamless collaboration between MANRS participants.
 
 In conclusion, while MANRS has made strides in promoting collaboration and enhancing routing security, there is a need to strengthen communication mechanisms and develop more intelligent and automated approaches. These advancements will contribute to the continued improvement of the global routing infrastructure's robustness and security.
 
