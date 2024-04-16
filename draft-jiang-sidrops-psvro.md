@@ -112,8 +112,6 @@ The Border Gateway Protocol (BGP) is widely utilized for inter-domain routing. H
 
 Currently, network operators primarily rely on the Internet Routing Registry (IRR) and Resource Public Key Infrastructure (RPKI) for route origin validation. However, IRR lacks effective validation mechanisms and fails to incentivize resource holders to update objects, resulting in outdated information. Similarly, RPKI faces challenges related to complex operations, misissued Route Origin Authorizations (ROAs), and the hierarchical dependencies of certificates, limiting its widespread deployment.
 
-This document aims to provide valuable insights and recommendations to network operators, researchers, and policymakers by analyzing the challenges and limitations associated with verifiable route origin 
-
 This document aims to provide insights and recommendations to network operators, researchers, and policymakers for improving the security and robustness of the global routing system by analyzing the problems associate dwith verifiable route origin, with a specific emphasis on the integration of multi-source data.
 
 # Requirements Language
