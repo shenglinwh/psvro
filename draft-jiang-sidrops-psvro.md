@@ -160,8 +160,7 @@ To fully capitalize on the existing route origin sources and enhance the accurac
 - The {{IRRedicator}} solution leverages machine learning algorithms to identify stale Route objects. Its goal is to enhance the consistency between IRR and RPKI, thus improving the overall accuracy of route origin validation.
 - The use of SLURM {{RFC8416}} enables ISPs to establish a local RPKI view. This allows for local filtering and additions based on specific requirements, contributing to a more tailored and optimized routing system.
 
-While rule-based validation can partially enhance the quality and reliability of current routing origins, it is important to acknowledge that inconsistencies and data inaccuracies persist, as highlighted in the measured measurements {{IRRegularities}}. Additionally, optimizing methods in response to only partial utilization may result in inconsistent behavior of the global routing system for the same announcement.
-
+While rule-based validation can partially enhance the quality and reliability of current routing origins, it is important to acknowledge that inconsistencies and data inaccuracies persist, as highlighted in the recent measurements {{IRRegularities}}. Additionally, optimizing methods in response to only partial utilization may result in inconsistent behavior of the global routing system for the same announcement.
 
 ## Management and Synchronization
 
