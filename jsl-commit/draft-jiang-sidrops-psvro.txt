@@ -246,7 +246,7 @@ Table of Contents
    While rule-based validation can partially enhance the quality and
    reliability of current routing origins, it is important to
    acknowledge that inconsistencies and data inaccuracies persist, as
-   highlighted in the measured measurements [IRRegularities].
+   highlighted in the recent measurements [IRRegularities].
    Additionally, optimizing methods in response to only partial
    utilization may result in inconsistent behavior of the global routing
    system for the same announcement.
