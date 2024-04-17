@@ -141,7 +141,7 @@ The prevalence of MOAS in practice highlights the need for addressing the challe
 
 # Limitations of Multi-source Route Origin Fusion
 
-## Inconsistency of Data within Multiple Sources
+## Inconsistency of Route Origin
 
 Based on the analysis presented in the previous section, it is evident that relying solely on a single source of route origin database is insufficient and inaccuracies in route origin validation. To address this issue effectively, it is recommended to integrate the RPKI database and multiple active IRR databases. This integration would not only enhance the IP address space coverage and AS participation rate but also improve the accuracy of route origin.
 
