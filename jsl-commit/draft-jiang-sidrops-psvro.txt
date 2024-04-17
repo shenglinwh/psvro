@@ -62,7 +62,7 @@ Table of Contents
      3.1.  Integrity and Accuracy of Route Origin
      3.2.  Support for Multi-origin ASes
    4.  Limitations of Multi-source Route Origin Fusion
-     4.1.  Inconsistency of Data within Multiple Sources
+     4.1.  Inconsistency of Route Origin
      4.2.  Cross-validation between Multiple Sources
      4.3.  Management and Synchronization
      4.4.  Multi-Party Collaboration
@@ -184,7 +184,7 @@ Table of Contents
 
 4.  Limitations of Multi-source Route Origin Fusion
 
-4.1.  Inconsistency of Data within Multiple Sources
+4.1.  Inconsistency of Route Origin
 
    Based on the analysis presented in the previous section, it is
    evident that relying solely on a single source of route origin
