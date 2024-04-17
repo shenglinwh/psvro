@@ -123,7 +123,7 @@ This document aims to provide insights and recommendations to network operators,
 
 ## Integrity and Accuracy of Route Origin
 
-As the adoption of Resource Public Key Infrastructure (RPKI) continues to grow, the number of address prefixes registered with RPKI is gradually increasing. However, the coverage of address space within RPKI remains relatively low. Relying solely on RPKI database for route filtering and validation is insufficient due to this limited address space coverage. 
+As the adoption of Resource Public Key Infrastructure (RPKI) continues to grow, the number of address prefixes registered with RPKI is gradually increasing. However, the coverage of address space within RPKI remains relatively low. Relying solely on RPKI database for route filtering and validation is insufficient due to this limited address space coverage.
 
 Concurrently, the absence of duplicate and unauthorised checking by RPKI during the issuance of resource certificates has resulted in the inability to guarantee data accuracy within the ROA. Furthermore, RPKI continues to face security risks, including those associated with centralised authorisation and the inconsistencies of relying parties. Notably, the protection rate of route origin validation(ROV), as indicated by RoVista {{RoVista}}, is significantly lower compared to route origin authorization(ROA) coverage.
 
