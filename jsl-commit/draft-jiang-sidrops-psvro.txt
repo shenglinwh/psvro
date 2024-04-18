@@ -4,11 +4,11 @@
 
 SIDROPS                                                         S. Jiang
 Internet-Draft                                   Zhongguancun Laboratory
-Intended status: Informational                             17 April 2024
-Expires: 19 October 2024
+Intended status: Informational                             18 April 2024
+Expires: 20 October 2024
 
 
-             Problem Statement for Verifiable Route Origin
+                Route Origin Registry Problem Statement
                     draft-jiang-sidrops-psvro-latest
 
 Abstract
@@ -38,7 +38,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 October 2024.
+   This Internet-Draft will expire on 20 October 2024.
 
 Copyright Notice
 
@@ -58,14 +58,13 @@ Table of Contents
 
    1.  Introduction
    2.  Requirements Language
-   3.  Current State of Route Origin within RPKI and IRR
-     3.1.  Integrity and Accuracy of Route Origin
-     3.2.  Support for Multi-origin ASes
-   4.  Limitations of Multi-source Route Origin Fusion
-     4.1.  Inconsistency of Route Origin
-     4.2.  Cross-validation between Multiple Sources
-     4.3.  Management and Synchronization
-     4.4.  Multi-Party Collaboration
+   3.  Working Definition of Route Origin Registry
+   4.  Problem Statement
+     4.1.  Integrity and Accuracy of Route Origin
+     4.2.  Multi-origin ASes Analysis
+     4.3.  Inconsistency of Multi-source Data
+     4.4.  Management and Synchronization
+     4.5.  Multi-Party Collaboration
    5.  Security Considerations
    6.  IANA Considerations
    7.  References
@@ -108,9 +107,13 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-3.  Current State of Route Origin within RPKI and IRR
+3.  Working Definition of Route Origin Registry
 
-3.1.  Integrity and Accuracy of Route Origin
+   TBD
+
+4.  Problem Statement
+
+4.1.  Integrity and Accuracy of Route Origin
 
    As the adoption of Resource Public Key Infrastructure (RPKI)
    continues to grow, the number of address prefixes registered with
@@ -151,7 +154,7 @@ Table of Contents
    integrity, and coverage of data sources to ensure the reliability and
    security of the global routing infrastructure.
 
-3.2.  Support for Multi-origin ASes
+4.2.  Multi-origin ASes Analysis
 
    [RFC1930] suggests that a prefix should typically have a single
    Autonomous System (AS) as its origin, with a few exceptions.
@@ -182,9 +185,7 @@ Table of Contents
    RPKI databases, accommodating legitimate instances of MOAS and
    addressing misconfigurations.
 
-4.  Limitations of Multi-source Route Origin Fusion
-
-4.1.  Inconsistency of Route Origin
+4.3.  Inconsistency of Multi-source Data
 
    Based on the analysis presented in the previous section, it is
    evident that relying solely on a single source of route origin
@@ -215,8 +216,6 @@ Table of Contents
    IRR databases can improve the effectiveness of route origin
    validation, it is essential to address the issues of inconsistencies
    and outdated Route objects within the IRR databases.
-
-4.2.  Cross-validation between Multiple Sources
 
    To fully capitalize on the existing route origin sources and enhance
    the accuracy of route origin validation, several suggestions and
@@ -251,7 +250,7 @@ Table of Contents
    utilization may result in inconsistent behavior of the global routing
    system for the same announcement.
 
-4.3.  Management and Synchronization
+4.4.  Management and Synchronization
 
    The current practice in IRRs involves the use of the Near-Real-Time
    Mirroring (NRTM) protocol [NRTMv4] to replicate and synchronize Route
@@ -280,7 +279,7 @@ Table of Contents
    updates.  This limitation hampers the system's ability to efficiently
    handle and incorporate incremental changes.
 
-4.4.  Multi-Party Collaboration
+4.5.  Multi-Party Collaboration
 
    Mutually Agreed Norms for Routing Security (MANRS) is a community-
    based approach that aims to enhance the robustness and security of
