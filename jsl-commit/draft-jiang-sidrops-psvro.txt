@@ -259,17 +259,20 @@ Table of Contents
    However, these network protocols exhibit several weaknesses that need
    to be addressed.
 
-   Firstly, the lack of validation of replicated data from mirrored
-   sources in both IRRs and RPKIs is a significant concern.  This leaves
-   room for potential inconsistencies and conflicts with the existing
-   data, compromising the integrity of the system.  Secondly, the
-   absence of application security mechanisms within these protocols is
-   another area of vulnerability.  This lack of security measures
-   exposes the system to potential threats and unauthorized access.
-   Furthermore, the absence of a mechanism to notify other mirrors when
-   updates occur results in synchronization delays and data
-   inconsistency issues.  This can be problematic when timeliness and
-   accuracy are crucial.
+   *  The lack of validation of replicated data from mirrored sources in
+      both IRRs and RPKIs is a significant concern.  This leaves room
+      for potential inconsistencies and conflicts with the existing
+      data, compromising the integrity of the system.
+
+   *  The absence of application security mechanisms within these
+      protocols is another area of vulnerability.  This lack of security
+      measures exposes the system to potential threats and unauthorized
+      access.
+
+   *  The absence of a mechanism to notify other mirrors when updates
+      occur results in synchronization delays and data inconsistency
+      issues.  This can be problematic when timeliness and accuracy are
+      crucial.
 
    On the other hand, to address revocation and update issues by coarse-
    grained management, alternative solutions such as Minimal-ROA

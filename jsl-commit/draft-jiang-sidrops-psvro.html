@@ -1253,7 +1253,17 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <a href="#section-4.4" class="section-number selfRef">4.4. </a><a href="#name-management-and-synchronizat" class="section-name selfRef">Management and Synchronization</a>
         </h3>
 <p id="section-4.4-1">The current practice in IRRs involves the use of the Near-Real-Time Mirroring (NRTM) protocol <span>[<a href="#NRTMv4" class="cite xref">NRTMv4</a>]</span> to replicate and synchronize Route object from other IRRs. Similarly, RPKIs rely on the RPKI Repository Delta Protocol (RRDP) <span>[<a href="#RFC8182" class="cite xref">RFC8182</a>]</span> to synchronize and update data. However, these network protocols exhibit several weaknesses that need to be addressed.<a href="#section-4.4-1" class="pilcrow">¶</a></p>
-<p id="section-4.4-2">Firstly, the lack of validation of replicated data from mirrored sources in both IRRs and RPKIs is a significant concern. This leaves room for potential inconsistencies and conflicts with the existing data, compromising the integrity of the system. Secondly, the absence of application security mechanisms within these protocols is another area of vulnerability. This lack of security measures exposes the system to potential threats and unauthorized access. Furthermore, the absence of a mechanism to notify other mirrors when updates occur results in synchronization delays and data inconsistency issues. This can be problematic when timeliness and accuracy are crucial.<a href="#section-4.4-2" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4.4-2.1">
+            <p id="section-4.4-2.1.1">The lack of validation of replicated data from mirrored sources in both IRRs and RPKIs is a significant concern. This leaves room for potential inconsistencies and conflicts with the existing data, compromising the integrity of the system.<a href="#section-4.4-2.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.4-2.2">
+            <p id="section-4.4-2.2.1">The absence of application security mechanisms within these protocols is another area of vulnerability. This lack of security measures exposes the system to potential threats and unauthorized access.<a href="#section-4.4-2.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.4-2.3">
+            <p id="section-4.4-2.3.1">The absence of a mechanism to notify other mirrors when updates occur results in synchronization delays and data inconsistency issues. This can be problematic when timeliness and accuracy are crucial.<a href="#section-4.4-2.3.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
 <p id="section-4.4-3">On the other hand, to address revocation and update issues by coarse-grained management, alternative solutions such as Minimal-ROA <span>[<a href="#RFC9319" class="cite xref">RFC9319</a>]</span> have been proposed. While Minimal-ROA enhances coding efficiency and scalability by minimizing the use of the maxLength parameter, it falls short in supporting efficient incremental updates. This limitation hampers the system's ability to efficiently handle and incorporate incremental changes.<a href="#section-4.4-3" class="pilcrow">¶</a></p>
 </section>
 </div>
