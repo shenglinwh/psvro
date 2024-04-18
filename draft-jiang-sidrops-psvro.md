@@ -1,5 +1,5 @@
 ---
-title: "Problem Statement for Verifiable Route Origin"
+title: "Route Origin Registry Problem Statement"
 abbrev: "PSVRO"
 category: info
 
@@ -118,8 +118,10 @@ This document aims to provide insights and recommendations to network operators,
 
 {::boilerplate bcp14-tagged}
 
+# Working Definition of Route Origin Registry
+TBD
 
-# Current State of Route Origin within RPKI and IRR
+# Problem Statement
 
 ## Integrity and Accuracy of Route Origin
 
@@ -131,7 +133,7 @@ As mentioned in {{RFC7682}}, the lack of certification and incentives for mainta
 
 In summary, while the adoption of RPKI is growing, the limited coverage of address space within RPKI and the challenges associated with maintaining up-to-date data in IRR databases underscore the need for a comprehensive and accurate approach to route filtering and validation. Efforts should focus on improving the accuracy, integrity, and coverage of data sources to ensure the reliability and security of the global routing infrastructure.
 
-## Support for Multi-origin ASes
+## Multi-origin ASes Analysis
 
 {{RFC1930}} suggests that a prefix should typically have a single Autonomous System (AS) as its origin, with a few exceptions. However, analysis of routing data from Routeviews, conducted by CAIDA {{CAIDA}}, reveals that Multi-origin ASes (MOAS) have become a common phenomenon. This can be attributed to factors such as multi-homing, traffic engineering, multinational companies, as well as misconfigurations or prefix hijacking incidents. When examining the MOAS state, it becomes evident that currently active IRR databases offer limited full coverage for MOAS, particularly in the case of IPv6 MOAS.
 
@@ -139,9 +141,7 @@ Moreover, legitimate MOAS primarily arises from multinational companies and mult
 
 The prevalence of MOAS in practice highlights the need for addressing the challenges associated with managing and supporting MOAS effectively. This includes improving the coverage of MOAS in IRR and RPKI databases, accommodating legitimate instances of MOAS and addressing misconfigurations.
 
-# Limitations of Multi-source Route Origin Fusion
-
-## Inconsistency of Route Origin
+## Inconsistency of Multi-source Data
 
 Based on the analysis presented in the previous section, it is evident that relying solely on a single source of route origin database is insufficient and inaccuracies in route origin validation. To address this issue effectively, it is recommended to integrate the RPKI database and multiple active IRR databases. This integration would not only enhance the IP address space coverage and AS participation rate but also improve the accuracy of route origin.
 
@@ -150,8 +150,6 @@ However, it is important to note that this fusion approach may encounter several
 Furthermore, it is observed that a higher number of IRR databases exhibit lower consistency with RPKI. Since RPKI incorporates a validation mechanism and each object has a validity period, IRR databases that are inconsistent with RPKI are more likely to contain stale Route objects. In addition, some companies that facilitate ROV verification present discrepancies in their methodologies when ROVs and IRRs conflict, resulting in disparate outcomes when filtering routes.
 
 As a result, while integrating the RPKI database and multiple active IRR databases can improve the effectiveness of route origin validation, it is essential to address the issues of inconsistencies and outdated Route objects within the IRR databases.
-
-## Cross-validation between Multiple Sources
 
 To fully capitalize on the existing route origin sources and enhance the accuracy of route origin validation, several suggestions and solutions have been proposed. These initiatives aim to strengthen the robustness and security of the global routing system. Here are some notable approaches:
 
