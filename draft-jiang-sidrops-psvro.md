@@ -110,7 +110,7 @@ Prefix hijacking has emerged as a major security threat in the Border Gateway Pr
 
 # Introduction
 
-The Border Gateway Protocol (BGP) is widely utilized for inter-domain routing. However, its lack of built-in security mechanisms makes it vulnerable to various threats {{RFC4272}}, such as prefix hijacking {{RFC7908}}. To address this issue, the global Internet infrastructure needs to establish a database that records the mapping of IP prefixes to authorized origin Autonomous Systems (ASes). This database would enable the verification of BGP announcements and facilitate the identification of unauthorized routing.
+The Border Gateway Protocol (BGP) is widely utilized for inter-domain routing. However, its lack of built-in security mechanisms makes it vulnerable to various threats {{RFC4272}}, such as prefix hijacking. To address this issue, the global Internet infrastructure needs to establish a database that records the mapping of IP prefixes to authorized origin Autonomous Systems (ASes). This database would enable the verification of BGP announcements and facilitate the identification of unauthorized routing.
 
 Currently, network operators primarily rely on the Internet Routing Registry (IRR) and Resource Public Key Infrastructure (RPKI) {{RFC6480}} for route origin validation. However, IRR lacks effective validation mechanisms and fails to incentivize resource holders to update objects, resulting in outdated information. Similarly, RPKI faces challenges related to complex operations, misissued Route Origin Authorizations (ROAs), and the hierarchical dependencies of certificates, limiting its widespread deployment.
 
@@ -148,7 +148,7 @@ The prevalence of MOAS in practice highlights the need for addressing the challe
 
 ## Inconsistency of Multi-source Data
 
-Based on the analysis presented in the previous section, it is evident that relying solely on a single source of route origin registry is insufficient and inaccuracies in route origin validation. To address this issue effectively, it is recommended to integrate the RPKI database and multiple active IRR databases. This integration would not only enhance the IP address space coverage and AS participation rate but also improve the accuracy of route origin.
+Based on the analysis presented in the previous section, it is evident that relying solely on a single source of route origin registry is insufficient and inaccuracies in route origin validation. To address this issue effectively, it is recommended to integrate the RPKI database and multiple active IRR databases. This integration would not only enhance the IP address space coverage and AS participation rate but also improve the accuracy of route origin registry.
 
 However, it is important to note that this fusion approach may encounter several limitations. As highlighted in {{IRRegularities}}, inconsistencies exist among the Route objects across different IRR databases. This inconsistency can be attributed to the chronic neglect of IRR customers. For instance, some companies may register Route objects in multiple IRR databases but fail to update them in all the databases, resulting in outdated and stale Route objects.
 
