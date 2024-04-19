@@ -4,8 +4,8 @@
 
 SIDROPS                                                         S. Jiang
 Internet-Draft                                   Zhongguancun Laboratory
-Intended status: Informational                             18 April 2024
-Expires: 20 October 2024
+Intended status: Informational                             19 April 2024
+Expires: 21 October 2024
 
 
                 Route Origin Registry Problem Statement
@@ -20,8 +20,8 @@ Abstract
    mappings of IP prefixes to authorized Autonomous Systems (ASes).
    Nonetheless, challenges persist due to outdated Route objects within
    IRR and the limited deployment rates of RPKI.  This document serves
-   to outline the current state and problem statement for verifiable
-   route origin.
+   to outline the current state and problem statement for route origin
+   registry.
 
 Status of This Memo
 
@@ -38,7 +38,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 20 October 2024.
+   This Internet-Draft will expire on 21 October 2024.
 
 Copyright Notice
 
@@ -60,11 +60,12 @@ Table of Contents
    2.  Requirements Language
    3.  Working Definition of Route Origin Registry
    4.  Problem Statement
-     4.1.  Integrity and Accuracy of Route Origin
+     4.1.  Integrity and Accuracy
      4.2.  Multi-origin ASes Analysis
      4.3.  Inconsistency of Multi-source Data
      4.4.  Management and Synchronization
-     4.5.  Multi-Party Collaboration
+     4.5.  Multi-party Collaboration
+     4.6.  Summary
    5.  Security Considerations
    6.  IANA Considerations
    7.  References
@@ -77,7 +78,7 @@ Table of Contents
 
    The Border Gateway Protocol (BGP) is widely utilized for inter-domain
    routing.  However, its lack of built-in security mechanisms makes it
-   vulnerable to various threats, such as prefix hijacking [RFC7908].
+   vulnerable to various threats [RFC4272], such as prefix hijacking.
    To address this issue, the global Internet infrastructure needs to
    establish a database that records the mapping of IP prefixes to
    authorized origin Autonomous Systems (ASes).  This database would
@@ -85,19 +86,18 @@ Table of Contents
    identification of unauthorized routing.
 
    Currently, network operators primarily rely on the Internet Routing
-   Registry (IRR) and Resource Public Key Infrastructure (RPKI) for
-   route origin validation.  However, IRR lacks effective validation
-   mechanisms and fails to incentivize resource holders to update
-   objects, resulting in outdated information.  Similarly, RPKI faces
-   challenges related to complex operations, misissued Route Origin
-   Authorizations (ROAs), and the hierarchical dependencies of
+   Registry (IRR) and Resource Public Key Infrastructure (RPKI)
+   [RFC6480] for route origin validation.  However, IRR lacks effective
+   validation mechanisms and fails to incentivize resource holders to
+   update objects, resulting in outdated information.  Similarly, RPKI
+   faces challenges related to complex operations, misissued Route
+   Origin Authorizations (ROAs), and the hierarchical dependencies of
    certificates, limiting its widespread deployment.
 
    This document aims to provide insights and recommendations to network
    operators, researchers, and policymakers for improving the security
    and robustness of the global routing system by analyzing the problems
-   associate dwith verifiable route origin, with a specific emphasis on
-   the integration of multi-source data.
+   associate with route origin registry.
 
 2.  Requirements Language
 
@@ -109,11 +109,21 @@ Table of Contents
 
 3.  Working Definition of Route Origin Registry
 
-   TBD
+   Routing origin registration refers to a repository that records the
+   mapping of IP prefixes to the ASNs authorised to announce it, where
+   resource holders can register route origin mapping relationships
+   themselves or delegate to others.
+
+   Route origin registries include the IRR and the RPKI.  The IRR
+   records the binding relationship between IPs and ASNs via the
+   Route(6) object defined by the Routing Policy Specification Language
+   (RPSL).  The RPKI system is a formally verifiable database based on
+   resource certificates that define extensions to X.509 to represent
+   the IP prefix and ASN.
 
 4.  Problem Statement
 
-4.1.  Integrity and Accuracy of Route Origin
+4.1.  Integrity and Accuracy
 
    As the adoption of Resource Public Key Infrastructure (RPKI)
    continues to grow, the number of address prefixes registered with
@@ -141,18 +151,18 @@ Table of Contents
    recent BGP announcements compared to those with higher activity.
    This indicates that databases with lower activity may contain a
    higher proportion of outdated and stale Route objects, thereby
-   impacting the reliability of the data sources.  Additionally,
-   [IRRegularities] also notes a decreasing trend in address space
-   coverage in certain IRR databases, emphasizing the need to prioritize
-   data accuracy.
+   impacting the reliability of the route origin registry.
+   Additionally, [IRRegularities] also notes a decreasing trend in
+   address space coverage in certain IRR databases, emphasizing the need
+   to prioritize data accuracy.
 
    In summary, while the adoption of RPKI is growing, the limited
    coverage of address space within RPKI and the challenges associated
    with maintaining up-to-date data in IRR databases underscore the need
    for a comprehensive and accurate approach to route filtering and
    validation.  Efforts should focus on improving the accuracy,
-   integrity, and coverage of data sources to ensure the reliability and
-   security of the global routing infrastructure.
+   integrity, and coverage of route origin registry to ensure the
+   reliability and security of the global routing infrastructure.
 
 4.2.  Multi-origin ASes Analysis
 
@@ -189,11 +199,12 @@ Table of Contents
 
    Based on the analysis presented in the previous section, it is
    evident that relying solely on a single source of route origin
-   database is insufficient and inaccuracies in route origin validation.
+   registry is insufficient and inaccuracies in route origin validation.
    To address this issue effectively, it is recommended to integrate the
    RPKI database and multiple active IRR databases.  This integration
    would not only enhance the IP address space coverage and AS
-   participation rate but also improve the accuracy of route origin.
+   participation rate but also improve the accuracy of route origin
+   registry.
 
    However, it is important to note that this fusion approach may
    encounter several limitations.  As highlighted in [IRRegularities],
@@ -216,39 +227,6 @@ Table of Contents
    IRR databases can improve the effectiveness of route origin
    validation, it is essential to address the issues of inconsistencies
    and outdated Route objects within the IRR databases.
-
-   To fully capitalize on the existing route origin sources and enhance
-   the accuracy of route origin validation, several suggestions and
-   solutions have been proposed.  These initiatives aim to strengthen
-   the robustness and security of the global routing system.  Here are
-   some notable approaches:
-
-   *  Internet registries have taken steps to address the issue of
-      outdated objects in IRR databases by implementing filtering rules.
-      For instance, JPIRR removes IRR objects that have not been updated
-      within a specified timeframe, typically one year.
-
-   *  Some organizations employ authoritative RPKI or local data to
-      disable IRR Route objects.  This approach, adopted by RIPE NCC and
-      IRRdv4, utilizes RPKI to validate and filter IRR Route objects.
-
-   *  The [IRRedicator] solution leverages machine learning algorithms
-      to identify stale Route objects.  Its goal is to enhance the
-      consistency between IRR and RPKI, thus improving the overall
-      accuracy of route origin validation.
-
-   *  The use of SLURM [RFC8416] enables ISPs to establish a local RPKI
-      view.  This allows for local filtering and additions based on
-      specific requirements, contributing to a more tailored and
-      optimized routing system.
-
-   While rule-based validation can partially enhance the quality and
-   reliability of current routing origins, it is important to
-   acknowledge that inconsistencies and data inaccuracies persist, as
-   highlighted in the recent measurements [IRRegularities].
-   Additionally, optimizing methods in response to only partial
-   utilization may result in inconsistent behavior of the global routing
-   system for the same announcement.
 
 4.4.  Management and Synchronization
 
@@ -282,29 +260,47 @@ Table of Contents
    updates.  This limitation hampers the system's ability to efficiently
    handle and incorporate incremental changes.
 
-4.5.  Multi-Party Collaboration
+4.5.  Multi-party Collaboration
 
    Mutually Agreed Norms for Routing Security (MANRS) is a community-
    based approach that aims to enhance the robustness and security of
    the global routing infrastructure.  While MANRS promotes multi-party
    collaboration, the actual implementation currently relies on
    individual optimization of respective data.  The monitoring of
-   individual execution is facilitated through the use of MANRS
-   OBSERVATORY metrics.  However, one area that requires improvement is
-   the lack of effective communication mechanisms between participating
-   parties.
+   individual execution is facilitated through MANRS OBSERVATORY
+   metrics.  However, there are no effective communication mechanisms
+   between participating parties.
 
-   Recent measurements [MANRS] indicate that participants are more
-   likely to implement routing security practices compared to non-
-   participants.  Nevertheless, according to a recent measurement
-   [ROVDep], a significant number of networks still do not fully deploy
-   Route Origin Validation (ROV) or fail to propagate illegitimate
-   announcements from their customers.
+   Recent measurements [MANRS] indicate that participants tend to have a
+   higher likelihood of implementing routing security practices compared
+   to non-participants.  However, despite these efforts, a significant
+   number of networks still do not fully deploy Route Origin Validation
+   (ROV) or fail to propagate illegitimate announcements from their
+   customers, as revealed by recent measurements conducted by the recent
+   measurement [ROVDep].  This highlights the challenges faced in
+   achieving the desired results through multi-party collaboration, as
+   problems in the registration of routing sources persist.
 
    To further enhance the effectiveness of collaboration, it is
    imperative to develop more robust, intelligent, and automated
    mechanisms.  These mechanisms can streamline communication and
    facilitate seamless collaboration between MANRS participants.
+
+4.6.  Summary
+
+   Currently IRR and RPKI, as the main sources of route source
+   registration, still face problems such as insufficient completeness
+   of announcement coverage and inaccurate data, which directly leads to
+   the becomes difficult to distinguish between legitimate MOAS and
+   route hijacking or misconfiguration.  To better address these issues,
+   there have been proposals to integrate multiple routing source
+   registrations simultaneously.  However, the lack of effective data
+   validation in current synchronization protocols between multiple
+   sources hampers the ability to handle inconsistencies that arise from
+   inaccurate data.  In recent years, MANRS has played a role in
+   facilitating routing source registration.  However, it has not been
+   able to achieve the desired results due to its reliance solely on the
+   self-initiative of MANRS participants.
 
 5.  Security Considerations
 
@@ -329,6 +325,15 @@ Table of Contents
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/rfc/rfc2119>.
+
+   [RFC6480]  Lepinski, M. and S. Kent, "An Infrastructure to Support
+              Secure Internet Routing", RFC 6480, DOI 10.17487/RFC6480,
+              February 2012, <https://www.rfc-editor.org/rfc/rfc6480>.
+
+   [RFC6811]  Mohapatra, P., Scudder, J., Ward, D., Bush, R., and R.
+              Austein, "BGP Prefix Origin Validation", RFC 6811,
+              DOI 10.17487/RFC6811, January 2013,
+              <https://www.rfc-editor.org/rfc/rfc6811>.
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
@@ -371,16 +376,15 @@ Table of Contents
               BCP 6, RFC 1930, DOI 10.17487/RFC1930, March 1996,
               <https://www.rfc-editor.org/rfc/rfc1930>.
 
+   [RFC4272]  Murphy, S., "BGP Security Vulnerabilities Analysis",
+              RFC 4272, DOI 10.17487/RFC4272, January 2006,
+              <https://www.rfc-editor.org/rfc/rfc4272>.
+
    [RFC7682]  McPherson, D., Amante, S., Osterweil, E., Blunk, L., and
               D. Mitchell, "Considerations for Internet Routing
               Registries (IRRs) and Routing Policy Configuration",
               RFC 7682, DOI 10.17487/RFC7682, December 2015,
               <https://www.rfc-editor.org/rfc/rfc7682>.
-
-   [RFC7908]  Sriram, K., Montgomery, D., McPherson, D., Osterweil, E.,
-              and B. Dickson, "Problem Definition and Classification of
-              BGP Route Leaks", RFC 7908, DOI 10.17487/RFC7908, June
-              2016, <https://www.rfc-editor.org/rfc/rfc7908>.
 
    [RFC9319]  Gilad, Y., Goldberg, S., Sriram, K., Snijders, J., and B.
               Maddison, "The Use of maxLength in the Resource Public Key
