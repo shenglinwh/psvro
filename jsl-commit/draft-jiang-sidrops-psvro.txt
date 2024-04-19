@@ -109,17 +109,17 @@ Table of Contents
 
 3.  Working Definition of Route Origin Registry
 
-   Route origin registration refers to a repository that records the
-   mapping of IP prefixes to the ASNs authorised to announce it, where
-   resource holders can register route origin mapping relationships
-   themselves or delegate to others.
+   Route origin registry refers to a repository that records the mapping
+   of IP prefixes to the ASNs authorised to announce it, where resource
+   holders can register route origin mapping relationships themselves or
+   delegate to othersy
 
-   Route origin registries include the IRR and the RPKI.  The IRR
-   records the binding relationship between IPs and ASNs via the
-   Route(6) object defined by the Routing Policy Specification Language
-   (RPSL).  The RPKI system is a formally verifiable database based on
-   resource certificates that define extensions to X.509 to represent
-   the IP prefix and ASN.
+   Route origin registry include the IRR and the RPKI.  The IRR records
+   the binding relationship between IPs and ASNs via the Route(6) object
+   defined by the Routing Policy Specification Language (RPSL).  The
+   RPKI system is a formally verifiable database based on resource
+   certificates that define extensions to X.509 to represent the IP
+   prefix and ASN.
 
 4.  Problem Statement
 
@@ -288,19 +288,22 @@ Table of Contents
 
 4.6.  Summary
 
-   Currently IRR and RPKI, as the main sources of route origin
-   registries, still face problems such as insufficient completeness of
-   announcement coverage and inaccurate data, which directly leads to
-   the becomes difficult to distinguish between legitimate MOAS and
-   route hijacking or misconfiguration.  To better address these issues,
-   there have been proposals to integrate multiple route origin
-   registries simultaneously.  However, the lack of effective data
-   validation in current synchronization protocols between multiple
-   sources hampers the ability to handle inconsistencies that arise from
-   inaccurate data.  In recent years, MANRS has played a role in
-   facilitating route origin registries.  However, it has not been able
-   to achieve the desired results due to its reliance solely on the
-   self-initiative of MANRS participants.
+   At present, both the Internet Routing Registry (IRR) and the Resource
+   Public Key Infrastructure (RPKI) serve as the primary sources for
+   route origin registries.  However, these systems encounter certain
+   challenges, such as inadequate announcement coverage and inaccurate
+   data.  Consequently, it becomes increasingly challenging to
+   differentiate between legitimate Multiple Origin AS (MOAS) and
+   instances of route hijacking or misconfiguration.
+
+   To better address these issues, there have been proposals to
+   integrate multiple route origin registries simultaneously.  However,
+   the lack of effective data validation in current synchronization
+   protocols between multiple sources hampers the ability to handle
+   inconsistencies that arise from inaccurate data.  In recent years,
+   MANRS has played a role in facilitating route origin registries.
+   However, it has not been able to achieve the desired results due to
+   its reliance solely on the self-initiative of MANRS participants.
 
 5.  Security Considerations
 
