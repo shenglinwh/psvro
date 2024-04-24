@@ -31,9 +31,7 @@ author:
 
 normative:
     RFC1786:
-    RFC6811:
     RFC8182:
-    RFC8416:
     RFC6480:
     NRTMv4: I-D.ietf-grow-nrtm-v4
 
@@ -69,18 +67,10 @@ informative:
         title: "RouteViews Prefix to AS mappings"
         date: 2024
         target: https://catalog.caida.org/dataset/routeviews_prefix2as
-    RoVista:
-        title: "RoVista: Measuring and analyzing the route origin validation (ROV) in RPKI"
-        date: 2023
-        seriesinfo: "Proceedings of the 2023 ACM on Internet Measurement Conference"
-        author:
-          - ins: W. Li
-          - ins: Z. Lin
-          - ins: MI. Ashiq
-          - ins: E. Aben
-          - ins: R. Fontugne
-          - ins: A. Phokeer
-          - ins: T. Chung
+    MANRS:
+        title: "MANRS Observatory"
+        date: 2024
+        target: https://observatory.manrs.org/
      NRO:
         title: "RIR Statistics"
         date: 2024
@@ -131,29 +121,19 @@ Route origin registry include the IRR and the RPKI. The IRR records the binding 
 Since legitimate MOAS, and prefix hijacking/misconfiguration, etc., have similar behaviour, it has been a challenge to distinguish between them, and it also imposes higher requirements on the coverage and accuracy of route origin registry.
 
 
-## Accuracy of Route Origin Registry
+## Integrity of Route Origin Registry
 
 As mentioned in {{RFC7682}}, the lack of certification and incentives for maintaining up-to-date data within Internet Routing Registry (IRR) leads to lower accuracy of the information. While a few IRRs exhibit regular updates, others have low activity with many Route(6) objects remaining unchanged for several years. Recent measurement {{IRRegularities}} reveals that IRRs with low update activity exhibit lower overlap with BGP announcements compared to those with high update activity. This indicates that IRRs with lower activity may contain a higher proportion of outdated and stale Route objects, thereby impacting the reliability of the route origin registry.
 
-The Resource Public Key Infrastructure (RPKI) utilizes CA certificates to authorize resources from higher tiers to lower tiers. However, there is a risk of conflicts in resource ownership when misconfiguration or malicious operations occur at the upper tier, resulting in multiple lower tiers being allocated the same resource. Additionally, the existence of legitimate Multiple Origin Autonomous Systems (MOAS) necessitates the allocation of duplicate resources, further complicating the issue. Balancing the protection of legitimate MOAS while minimizing conflicts in resource allocation presents a challenging problem that requires innovative solutions. Furthermore, it is worth noting that the RPKI Relying Parties{{RFC8897}} has not yet standardized the process of constructing certificate chains, handling exceptions such as Certificate Revocation Lists (CRLs) and Manifests. This lack of the standardized document has resulted in different RPKI views among Relying Parties (RPs) who adopt different implementations. Consequently, this can lead to varying validation results for the same route announcement by AS within the service scope of different RPs.
+The Resource Public Key Infrastructure (RPKI) utilizes CA certificates to authorize resources from higher tiers to lower tiers. However, there is a risk of conflicts in resource ownership when misconfiguration or malicious operations occur at the upper tier, resulting in multiple lower tiers being allocated the same resource. Additionally, the existence of legitimate Multiple Origin Autonomous Systems (MOAS) necessitates the allocation of duplicate resources, further complicating the issue. Balancing the protection of legitimate MOAS while minimizing conflicts in resource allocation presents a challenging problem that requires innovative solutions. Furthermore, it is worth noting that the RPKI Relying Parties{{RFC8897}} has not yet standardized the process of constructing certificate chains, handling exceptions such as Certificate Revocation Lists (CRLs) and Manifests. This lack of the standardized document has resulted in different RPKI views among Relying Parties (RPs) who adopt different implementations. Consequently, this can lead to varying validation results for the same route announcement by AS within the service scope of different RPs. As the adoption of Resource Public Key Infrastructure (RPKI) continues to grow, recent report {{NRO}} indicates that the coverage of IP prefixes is gradually increasing. However, the protection rate of route origin validation (ROV) due to lack of confidence in ROA data, as measured by Mutually Agreed Norms for Routing Security (MANRS) {{MANRS}}, is significantly lower compared to route origin authorization(ROA) coverage. When examining the MOAS state, it becomes evident that currently active IRRs offer limited full coverage for MOAS, particularly in the case of IPv6 MOAS.
 
-Consequently, the absence of data validation and standardization in operations within the IRR or RPKI framework gives rise to security risks. This lack of validation and standardization also means that there is no guarantee of the accuracy of the data registered at the route origin registry. This poses a significant challenge in ensuring the integrity and reliability of the RPKI system.
-
-## Route Origin Registry Coverage
-
-As the adoption of Resource Public Key Infrastructure (RPKI) continues to grow, the number of address prefixes registered within RPKI is gradually increasing. However, according to recent report {{NRO}}, its coverage of IP prefixs has been relatively low. Notably, the protection rate of route origin validation(ROV), as measured by RoVista {{RoVista}}, is significantly lower compared to route origin authorization(ROA) coverage. Additionally, {{IRRegularities}} also notes a decreasing trend in IP Prefix coverage in certain IRRs.
-
-When examining the MOAS state, it becomes evident that currently active IRRs offer limited full coverage for MOAS, particularly in the case of IPv6 MOAS.Moreover, the existing authoritative IRR (maintained by regional Internet registries) and RPKI typically only allow registration of address blocks for self-managed purposes. This poses a significant obstacle in supporting legitimate MOAS.
-
-While the adoption of RPKI is growing, the limited coverage of IP Prefix and MOAS in BGP announcements makes it still challenging to effectively filter malicious traffic.
+Consequently, the absence of data validation and standardization in operations within the IRR or RPKI framework gives rise to security risks. This lack of validation and standardization also means that there is no guarantee of the accuracy of the data registered at the route origin registry. This poses a significant challenge in ensuring the integrity of the route origin registry system.
 
 ## Inconsistency of Multi-source Data
 
 Based on the analysis presented in the previous section, it is evident that relying solely on a single source of route origin registry is insufficient and inaccurate in route origin validation. To address this issue effectively, it is recommended to integrate the RPKI and multiple active IRRs. This integration would not only enhance the IP address space coverage and AS participation rate but also improve the accuracy of route origin registry.
 
-However, it is important to note that this fusion approach may encounter several limitations. As highlighted in {{IRRegularities}}, inconsistencies exist among the Route objects across different IRRs. This inconsistency can be attributed to the chronic neglect of IRR customers. For instance, some companies may register Route objects in some IRRs but fail to update them in all the route origin registries, resulting in outdated and stale Route objects.
-
-Furthermore, it is observed that a higher number of IRRs exhibit lower consistency with RPKI. Since RPKI incorporates a validation mechanism and each object has a validity period, IRRs that are inconsistent with RPKI are more likely to contain stale Route objects. But this is not alwyas true  (e.g., ROA can also be incomplete and inaccurate, xxx). In practice, different networks often use different data and methodologies to perform route  validation and filtering, resulting in disparate outcome, especially when ROA and IRR data conflict with each other. In addition, some companies that facilitate ROV verification present discrepancies in their methodologies when ROVs and IRRs conflict, resulting in disparate outcomes when filtering routes.
+However, it is important to note that this fusion approach may encounter several limitations. As highlighted in {{IRRegularities}}, inconsistencies exist among the Route objects across different IRRs. This inconsistency can be attributed to the chronic neglect of IRR customers. For instance, some companies may register Route objects in some IRRs but fail to update them in all the route origin registries, resulting in outdated and stale Route objects. Furthermore, it is observed that a higher number of IRRs exhibit lower consistency with RPKI. In practice, different networks often use different data and methodologies to perform route validation and filtering, resulting in disparate outcome, especially when ROA and IRR data conflict with each other. 
 
 As a result, while integrating the RPKI and multiple active IRRs can improve the effectiveness of route origin validation, it is essential to address the issues of inconsistencies and outdated Route objects within the IRRs.
 
@@ -167,19 +147,9 @@ The current practice in IRRs involves the use of the Near-Real-Time Mirroring (N
 
 On the other hand, to address revocation and update issues by coarse-grained management, alternative solutions such as Minimal-ROA {{RFC9319}} have been proposed. While Minimal-ROA enhances coding efficiency and scalability by minimizing the use of the maxLength parameter, it falls short in supporting efficient incremental updates. This limitation hampers the system's ability to efficiently handle and incorporate incremental changes.
 
-<!-- ## Multi-party Collaboration
-
-Mutually Agreed Norms for Routing Security (MANRS) is a community-based approach that aims to enhance the robustness and security of the global routing infrastructure. While MANRS promotes multi-party collaboration, the actual implementation currently relies on individual optimization of respective data. The monitoring of individual execution is facilitated through MANRS OBSERVATORY metrics. However, there are no effective communication mechanisms between participating parties.
-
-Recent measurements {{MANRS}} indicate that participants tend to have a higher likelihood of implementing routing security practices compared to non-participants. However, despite these efforts, a significant number of networks still do not fully deploy Route Origin Validation (ROV) or fail to propagate illegitimate announcements from their customers, as revealed by recent measurements conducted by the recent measurement {{ROVDep}}. This highlights the challenges faced in achieving the desired results through multi-party collaboration, as problems in the registration of route origin registries persist.
-
-To further enhance the effectiveness of collaboration, it is imperative to develop more robust, intelligent, and automated mechanisms. These mechanisms can streamline communication and facilitate seamless collaboration between MANRS participants. -->
-
 ## Summary
 
-At present, both the Internet Routing Registry (IRR) and the Resource Public Key Infrastructure (RPKI) serve as the primary sources for route origin registries. With the gradual development of the Internet, legitimate MOAS are appearing more and more often, which puts higher requirements on the route origin registry system. However, these systems encounter certain challenges, such as inadequate announcement coverage and inaccurate data. Consequently, it becomes increasingly challenging to differentiate between legitimate Multiple Origin AS (MOAS) and instances of route hijacking or misconfiguration.
-
-To better address these issues, there have been proposals to integrate multiple route origin registries simultaneously. However, the lack of effective data validation in current synchronization protocols between multiple sources hampers the ability to handle inconsistencies that arise from inaccurate data.
+At present, both the Internet Routing Registry (IRR) and the Resource Public Key Infrastructure (RPKI) serve as the primary sources for route origin registries. With the gradual development of the Internet, MOAS are appearing more and more often, which puts higher requirements on the route origin registry system. However, these systems encounter certain challenges, such as inadequate announcement coverage and inaccurate data. To better address these issues, there have been proposals to integrate multiple route origin registries simultaneously. However, the lack of effective data validation in current synchronization protocols between multiple sources hampers the ability to handle inconsistencies that arise from inaccurate data.
 
 # Security Considerations
 
