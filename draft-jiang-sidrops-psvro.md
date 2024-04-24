@@ -71,7 +71,7 @@ informative:
         title: "MANRS Observatory"
         date: 2024
         target: https://observatory.manrs.org/
-     NRO:
+    NRO:
         title: "RIR Statistics"
         date: 2024
         target: https://www.nro.net/about/rirs/statistics/
@@ -127,7 +127,7 @@ As mentioned in {{RFC7682}}, the lack of certification and incentives for mainta
 
 The Resource Public Key Infrastructure (RPKI) utilizes CA certificates to authorize resources from higher tiers to lower tiers. However, there is a risk of conflicts in resource ownership when misconfiguration or malicious operations occur at the upper tier, resulting in multiple lower tiers being allocated the same resource. Additionally, the existence of legitimate Multiple Origin Autonomous Systems (MOAS) necessitates the allocation of duplicate resources, further complicating the issue. Balancing the protection of legitimate MOAS while minimizing conflicts in resource allocation presents a challenging problem that requires innovative solutions. Furthermore, it is worth noting that the RPKI Relying Parties{{RFC8897}} has not yet standardized the process of constructing certificate chains, handling exceptions such as Certificate Revocation Lists (CRLs) and Manifests. This lack of the standardized document has resulted in different RPKI views among Relying Parties (RPs) who adopt different implementations. Consequently, this can lead to varying validation results for the same route announcement by AS within the service scope of different RPs.
 
-Consequently, the absence of data validation and standardization in operations within the IRR or RPKI framework gives rise to security risks. This lack of validation and standardization also means that there is no guarantee of the accuracy of the data registered at the route origin registry. 
+Consequently, the absence of data validation and standardization in operations within the IRR or RPKI framework gives rise to security risks. This lack of validation and standardization also means that there is no guarantee of the accuracy of the data registered at the route origin registry.
 
 ## Route Origin Registry Coverage
 
