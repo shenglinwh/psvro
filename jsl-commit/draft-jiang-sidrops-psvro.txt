@@ -60,16 +60,17 @@ Table of Contents
    2.  Requirements Language
    3.  Working Definition of Route Origin Registry
    4.  Problem Statement
-   5.  Multi-origin ASes Analysis
-     5.1.  Integrity of Route Origin Registry
-     5.2.  Inconsistency of Multi-source Data
-     5.3.  Management and Synchronization
-     5.4.  Summary
-   6.  Security Considerations
-   7.  IANA Considerations
-   8.  References
-     8.1.  Normative References
-     8.2.  Informative References
+     4.1.  Multi-origin ASes Analysis
+     4.2.  Accuracy of Route Origin Registry
+     4.3.  Route Origin Registry Coverage
+     4.4.  Inconsistency of Multi-source Data
+     4.5.  Management and Synchronization
+     4.6.  Summary
+   5.  Security Considerations
+   6.  IANA Considerations
+   7.  References
+     7.1.  Normative References
+     7.2.  Informative References
    Acknowledgments
    Author's Address
 
@@ -121,7 +122,7 @@ Table of Contents
 
 4.  Problem Statement
 
-5.  Multi-origin ASes Analysis
+4.1.  Multi-origin ASes Analysis
 
    [RFC1930] suggests that a prefix should typically have a single
    Autonomous System (AS) as its origin, with a few exceptions.
@@ -168,7 +169,7 @@ Table of Contents
    between them, and it also imposes higher requirements on the coverage
    and accuracy of route origin registry.
 
-5.1.  Integrity of Route Origin Registry
+4.2.  Accuracy of Route Origin Registry
 
    As mentioned in [RFC7682], the lack of certification and incentives
    for maintaining up-to-date data within Internet Routing Registry
@@ -198,25 +199,39 @@ Table of Contents
    document has resulted in different RPKI views among Relying Parties
    (RPs) who adopt different implementations.  Consequently, this can
    lead to varying validation results for the same route announcement by
-   AS within the service scope of different RPs.  As the adoption of
-   Resource Public Key Infrastructure (RPKI) continues to grow, recent
-   report [NRO] indicates that the coverage of IP prefixes is gradually
-   increasing.  However, the protection rate of route origin validation
-   (ROV) due to lack of confidence in ROA data, as measured by Mutually
-   Agreed Norms for Routing Security (MANRS) [MANRS], is significantly
-   lower compared to route origin authorization(ROA) coverage.  When
-   examining the MOAS state, it becomes evident that currently active
-   IRRs offer limited full coverage for MOAS, particularly in the case
-   of IPv6 MOAS.
+   AS within the service scope of different RPs.
 
    Consequently, the absence of data validation and standardization in
    operations within the IRR or RPKI framework gives rise to security
    risks.  This lack of validation and standardization also means that
    there is no guarantee of the accuracy of the data registered at the
-   route origin registry.  This poses a significant challenge in
-   ensuring the integrity of the route origin registry system.
+   route origin registry.
 
-5.2.  Inconsistency of Multi-source Data
+4.3.  Route Origin Registry Coverage
+
+   As the adoption of Resource Public Key Infrastructure (RPKI)
+   continues to grow, the number of address prefixes registered within
+   RPKI is gradually increasing.  However, according to recent report
+   [NRO], its coverage of IP prefixs has been relatively low.  Notably,
+   the protection rate of route origin validation(ROV), as measured by
+   Mutually Agreed Norms for Routing Security (MANRS) [MANRS], is
+   significantly lower compared to route origin authorization(ROA)
+   coverage.  Additionally, [IRRegularities] also notes a decreasing
+   trend in IP Prefix coverage in certain IRRs.
+
+   When examining the MOAS state, it becomes evident that currently
+   active IRRs offer limited full coverage for MOAS, particularly in the
+   case of IPv6 MOAS.  Moreover, the existing authoritative IRR
+   (maintained by regional Internet registries) and RPKI typically only
+   allow registration of address blocks for self-managed purposes.  This
+   poses a significant obstacle in supporting legitimate MOAS.
+
+   Limited IP prefix coverage within the current route origin registry,
+   especially for MOAS events, does not allow for adequate BGP
+   announcement verification, much less distinguishing legitimate MOAS
+   from prefix hijacking or misconfiguration.
+
+4.4.  Inconsistency of Multi-source Data
 
    Based on the analysis presented in the previous section, it is
    evident that relying solely on a single source of route origin
@@ -244,7 +259,7 @@ Table of Contents
    to address the issues of inconsistencies and outdated Route objects
    within the IRRs.
 
-5.3.  Management and Synchronization
+4.5.  Management and Synchronization
 
    The current practice in IRRs involves the use of the Near-Real-Time
    Mirroring (NRTM) protocol [NRTMv4] to replicate and synchronize Route
@@ -276,7 +291,7 @@ Table of Contents
    updates.  This limitation hampers the system's ability to efficiently
    handle and incorporate incremental changes.
 
-5.4.  Summary
+4.6.  Summary
 
    At present, both the Internet Routing Registry (IRR) and the Resource
    Public Key Infrastructure (RPKI) serve as the primary sources for
@@ -291,17 +306,17 @@ Table of Contents
    the ability to handle inconsistencies that arise from inaccurate
    data.
 
-6.  Security Considerations
+5.  Security Considerations
 
    There is no security consideration in this draft.
 
-7.  IANA Considerations
+6.  IANA Considerations
 
    There is no IANA consideration in this draft.
 
-8.  References
+7.  References
 
-8.1.  Normative References
+7.1.  Normative References
 
    [RFC1786]  Bates, T., Gerich, E., Joncheray, L., Jouanigot, J.,
               Karrenberg, D., Terpstra, M., and J. Yu, "Representation
@@ -327,7 +342,7 @@ Table of Contents
               DOI 10.17487/RFC8182, July 2017,
               <https://www.rfc-editor.org/rfc/rfc8182>.
 
-8.2.  Informative References
+7.2.  Informative References
 
    [CAIDA]    "RouteViews Prefix to AS mappings", 2024,
               <https://catalog.caida.org/dataset/routeviews_prefix2as>.
