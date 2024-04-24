@@ -33,7 +33,6 @@ normative:
     RFC1786:
     RFC8182:
     RFC6480:
-    NRTMv4: I-D.ietf-grow-nrtm-v4
 
 informative:
     RFC4272:
@@ -41,6 +40,7 @@ informative:
     RFC9319:
     RFC7682:
     RFC8897:
+    NRTMv4: I-D.ietf-grow-nrtm-v4
     IRRedicator:
         title: "IRRedicator: Pruning IRR with RPKI-Valid BGP Insights"
         date: 2024
