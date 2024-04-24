@@ -36,8 +36,8 @@ normative:
     NRTMv4: I-D.ietf-grow-nrtm-v4
 
 informative:
-    RFC1930:
     RFC4272:
+    RFC1930:
     RFC9319:
     RFC7682:
     RFC8897:
