@@ -104,7 +104,7 @@ Route origin registry include the IRR and the RPKI. The IRR records the binding 
 
 # Problem Statement
 
-# Multi-origin ASes Analysis
+## Multi-origin ASes Analysis
 
 {{RFC1930}} suggests that a prefix should typically have a single Autonomous System (AS) as its origin, with a few exceptions. However, analysis of routing data from Routeviews, conducted by CAIDA {{CAIDA}}, reveals that Multi-origin ASes (MOAS) have become a common phenomenon. There are various reasons that contribute to the emergence of MOAS events:
 
@@ -121,13 +121,22 @@ Route origin registry include the IRR and the RPKI. The IRR records the binding 
 Since legitimate MOAS, and prefix hijacking/misconfiguration, etc., have similar behaviour, it has been a challenge to distinguish between them, and it also imposes higher requirements on the coverage and accuracy of route origin registry.
 
 
-## Integrity of Route Origin Registry
+## Accuracy of Route Origin Registry
 
 As mentioned in {{RFC7682}}, the lack of certification and incentives for maintaining up-to-date data within Internet Routing Registry (IRR) leads to lower accuracy of the information. While a few IRRs exhibit regular updates, others have low activity with many Route(6) objects remaining unchanged for several years. Recent measurement {{IRRegularities}} reveals that IRRs with low update activity exhibit lower overlap with BGP announcements compared to those with high update activity. This indicates that IRRs with lower activity may contain a higher proportion of outdated and stale Route objects, thereby impacting the reliability of the route origin registry.
 
-The Resource Public Key Infrastructure (RPKI) utilizes CA certificates to authorize resources from higher tiers to lower tiers. However, there is a risk of conflicts in resource ownership when misconfiguration or malicious operations occur at the upper tier, resulting in multiple lower tiers being allocated the same resource. Additionally, the existence of legitimate Multiple Origin Autonomous Systems (MOAS) necessitates the allocation of duplicate resources, further complicating the issue. Balancing the protection of legitimate MOAS while minimizing conflicts in resource allocation presents a challenging problem that requires innovative solutions. Furthermore, it is worth noting that the RPKI Relying Parties{{RFC8897}} has not yet standardized the process of constructing certificate chains, handling exceptions such as Certificate Revocation Lists (CRLs) and Manifests. This lack of the standardized document has resulted in different RPKI views among Relying Parties (RPs) who adopt different implementations. Consequently, this can lead to varying validation results for the same route announcement by AS within the service scope of different RPs. As the adoption of Resource Public Key Infrastructure (RPKI) continues to grow, recent report {{NRO}} indicates that the coverage of IP prefixes is gradually increasing. However, the protection rate of route origin validation (ROV) due to lack of confidence in ROA data, as measured by Mutually Agreed Norms for Routing Security (MANRS) {{MANRS}}, is significantly lower compared to route origin authorization(ROA) coverage. When examining the MOAS state, it becomes evident that currently active IRRs offer limited full coverage for MOAS, particularly in the case of IPv6 MOAS.
+The Resource Public Key Infrastructure (RPKI) utilizes CA certificates to authorize resources from higher tiers to lower tiers. However, there is a risk of conflicts in resource ownership when misconfiguration or malicious operations occur at the upper tier, resulting in multiple lower tiers being allocated the same resource. Additionally, the existence of legitimate Multiple Origin Autonomous Systems (MOAS) necessitates the allocation of duplicate resources, further complicating the issue. Balancing the protection of legitimate MOAS while minimizing conflicts in resource allocation presents a challenging problem that requires innovative solutions. Furthermore, it is worth noting that the RPKI Relying Parties{{RFC8897}} has not yet standardized the process of constructing certificate chains, handling exceptions such as Certificate Revocation Lists (CRLs) and Manifests. This lack of the standardized document has resulted in different RPKI views among Relying Parties (RPs) who adopt different implementations. Consequently, this can lead to varying validation results for the same route announcement by AS within the service scope of different RPs.
 
-Consequently, the absence of data validation and standardization in operations within the IRR or RPKI framework gives rise to security risks. This lack of validation and standardization also means that there is no guarantee of the accuracy of the data registered at the route origin registry. This poses a significant challenge in ensuring the integrity of the route origin registry system.
+Consequently, the absence of data validation and standardization in operations within the IRR or RPKI framework gives rise to security risks. This lack of validation and standardization also means that there is no guarantee of the accuracy of the data registered at the route origin registry. 
+
+## Route Origin Registry Coverage
+
+As the adoption of Resource Public Key Infrastructure (RPKI) continues to grow, the number of address prefixes registered within RPKI is gradually increasing. However, according to recent report {{NRO}}, its coverage of IP prefixs has been relatively low. Notably, the protection rate of route origin validation(ROV), as measured by Mutually Agreed Norms for Routing Security (MANRS) {{MANRS}}, is significantly lower compared to route origin authorization(ROA) coverage. Additionally, {{IRRegularities}} also notes a decreasing trend in IP Prefix coverage in certain IRRs.
+
+When examining the MOAS state, it becomes evident that currently active IRRs offer limited full coverage for MOAS, particularly in the case of IPv6 MOAS. Moreover, the existing authoritative IRR (maintained by regional Internet registries) and RPKI typically only allow registration of address blocks for self-managed purposes. This poses a significant obstacle in supporting legitimate MOAS.
+
+Limited IP prefix coverage within the current route origin registry, especially for MOAS events, does not allow for adequate BGP announcement verification, much less distinguishing legitimate MOAS from prefix hijacking or misconfiguration.
+
 
 ## Inconsistency of Multi-source Data
 
