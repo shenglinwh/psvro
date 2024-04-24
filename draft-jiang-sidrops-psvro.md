@@ -179,7 +179,7 @@ To further enhance the effectiveness of collaboration, it is imperative to devel
 
 At present, both the Internet Routing Registry (IRR) and the Resource Public Key Infrastructure (RPKI) serve as the primary sources for route origin registries. With the gradual development of the Internet, legitimate MOAS are appearing more and more often, which puts higher requirements on the route origin registry system. However, these systems encounter certain challenges, such as inadequate announcement coverage and inaccurate data. Consequently, it becomes increasingly challenging to differentiate between legitimate Multiple Origin AS (MOAS) and instances of route hijacking or misconfiguration.
 
-To better address these issues, there have been proposals to integrate multiple route origin registries simultaneously. However, the lack of effective data validation in current synchronization protocols between multiple sources hampers the ability to handle inconsistencies that arise from inaccurate data. 
+To better address these issues, there have been proposals to integrate multiple route origin registries simultaneously. However, the lack of effective data validation in current synchronization protocols between multiple sources hampers the ability to handle inconsistencies that arise from inaccurate data.
 
 # Security Considerations
 
