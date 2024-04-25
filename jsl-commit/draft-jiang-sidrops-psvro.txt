@@ -188,7 +188,7 @@ Table of Contents
    [IRRegularities] reveals that IRRs with low update activity exhibit
    lower overlap with BGP announcements compared to those with high
    update activity.  This indicates that IRRs with lower activity may
-   contain a higher proportion of outdated and stale Route objects,
+   contain a higher proportion of outdated and stale Route(6) objects,
    thereby impacting the reliability of the route origin registry.
 
    The Resource Public Key Infrastructure (RPKI) utilizes CA
@@ -254,7 +254,7 @@ Table of Contents
    encounter several limitations.  As highlighted in [IRRegularities],
    inconsistencies exist among the Route(6) objects across different
    IRRs.  This inconsistency can be attributed to the chronic neglect of
-   IRR customers.  For instance, some companies may register Route
+   IRR customers.  For instance, some companies may register Route(6)
    objects in some IRRs but fail to update them in all the route origin
    registries, resulting in outdated and stale Route(6) objects.
    Furthermore, it is observed that a higher number of IRRs exhibit
@@ -265,17 +265,17 @@ Table of Contents
 
    As a result, while integrating the RPKI and multiple active IRRs can
    improve the effectiveness of route origin validation, it is essential
-   to address the issues of inconsistencies and outdated Route objects
-   within the IRRs.
+   to address the issues of inconsistencies and outdated Route(6)
+   objects within the IRRs.
 
 4.5.  Management and Synchronization
 
    The current practice in IRRs involves the use of the Near-Real-Time
-   Mirroring (NRTM) protocol [NRTMv4] to replicate and synchronize Route
-   object from other IRRs.  Similarly, RPKIs rely on the RPKI Repository
-   Delta Protocol (RRDP) [RFC8182] to synchronize and update data.
-   However, these network protocols exhibit several weaknesses that need
-   to be addressed.
+   Mirroring (NRTM) protocol [NRTMv4] to replicate and synchronize
+   Route(6) object from other IRRs.  Similarly, RPKIs rely on the RPKI
+   Repository Delta Protocol (RRDP) [RFC8182] to synchronize and update
+   data.  However, these network protocols exhibit several weaknesses
+   that need to be addressed.
 
    *  The lack of validation of replicated data from mirrored sources in
       both IRRs and RPKIs is a significant concern.  This leaves room
