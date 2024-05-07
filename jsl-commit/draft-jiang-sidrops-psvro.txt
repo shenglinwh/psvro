@@ -97,8 +97,8 @@ Table of Contents
    dependencies of certificates, limiting its widespread deployment.  To
    effectively combat improper or malicious BGP announcement and
    strengthen the resilience of the global routing infrastructure, it is
-   crucial to establish a comprehensive route origin registry system
-   that offers extensive coverage, high accuracy, and verifiability.
+   crucial to establish a comprehensive and verifiability route origin
+   registry system.
 
    This document aims to provide insights to network operators,
    researchers, and policymakers for improving the security and
@@ -185,11 +185,11 @@ Table of Contents
       annoucements can occur due to misconfiguration.
 
    Distinguishing between prefix hijacking, misconfigurations, and
-   legitimate MOAS (Multi-Origin Autonomous System) can be a complex
-   task.  The challenge arises from the resemblance of these behaviors,
-   as they often display similar characteristics.  Moreover, accurately
-   identifying and classifying these situations necessitates a route
-   origin registry with high coverage and accuracy.
+   legitimate MOAS can be a complex task.  The challenge arises from the
+   resemblance of these behaviors, as they often display similar
+   characteristics.  Moreover, accurately identifying and classifying
+   these situations necessitates a route origin registry with high
+   coverage and accuracy.
 
 4.2.  Integrity of current Route Origin Registry
 
@@ -252,7 +252,7 @@ Table of Contents
    Limited IP prefix coverage within the current route origin registry,
    especially for MOAS prefixes, hinders the complete validation of
    route announcements, significantly limiting the motivation for
-   network operators to utilize routing source registration.
+   network operators to utilize route origin registration.
 
 4.3.  Operation of Resources among IRRs and RPKI
 
@@ -311,13 +311,13 @@ Table of Contents
    On the other hand, some organizations employ authoritative RPKI or
    local data to disable IRR Route objects.  This approach, adopted by
    RIPE NCC and IRRdv4, utilizes RPKI to validate and filter IRR Route
-   objects.  While this method can partially filter out the stale data
-   in IRRs, due to the limited coverage of RPKI and the lack of
-   effective means to resolve conflicting data between IRRs, the problem
-   of inconsistency persists.  It is crucial to establish a effective
-   communication mechanism among multiple route origin registry,
-   enabling negotiation and cross-validation of conflicting or special-
-   purpose route origin information.
+   objects.  Although this approach can partially eliminate outdated
+   information in IRRs, the problem of inconsistency persists due to the
+   limited coverage of RPKI and the absence of effective mechanisms to
+   resolve conflicting data between IRRs.  It is crucial to establish a
+   effective communication mechanism among multiple route origin
+   registry, enabling negotiation and cross-validation of conflicting or
+   special-purpose route origin information.
 
 4.4.  Summary
 
@@ -336,7 +336,7 @@ Table of Contents
    inconsistencies resulting from inaccurate data.
 
    Hence, it is imperative to continue striving towards the development
-   of a comprehensive route origin registry system that can effectively
+   of a verifiable route origin registry system that can effectively
    discern between prefix hijacking and legitimate MOAS, while ensuring
    a globally unified perspective on routing origins and maintaining a
    high level of resilience.
@@ -426,12 +426,6 @@ Table of Contents
               Infrastructure (RPKI) Relying Parties", RFC 8897,
               DOI 10.17487/RFC8897, September 2020,
               <https://www.rfc-editor.org/rfc/rfc8897>.
-
-   [RFC9319]  Gilad, Y., Goldberg, S., Sriram, K., Snijders, J., and B.
-              Maddison, "The Use of maxLength in the Resource Public Key
-              Infrastructure (RPKI)", BCP 185, RFC 9319,
-              DOI 10.17487/RFC9319, October 2022,
-              <https://www.rfc-editor.org/rfc/rfc9319>.
 
 Acknowledgments
 
