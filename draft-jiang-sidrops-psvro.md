@@ -37,7 +37,6 @@ normative:
 informative:
     RFC4272:
     RFC1930:
-    RFC9319:
     RFC7682:
     RFC8897:
     NRTMv4: I-D.ietf-grow-nrtm-v4
@@ -87,7 +86,7 @@ Prefix hijacking, i.e., unauthorized announcement of a prefix, has emerged as a 
 
 The Border Gateway Protocol (BGP) is ubiquitously used for inter-domain routing. However, it lacks built-in security validation on whether its UPDATE information are legitimate {{RFC4272}}. To mitigate security concerns related to prefix hijacking, i.e., unauthorized announcement of a prefix, resulting from the absence of security mechanisms, Internet Routing Registry (IRR) {{RFC1786}} and Resource Public Key Infrastructure (RPKI) {{RFC6480}} were developed. These mechanisms serve the purpose of documenting the mapping relationship between IP prefixes and their respective origin Autonomous Systems (ASes).
 
-However, IRR lacks standard validation mechanisms and fails to incentivize resource holders to update their objects, resulting in outdated and stale information. Similarly, RPKI faces challenges arising from the complexity of operations and the hierarchical dependencies of certificates, limiting its widespread deployment. To effectively combat improper or malicious BGP announcement and strengthen the resilience of the global routing infrastructure, it is crucial to establish a comprehensive route origin registry system that offers extensive coverage, high accuracy, and verifiability.
+However, IRR lacks standard validation mechanisms and fails to incentivize resource holders to update their objects, resulting in outdated and stale information. Similarly, RPKI faces challenges arising from the complexity of operations and the hierarchical dependencies of certificates, limiting its widespread deployment. To effectively combat improper or malicious BGP announcement and strengthen the resilience of the global routing infrastructure, it is crucial to establish a comprehensive and verifiability route origin registry system.
 
 This document aims to provide insights to network operators, researchers, and policymakers for improving the security and robustness of the global routing system.
 
@@ -104,8 +103,6 @@ IRR and RPKI currently offer functionalities related to route origin registry. M
 On the other hand, the RPKI system, which was developed starting in 2008 and began its deployment in 2011, provides a formally verifiable framework. The RPKI system is based on resource certificates that extend the X.509 standard. It records the mapping between IP prefixes and their authorised ASes via Route Origin Authorization (ROA) objects. These ROA objects contain essential information such as the prefix, origin ASN, and MaxLength.
 
 
-
-
 # Problem Statement
 
 ## Multi-origin ASes Analysis
@@ -114,13 +111,13 @@ On the other hand, the RPKI system, which was developed starting in 2008 and beg
 
 - ***Multi-homing***: When multi-homing occur without the use of BGP, it can result in MOAS conflicts. Assuming there is a link between ASx and ASy, and the routing on that link is done using either static routing or an Interior Gateway Protocol (IGP) without the use of BGP. From a BGP perspective, ASx is considered to have direct reachability to prefixes belonging to ASy.
 - ***Aggregation***: According to {{RFC1930}}, aggregation could result in routes that end in AS sets. Specifically, when the ATOMIC_AGGREGATE attributes of aggregation announcements are not specific, the origin AS may be lost, potentially leading to a prefix being originated from more than one AS.
-- ***Business consideration***: Companies often choose providers that offer high-speed and reliable data services to host their servers. For efficient resource allocation, a parent organization that owns a large chunk of IP addresses may divide its address space among one or more child organizations, which choose different providers and ask them to announce the same prefix. Additionally, a multi-national company may advertise its prefix from multiple locations  where it has offices.
+- ***Business consideration***: Companies often choose providers that offer high-speed and reliable data services to host their servers. For efficient resource allocation, a parent organization that owns a large chunk of IP addresses may divide its address space among one or more child organizations, which choose different providers and ask them to announce the same prefix. Additionally, a multi-national company may advertise its prefix from multiple locations where it has offices.
 - ***Traffic engineering***: An organization may advertise reachability to its prefixes from multiple ASs it owns.
 - ***Internet exchanges***: Internet Exchanges (IX) prefixs can be directly reachable from all ASes at the exchange point. Each AS at the exchange point could advertise the prefix as directly originated from that AS.
 - ***Anycast***: Anycast prefixes intended to originate from multiple ASes. This approach is potentially employed by content distribution networks (CDNs) to redirect traffic to the nearest servers, ensuring speedy data delivery to their customers.
 - ***Prefix hijacking and misconfigurations***: Malicious AS may advertise prefixes belonging to another organization, with the intention of attracting its traffic. Similarly, unwanted annoucements can occur due to misconfiguration.
 
-Distinguishing between prefix hijacking, misconfigurations, and legitimate MOAS (Multi-Origin Autonomous System) can be a complex task. The challenge arises from the resemblance of these behaviors, as they often display similar characteristics. Moreover, accurately identifying and classifying these situations necessitates a route origin registry with high coverage and accuracy.
+Distinguishing between prefix hijacking, misconfigurations, and legitimate MOAS can be a complex task. The challenge arises from the resemblance of these behaviors, as they often display similar characteristics. Moreover, accurately identifying and classifying these situations necessitates a route origin registry with high coverage and accuracy.
 
 
 ## Integrity of current Route Origin Registry
@@ -139,7 +136,7 @@ As the adoption of Resource Public Key Infrastructure (RPKI) continues to grow, 
 
 On the other hand, it becomes evident that currently active IRRs and RPKI offer limited coverage for MOAS, particularly in the case of IPv6. Moreover, the existing authoritative IRRs (maintained by regional Internet registries) and RPKI typically only allow registration of address blocks for self-managed purposes, posing a significant obstacle in supporting many legitimate MOAS prefixes.
 
-Limited IP prefix coverage within the current route origin registry, especially for MOAS prefixes, hinders the complete validation of route announcements, significantly limiting the motivation for network operators to utilize routing source registration.
+Limited IP prefix coverage within the current route origin registry, especially for MOAS prefixes, hinders the complete validation of route announcements, significantly limiting the motivation for network operators to utilize route origin registration.
 
 ## Operation of Resources among IRRs and RPKI
 
@@ -159,7 +156,7 @@ The current practice in IRRs involves the use of the Near-Real-Time Mirroring (N
 - The lack of validation of replicated data from mirrored sources in both IRRs and RPKIs is a significant concern. This leaves room for potential inconsistencies and conflicts with the existing data, compromising the consistency of the route origin registry.
 - The absence of application security mechanisms within these protocols is another area of vulnerability. This lack of security measures exposes the system to potential threats (e.g., data integrity) and unauthorized access.
 
-On the other hand, some organizations employ authoritative RPKI or local data to disable IRR Route objects. This approach, adopted by RIPE NCC and IRRdv4, utilizes RPKI to validate and filter IRR Route objects. While this method can partially filter out the stale data in IRRs, due to the limited coverage of RPKI and the lack of effective means to resolve conflicting data between IRRs, the problem of inconsistency persists. It is crucial to establish a effective communication mechanism among multiple route origin registry, enabling negotiation and cross-validation of conflicting or special-purpose route origin information.
+On the other hand, some organizations employ authoritative RPKI or local data to disable IRR Route objects. This approach, adopted by RIPE NCC and IRRdv4, utilizes RPKI to validate and filter IRR Route objects. Although this approach can partially eliminate outdated information in IRRs, the problem of inconsistency persists due to the limited coverage of RPKI and the absence of effective mechanisms to resolve conflicting data between IRRs. It is crucial to establish a effective communication mechanism among multiple route origin registry, enabling negotiation and cross-validation of conflicting or special-purpose route origin information.
 
 ## Summary
 
@@ -167,7 +164,7 @@ Currently, Internet Routing Registries (IRRs) and Resource Public Key Infrastruc
 
 To tackle these challenges, MANRS have been made to integrate multiple route origin registries simultaneously. However, the existing synchronization protocols between these sources lack effective data validation, which impedes the ability to handle inconsistencies resulting from inaccurate data.
 
-Hence, it is imperative to continue striving towards the development of a comprehensive route origin registry system that can effectively discern between prefix hijacking and legitimate MOAS, while ensuring a globally unified perspective on routing origins and maintaining a high level of resilience.
+Hence, it is imperative to continue striving towards the development of a verifiable route origin registry system that can effectively discern between prefix hijacking and legitimate MOAS, while ensuring a globally unified perspective on routing origins and maintaining a high level of resilience.
 
 
 # Security Considerations
