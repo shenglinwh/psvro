@@ -4,8 +4,8 @@
 
 SIDROPS                                                         S. Jiang
 Internet-Draft                                   Zhongguancun Laboratory
-Intended status: Informational                             29 April 2024
-Expires: 31 October 2024
+Intended status: Informational                                7 May 2024
+Expires: 8 November 2024
 
 
                 Route Origin Registry Problem Statement
@@ -20,9 +20,9 @@ Abstract
    Infrastructure (RPKI) have been developed, providing mappings of IP
    prefixes to authorized Autonomous Systems (ASes).  Nonetheless,
    challenges persist due to the completeness and accuracy of the route
-   origin information contained within IRRs RPKI.  This document serves
-   to outline the problem statement for current route origin registry
-   system.
+   origin information contained within IRRs and RPKI.  This document
+   serves to outline the problem statement for current route origin
+   registry system.
 
 Status of This Memo
 
@@ -39,7 +39,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 31 October 2024.
+   This Internet-Draft will expire on 8 November 2024.
 
 Copyright Notice
 
@@ -62,11 +62,13 @@ Table of Contents
    3.  Working Definition of Route Origin Registry
    4.  Problem Statement
      4.1.  Multi-origin ASes Analysis
-     4.2.  Accuracy of current Route Origin Registry
-     4.3.  Coverage of Route Origin Registry
-     4.4.  Inconsistency between different Route Origin Registries
-     4.5.  Management and Synchronization
-     4.6.  Summary
+     4.2.  Integrity of current Route Origin Registry
+       4.2.1.  Incompleteness of resource certification
+       4.2.2.  Security Risks from Partial Deployment
+     4.3.  Operation of Resources among IRRs and RPKI
+       4.3.1.  Inconsistency between different Route Origin Registries
+       4.3.2.  Synchronization and Management
+     4.4.  Summary
    5.  Security Considerations
    6.  IANA Considerations
    7.  References
@@ -189,7 +191,9 @@ Table of Contents
    identifying and classifying these situations necessitates a route
    origin registry with high coverage and accuracy.
 
-4.2.  Accuracy of current Route Origin Registry
+4.2.  Integrity of current Route Origin Registry
+
+4.2.1.  Incompleteness of resource certification
 
    As mentioned in [RFC7682], the lack of certification and incentives
    for maintaining up-to-date data within IRRs leads to lower accuracy
@@ -226,7 +230,7 @@ Table of Contents
    guarantee of the accuracy of the data registered in any route origin
    registry.
 
-4.3.  Coverage of Route Origin Registry
+4.2.2.  Security Risks from Partial Deployment
 
    As the adoption of Resource Public Key Infrastructure (RPKI)
    continues to grow, the number of address prefixes registered within
@@ -246,12 +250,13 @@ Table of Contents
    significant obstacle in supporting many legitimate MOAS prefixes.
 
    Limited IP prefix coverage within the current route origin registry,
-   especially for MOAS prefixes, does not allow for adequate BGP
-   announcement validation, i.e., it is difficult to distinguish
-   accurately distinguishing legitimate MOAS from prefix hijacking or
-   misconfiguration.
+   especially for MOAS prefixes, hinders the complete validation of
+   route announcements, significantly limiting the motivation for
+   network operators to utilize routing source registration.
 
-4.4.  Inconsistency between different Route Origin Registries
+4.3.  Operation of Resources among IRRs and RPKI
+
+4.3.1.  Inconsistency between different Route Origin Registries
 
    Based on the analysis presented in the previous sections, it is
    evident that relying solely on a single source of route origin
@@ -279,7 +284,7 @@ Table of Contents
    to address the issues of inconsistencies between different route
    origin registries.
 
-4.5.  Management and Synchronization
+4.3.2.  Synchronization and Management
 
    The current practice in IRRs involves the use of the Near-Real-Time
    Mirroring (NRTM) protocol [NRTMv4] to replicate and synchronize
@@ -303,22 +308,26 @@ Table of Contents
       measures exposes the system to potential threats (e.g., data
       integrity) and unauthorized access.
 
-   On the other hand, to address revocation and update issues by coarse-
-   grained management, alternative solutions such as Minimal-ROA
-   [RFC9319] have been proposed.  While Minimal-ROA enhances coding
-   efficiency and scalability by minimizing the use of the maxLength
-   parameter, it falls short in supporting efficient incremental
-   updates.  This limitation hampers the system's ability to efficiently
-   handle and incorporate incremental changes.
+   On the other hand, some organizations employ authoritative RPKI or
+   local data to disable IRR Route objects.  This approach, adopted by
+   RIPE NCC and IRRdv4, utilizes RPKI to validate and filter IRR Route
+   objects.  While this method can partially filter out the stale data
+   in IRRs, due to the limited coverage of RPKI and the lack of
+   effective means to resolve conflicting data between IRRs, the problem
+   of inconsistency persists.  It is crucial to establish a effective
+   communication mechanism among multiple route origin registry,
+   enabling negotiation and cross-validation of conflicting or special-
+   purpose route origin information.
 
-4.6.  Summary
+4.4.  Summary
 
    Currently, Internet Routing Registries (IRRs) and Resource Public Key
    Infrastructure (RPKI) are the main sources for route origin
    registries.  As the Internet evolves, the occurrence of MOAS prefixes
    becomes more prevalent, which places increased demands on the route
    origin registry system.  However, these systems face challenges such
-   as incomplete coverage, inaccurate data, as well as xxx (其它安全安威胁?).
+   as incomplete coverage, inaccurate data, as well as global
+   inconsistency.
 
    To tackle these challenges, MANRS have been made to integrate
    multiple route origin registries simultaneously.  However, the
@@ -326,11 +335,11 @@ Table of Contents
    effective data validation, which impedes the ability to handle
    inconsistencies resulting from inaccurate data.
 
-   Efforts are required to enhance the accuracy and reliability of route
-   origin registries by addressing the limitations of current
-   synchronization protocols.  By doing so, we can improve the
-   effectiveness of these registries in dealing with MOAS scenarios and
-   ensure a more robust route origin registry system.
+   Hence, it is imperative to continue striving towards the development
+   of a comprehensive route origin registry system that can effectively
+   discern between prefix hijacking and legitimate MOAS, while ensuring
+   a globally unified perspective on routing origins and maintaining a
+   high level of resilience.
 
 5.  Security Considerations
 
