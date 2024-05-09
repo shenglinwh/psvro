@@ -59,6 +59,7 @@ normative:
     RFC1786:
     RFC8182:
     RFC6480:
+    RFC8416:
 
 informative:
     RFC4272:
@@ -178,7 +179,7 @@ The current practice in IRRs involves the use of the Near-Real-Time Mirroring (N
 - The lack of validation of replicated data from mirrored sources in both IRRs and RPKIs is a significant concern. This leaves room for potential inconsistencies and conflicts with the existing data, compromising the consistency of the route origin registry.
 - The absence of application security mechanisms within these protocols is another area of vulnerability. This lack of security measures exposes the system to potential threats (e.g., data integrity) and unauthorized access.
 
-On the other hand, some organizations employ authoritative RPKI or local data to disable IRR Route objects. This approach, adopted by RIPE NCC and IRRdv4, utilizes RPKI to validate and filter IRR Route objects. Although this approach can partially eliminate outdated information in IRRs, the problem of inconsistency persists due to the limited coverage of RPKI and the absence of effective mechanisms to resolve conflicting data between IRRs. It is crucial to establish a effective communication mechanism among multiple route origin registry, enabling negotiation and cross-validation of conflicting or special-purpose route origin information.
+On the other hand, some organizations employ authoritative RPKI or local data {{RFC8416}} to disable IRR Route objects. This approach, adopted by RIPE NCC and IRRdv4, utilizes RPKI to validate and filter IRR Route objects. Although this approach can partially eliminate outdated information in IRRs, the problem of inconsistency persists due to the limited coverage of RPKI and the absence of effective mechanisms to resolve conflicting data between IRRs. It is crucial to establish a effective communication mechanism among multiple route origin registry, enabling negotiation and cross-validation of conflicting or special-purpose route origin information.
 
 ## Summary
 
@@ -186,7 +187,7 @@ Currently, Internet Routing Registries (IRRs) and Resource Public Key Infrastruc
 
 To tackle these challenges, MANRS have been made to integrate multiple route origin registries simultaneously. However, the existing synchronization protocols between these sources lack effective data validation, which impedes the ability to handle inconsistencies resulting from inaccurate data.
 
-Hence, it is imperative to continue striving towards the development of a verifiable route origin registry system that can effectively discern between prefix hijacking and legitimate MOAS, while ensuring a globally unified perspective on routing origins and maintaining a high level of resilience.
+Hence, it is imperative to continue striving towards the development of a extended route origin registry system that can effectively discern between prefix hijacking and legitimate MOAS, while ensuring a globally unified perspective on routing origins and maintaining a high level of resilience.
 
 
 # Security Considerations
