@@ -2,15 +2,10 @@
 
 
 
-SIDROPS                                                            K. Xu
-Internet-Draft                                       Tsinghua University
-Intended status: Informational                                  S. Jiang
-Expires: 10 November 2024                        Zhongguancun Laboratory
-                                                                  Z. Liu
-                                                                   Q. Li
-                                                                   J. Wu
-                                                     Tsinghua University
-                                                              9 May 2024
+SIDROPS                                                         S. Jiang
+Internet-Draft                                   Zhongguancun Laboratory
+Intended status: Informational                                9 May 2024
+Expires: 10 November 2024
 
 
                 Route Origin Registry Problem Statement
@@ -79,7 +74,7 @@ Table of Contents
      8.1.  Normative References
      8.2.  Informative References
    Acknowledgments
-   Authors' Addresses
+   Author's Address
 
 1.  Introduction
 
@@ -433,38 +428,10 @@ Acknowledgments
 
    TODO acknowledge.
 
-Authors' Addresses
-
-   Ke Xu
-   Tsinghua University
-   Beijing
-   China
-   Email: xuke@tsinghua.edu.cn
-
+Author's Address
 
    Shenglin Jiang
    Zhongguancun Laboratory
    Beijing
    China
    Email: jiangshl@zgclab.edu.cn
-
-
-   Zhuotao Liu
-   Tsinghua University
-   Beijing
-   China
-   Email: zhuotaoliu@tsinghua.edu.cn
-
-
-   Qi Li
-   Tsinghua University
-   Beijing
-   China
-   Email: qli01@tsinghua.edu.cn
-
-
-   Jianping Wu
-   Tsinghua University
-   Beijing
-   China
-   Email: jianping@cernet.edu.cn

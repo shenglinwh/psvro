@@ -5,11 +5,7 @@
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
 <title>Route Origin Registry Problem Statement</title>
-<meta content="Ke Xu" name="author">
 <meta content="Shenglin Jiang" name="author">
-<meta content="Zhuotao Liu" name="author">
-<meta content="Qi Li" name="author">
-<meta content="Jianping Wu" name="author">
 <meta content="
        Prefix hijacking, i.e., unauthorized announcement of a prefix, has emerged as a major security threat in the Border Gateway Protocol (BGP), garnering widespread attention. To mitigate such attacks, Internet Routing Registries (IRRs) and Resource Public Key Infrastructure (RPKI) have been developed, providing mappings of IP prefixes to authorized Autonomous Systems (ASes). Nonetheless, the challenges of distinguishing legitimate MOAS from prefix hijacking still persist due to the completeness and accuracy of the route origin information contained within IRRs and RPKI. This document serves to outline the problem statement for current route origin registry system. 
     " name="description">
@@ -1031,7 +1027,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <td class="right">May 2024</td>
 </tr></thead>
 <tfoot><tr>
-<td class="left">Xu, et al.</td>
+<td class="left">Jiang</td>
 <td class="center">Expires 10 November 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
@@ -1051,27 +1047,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
 <dd class="expires"><time datetime="2024-11-10">10 November 2024</time></dd>
-<dt class="label-authors">Authors:</dt>
+<dt class="label-authors">Author:</dt>
 <dd class="authors">
-<div class="author">
-      <div class="author-name">K. Xu</div>
-<div class="org">Tsinghua University</div>
-</div>
 <div class="author">
       <div class="author-name">S. Jiang</div>
 <div class="org">Zhongguancun Laboratory</div>
-</div>
-<div class="author">
-      <div class="author-name">Z. Liu</div>
-<div class="org">Tsinghua University</div>
-</div>
-<div class="author">
-      <div class="author-name">Q. Li</div>
-<div class="org">Tsinghua University</div>
-</div>
-<div class="author">
-      <div class="author-name">J. Wu</div>
-<div class="org">Tsinghua University</div>
 </div>
 </dd>
 </dl>
@@ -1182,7 +1162,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-toc.1-1.9.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
-            <p id="section-toc.1-1.10.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.10.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
 </li>
         </ul>
 </nav>
@@ -1431,19 +1411,9 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 </div>
 <div id="authors-addresses">
 <section id="appendix-B">
-      <h2 id="name-authors-addresses">
-<a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
+      <h2 id="name-authors-address">
+<a href="#name-authors-address" class="section-name selfRef">Author's Address</a>
       </h2>
-<address class="vcard">
-        <div dir="auto" class="left"><span class="fn nameRole">Ke Xu</span></div>
-<div dir="auto" class="left"><span class="org">Tsinghua University</span></div>
-<div dir="auto" class="left"><span class="locality">Beijing</span></div>
-<div dir="auto" class="left"><span class="country-name">China</span></div>
-<div class="email">
-<span>Email:</span>
-<a href="mailto:xuke@tsinghua.edu.cn" class="email">xuke@tsinghua.edu.cn</a>
-</div>
-</address>
 <address class="vcard">
         <div dir="auto" class="left"><span class="fn nameRole">Shenglin Jiang</span></div>
 <div dir="auto" class="left"><span class="org">Zhongguancun Laboratory</span></div>
@@ -1452,36 +1422,6 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <div class="email">
 <span>Email:</span>
 <a href="mailto:jiangshl@zgclab.edu.cn" class="email">jiangshl@zgclab.edu.cn</a>
-</div>
-</address>
-<address class="vcard">
-        <div dir="auto" class="left"><span class="fn nameRole">Zhuotao Liu</span></div>
-<div dir="auto" class="left"><span class="org">Tsinghua University</span></div>
-<div dir="auto" class="left"><span class="locality">Beijing</span></div>
-<div dir="auto" class="left"><span class="country-name">China</span></div>
-<div class="email">
-<span>Email:</span>
-<a href="mailto:zhuotaoliu@tsinghua.edu.cn" class="email">zhuotaoliu@tsinghua.edu.cn</a>
-</div>
-</address>
-<address class="vcard">
-        <div dir="auto" class="left"><span class="fn nameRole">Qi Li</span></div>
-<div dir="auto" class="left"><span class="org">Tsinghua University</span></div>
-<div dir="auto" class="left"><span class="locality">Beijing</span></div>
-<div dir="auto" class="left"><span class="country-name">China</span></div>
-<div class="email">
-<span>Email:</span>
-<a href="mailto:qli01@tsinghua.edu.cn" class="email">qli01@tsinghua.edu.cn</a>
-</div>
-</address>
-<address class="vcard">
-        <div dir="auto" class="left"><span class="fn nameRole">Jianping Wu</span></div>
-<div dir="auto" class="left"><span class="org">Tsinghua University</span></div>
-<div dir="auto" class="left"><span class="locality">Beijing</span></div>
-<div dir="auto" class="left"><span class="country-name">China</span></div>
-<div class="email">
-<span>Email:</span>
-<a href="mailto:jianping@cernet.edu.cn" class="email">jianping@cernet.edu.cn</a>
 </div>
 </address>
 </section>
