@@ -1303,7 +1303,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
             <p id="section-5.4-2.3.1">The absence of application security mechanisms within these protocols is another area of vulnerability. This lack of security measures exposes the system to potential threats (e.g., data integrity) and unauthorized access.<a href="#section-5.4-2.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-5.4-3">On the other hand, some organizations employ authoritative RPKI or local data to disable IRR Route objects. This approach, adopted by RIPE NCC and IRRdv4, utilizes RPKI to validate and filter IRR Route objects. Although this approach can partially eliminate outdated information in IRRs, the problem of inconsistency persists due to the limited coverage of RPKI and the absence of effective mechanisms to resolve conflicting data between IRRs. It is crucial to establish a effective communication mechanism among multiple route origin registry, enabling negotiation and cross-validation of conflicting or special-purpose route origin information.<a href="#section-5.4-3" class="pilcrow">¶</a></p>
+<p id="section-5.4-3">On the other hand, some organizations employ authoritative RPKI or local data <span>[<a href="#RFC8416" class="cite xref">RFC8416</a>]</span> to disable IRR Route objects. This approach, adopted by RIPE NCC and IRRdv4, utilizes RPKI to validate and filter IRR Route objects. Although this approach can partially eliminate outdated information in IRRs, the problem of inconsistency persists due to the limited coverage of RPKI and the absence of effective mechanisms to resolve conflicting data between IRRs. It is crucial to establish a effective communication mechanism among multiple route origin registry, enabling negotiation and cross-validation of conflicting or special-purpose route origin information.<a href="#section-5.4-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="summary">
@@ -1313,7 +1313,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
         </h3>
 <p id="section-5.5-1">Currently, Internet Routing Registries (IRRs) and Resource Public Key Infrastructure (RPKI) are the main sources for route origin registries. As the Internet evolves, the occurrence of MOAS prefixes becomes more prevalent, which places increased demands on the route origin registry system. However, these systems face challenges such as incomplete coverage, inaccurate data, as well as global inconsistency.<a href="#section-5.5-1" class="pilcrow">¶</a></p>
 <p id="section-5.5-2">To tackle these challenges, MANRS have been made to integrate multiple route origin registries simultaneously. However, the existing synchronization protocols between these sources lack effective data validation, which impedes the ability to handle inconsistencies resulting from inaccurate data.<a href="#section-5.5-2" class="pilcrow">¶</a></p>
-<p id="section-5.5-3">Hence, it is imperative to continue striving towards the development of a verifiable route origin registry system that can effectively discern between prefix hijacking and legitimate MOAS, while ensuring a globally unified perspective on routing origins and maintaining a high level of resilience.<a href="#section-5.5-3" class="pilcrow">¶</a></p>
+<p id="section-5.5-3">Hence, it is imperative to continue striving towards the development of a extended route origin registry system that can effectively discern between prefix hijacking and legitimate MOAS, while ensuring a globally unified perspective on routing origins and maintaining a high level of resilience.<a href="#section-5.5-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1361,8 +1361,12 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8182">[RFC8182]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Bruijnzeels, T.</span>, <span class="refAuthor">Muravskiy, O.</span>, <span class="refAuthor">Weber, B.</span>, and <span class="refAuthor">R. Austein</span>, <span class="refTitle">"The RPKI Repository Delta Protocol (RRDP)"</span>, <span class="seriesInfo">RFC 8182</span>, <span class="seriesInfo">DOI 10.17487/RFC8182</span>, <time datetime="2017-07" class="refDate">July 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8182">https://www.rfc-editor.org/rfc/rfc8182</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8416">[RFC8416]</dt>
+      <dd>
+<span class="refAuthor">Ma, D.</span>, <span class="refAuthor">Mandelberg, D.</span>, and <span class="refAuthor">T. Bruijnzeels</span>, <span class="refTitle">"Simplified Local Internet Number Resource Management with the RPKI (SLURM)"</span>, <span class="seriesInfo">RFC 8416</span>, <span class="seriesInfo">DOI 10.17487/RFC8416</span>, <time datetime="2018-08" class="refDate">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8416">https://www.rfc-editor.org/rfc/rfc8416</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>

@@ -306,15 +306,15 @@ Table of Contents
       integrity) and unauthorized access.
 
    On the other hand, some organizations employ authoritative RPKI or
-   local data to disable IRR Route objects.  This approach, adopted by
-   RIPE NCC and IRRdv4, utilizes RPKI to validate and filter IRR Route
-   objects.  Although this approach can partially eliminate outdated
-   information in IRRs, the problem of inconsistency persists due to the
-   limited coverage of RPKI and the absence of effective mechanisms to
-   resolve conflicting data between IRRs.  It is crucial to establish a
-   effective communication mechanism among multiple route origin
-   registry, enabling negotiation and cross-validation of conflicting or
-   special-purpose route origin information.
+   local data [RFC8416] to disable IRR Route objects.  This approach,
+   adopted by RIPE NCC and IRRdv4, utilizes RPKI to validate and filter
+   IRR Route objects.  Although this approach can partially eliminate
+   outdated information in IRRs, the problem of inconsistency persists
+   due to the limited coverage of RPKI and the absence of effective
+   mechanisms to resolve conflicting data between IRRs.  It is crucial
+   to establish a effective communication mechanism among multiple route
+   origin registry, enabling negotiation and cross-validation of
+   conflicting or special-purpose route origin information.
 
 5.5.  Summary
 
@@ -333,7 +333,7 @@ Table of Contents
    inconsistencies resulting from inaccurate data.
 
    Hence, it is imperative to continue striving towards the development
-   of a verifiable route origin registry system that can effectively
+   of a extended route origin registry system that can effectively
    discern between prefix hijacking and legitimate MOAS, while ensuring
    a globally unified perspective on routing origins and maintaining a
    high level of resilience.
@@ -373,6 +373,11 @@ Table of Contents
               "The RPKI Repository Delta Protocol (RRDP)", RFC 8182,
               DOI 10.17487/RFC8182, July 2017,
               <https://www.rfc-editor.org/rfc/rfc8182>.
+
+   [RFC8416]  Ma, D., Mandelberg, D., and T. Bruijnzeels, "Simplified
+              Local Internet Number Resource Management with the RPKI
+              (SLURM)", RFC 8416, DOI 10.17487/RFC8416, August 2018,
+              <https://www.rfc-editor.org/rfc/rfc8416>.
 
 8.2.  Informative References
 
