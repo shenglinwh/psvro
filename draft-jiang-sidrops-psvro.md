@@ -25,35 +25,35 @@ workgroup: "SIDROPS"
 
 author:
   -
-    fullname: Ke Xu
-    org: Tsinghua University
-    city: Beijing
-    country: China
-    email: xuke@tsinghua.edu.cn
-  -
     fullname: "Shenglin Jiang"
     organization: Zhongguancun Laboratory
     city: Beijing
     country: China
     email: "jiangshl@zgclab.edu.cn"
-  -
-    fullname: Zhuotao Liu
-    org: Tsinghua University
-    city: Beijing
-    country: China
-    email: zhuotaoliu@tsinghua.edu.cn
-  -
-    fullname: Qi Li
-    org: Tsinghua University
-    city: Beijing
-    country: China
-    email: qli01@tsinghua.edu.cn
-  -
-    fullname: Jianping Wu
-    org: Tsinghua University
-    city: Beijing
-    country: China
-    email: jianping@cernet.edu.cn
+#   -
+#     fullname: Ke Xu
+#     org: Tsinghua University
+#     city: Beijing
+#     country: China
+#     email: xuke@tsinghua.edu.cn
+#   -
+#     fullname: Zhuotao Liu
+#     org: Tsinghua University
+#     city: Beijing
+#     country: China
+#     email: zhuotaoliu@tsinghua.edu.cn
+#   -
+#     fullname: Qi Li
+#     org: Tsinghua University
+#     city: Beijing
+#     country: China
+#     email: qli01@tsinghua.edu.cn
+#   -
+#     fullname: Jianping Wu
+#     org: Tsinghua University
+#     city: Beijing
+#     country: China
+#     email: jianping@cernet.edu.cn
 
 normative:
     RFC1786:
