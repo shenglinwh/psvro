@@ -129,7 +129,7 @@ IRR and RPKI currently offer functionalities related to route origin registry. M
 On the other hand, the RPKI system, which was developed starting in 2008 and began its deployment in 2011, provides a formally verifiable framework. The RPKI system is based on resource certificates that extend the X.509 standard. It records the mapping between IP prefixes and their authorised ASes via Route Origin Authorization (ROA) objects. These ROA objects contain essential information such as the prefix, origin ASN, and MaxLength.
 
 
-# Prefix Hijacking and Legitimate MOAS 
+# Prefix Hijacking and Legitimate MOAS
 
 {{RFC1930}} suggests that a prefix should typically have a single Autonomous System (AS) as its origin, with a few exceptions. However, CAIDA's analysis on BGP routing data {{CAIDA}}, reveals that Multi-origin ASes (MOAS) have become a common phenomenon. There are various reasons that contribute to the emergence of MOAS prefixes:
 
