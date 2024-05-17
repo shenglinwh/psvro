@@ -1028,7 +1028,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Jiang</td>
-<td class="center">Expires 10 November 2024</td>
+<td class="center">Expires 18 November 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1041,12 +1041,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-jiang-sidrops-psvro-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-05-09" class="published">9 May 2024</time>
+<time datetime="2024-05-17" class="published">17 May 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-11-10">10 November 2024</time></dd>
+<dd class="expires"><time datetime="2024-11-18">18 November 2024</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1080,7 +1080,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 10 November 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 18 November 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1122,16 +1122,16 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-prefix-hijacking-and-legiti" class="internal xref">Prefix Hijacking and Legitimate MOAS</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
-            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-problem-statement-of-curren" class="internal xref">Problem Statement of current Route Origin Registry</a></p>
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-problems-in-current-route-o" class="internal xref">Problems in current Route Origin Registry</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
-                <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-incompleteness-of-resource-" class="internal xref">Incompleteness of resource certification</a></p>
+                <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-security-risks-from-partial" class="internal xref">Security Risks from Partial Adoption</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
-                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-security-risks-from-partial" class="internal xref">Security Risks from Partial Deployment</a></p>
+                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-inconsistency-between-diffe" class="internal xref">Inconsistency between different Route Origin Registries</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3">
-                <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-inconsistency-between-diffe" class="internal xref">Inconsistency between different Route Origin Registries</a></p>
+                <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-insufficiency-of-resource-c" class="internal xref">Insufficiency of resource certification</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4">
                 <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="auto internal xref">5.4</a>.  <a href="#name-synchronization-and-managem" class="internal xref">Synchronization and Management</a></p>
@@ -1173,7 +1173,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">The Border Gateway Protocol (BGP) is ubiquitously used for inter-domain routing. However, it lacks built-in security validation on whether its UPDATE information are legitimate <span>[<a href="#RFC4272" class="cite xref">RFC4272</a>]</span>. This poses concerns regarding prefix hijacking, where unauthorized announcements of prefixes can occur, simulating legitimate multi-origin autonomous system (MOAS).<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-1">The Border Gateway Protocol (BGP) is ubiquitously used for inter-domain routing. However, it lacks built-in security validation on whether its UPDATE information is legitimate <span>[<a href="#RFC4272" class="cite xref">RFC4272</a>]</span>. This poses concerns regarding prefix hijacking, where unauthorized announcements of prefixes can occur, simulating legitimate Multiple Origin ASes (MOAS).<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">Unfortunately, the current route origin registry system, such as Internet Routing Registry (IRR) (RFC1786) and Resource Public Key Infrastructure (RPKI) (RFC6480), are not effective in distinguishing between legitimate MOAS and prefix hijacking. There is a pressing need for an extended route origin registry system that can support registration and protection of legitimate MOAS, thereby mitigating the threats posed by prefix hijacking to the routing system.<a href="#section-1-2" class="pilcrow">¶</a></p>
 <p id="section-1-3">This document will primarily analyze the various scenarios of MOAS and highlight the limitations of the current route origin registry system. By examining these issues, our primary objective is to offer valuable insights to network operators, researchers, and policymakers for improving the security and robustness of the global routing system.<a href="#section-1-3" class="pilcrow">¶</a></p>
 </section>
@@ -1195,7 +1195,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-working-definition-of-route" class="section-name selfRef">Working Definition of Route Origin Registry</a>
       </h2>
 <p id="section-3-1">Route origin registry refers to a repository that records the mapping of IP prefixes to the ASes authorised to announce them. Resource holders can register route origin mapping relationships in route origin registry by themselves or delegate to others.<a href="#section-3-1" class="pilcrow">¶</a></p>
-<p id="section-3-2">IRR and RPKI currently offer functionalities related to route origin registry. Multiple IRRs, which have been in operation since 1995, serve as a globally distributed database for routing information. They record the  binding relationship between IPs and Autonomous System Numbers (ASes) via Route(6) objects, which are defined by the Routing Policy Specification Language (RPSL).<a href="#section-3-2" class="pilcrow">¶</a></p>
+<p id="section-3-2">IRR and RPKI currently offer functionalities related to route origin registry. Multiple IRRs, which have been in operation since 1995, serve as a globally distributed database for routing information. They record the  binding relationship between IPs and Autonomous Systems (ASes) via Route(6) objects, which are defined by the Routing Policy Specification Language (RPSL).<a href="#section-3-2" class="pilcrow">¶</a></p>
 <p id="section-3-3">On the other hand, the RPKI system, which was developed starting in 2008 and began its deployment in 2011, provides a formally verifiable framework. The RPKI system is based on resource certificates that extend the X.509 standard. It records the mapping between IP prefixes and their authorised ASes via Route Origin Authorization (ROA) objects. These ROA objects contain essential information such as the prefix, origin ASN, and MaxLength.<a href="#section-3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1204,66 +1204,63 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       <h2 id="name-prefix-hijacking-and-legiti">
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-prefix-hijacking-and-legiti" class="section-name selfRef">Prefix Hijacking and Legitimate MOAS</a>
       </h2>
-<p id="section-4-1"><span>[<a href="#RFC1930" class="cite xref">RFC1930</a>]</span> suggests that a prefix should typically have a single Autonomous System (AS) as its origin, with a few exceptions. However, CAIDA's analysis on BGP routing data <span>[<a href="#CAIDA" class="cite xref">CAIDA</a>]</span>, reveals that Multi-origin ASes (MOAS) have become a common phenomenon. There are various reasons that contribute to the emergence of MOAS prefixes:<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-1"><span>[<a href="#RFC1930" class="cite xref">RFC1930</a>]</span> suggests that a prefix should typically have a single Autonomous System (AS) as its origin, with a few exceptions. However, CAIDA's analysis on BGP routing data <span>[<a href="#CAIDA" class="cite xref">CAIDA</a>]</span> reveals that Multi-origin ASes (MOAS) have become a common phenomenon. There are various reasons that contribute to the emergence of MOAS prefixes:<a href="#section-4-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-4-2.1">
-          <p id="section-4-2.1.1"><strong><em>Multi-homing</em></strong>: When multi-homing occur without the use of BGP, it can result in MOAS conflicts. Assuming there is a link between ASx and ASy, and the routing on that link is done using either static routing or an Interior Gateway Protocol (IGP) without the use of BGP. From a BGP perspective, ASx is considered to have direct reachability to prefixes belonging to ASy.<a href="#section-4-2.1.1" class="pilcrow">¶</a></p>
+          <p id="section-4-2.1.1"><strong><em>Aggregation</em></strong>. According to <span>[<a href="#RFC1930" class="cite xref">RFC1930</a>]</span>, aggregation could result in prefix being originated from multiple possible ASes. For example, if the "Prefix 0/24" originates from AS A and the "Prefix 1/24" originates from AS B, aggregating them into "Prefix 0/23" with the originates from [AS A, AS B] may result in the loss of the origin AS information if the ATOMIC_AGGREGATE attributes of the aggregation announcements are not specific.<a href="#section-4-2.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-4-2.2">
-          <p id="section-4-2.2.1"><strong><em>Aggregation</em></strong>: According to <span>[<a href="#RFC1930" class="cite xref">RFC1930</a>]</span>, aggregation could result in routes that end in AS sets. Specifically, when the ATOMIC_AGGREGATE attributes of aggregation announcements are not specific, the origin AS may be lost, potentially leading to a prefix being originated from more than one AS.<a href="#section-4-2.2.1" class="pilcrow">¶</a></p>
+          <p id="section-4-2.2.1"><strong><em>Business consideration</em></strong>. Companies often choose providers that offer high-speed and reliable data services to host their servers. For efficient resource allocation, a parent organization that owns a large chunk of IP addresses may divide its address space among one or more child organizations, which choose different providers and ask them to announce the same prefix. For example, a multi-national company may advertise its prefix from multiple locations where it has offices.<a href="#section-4-2.2.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-4-2.3">
-          <p id="section-4-2.3.1"><strong><em>Business consideration</em></strong>: Companies often choose providers that offer high-speed and reliable data services to host their servers. For efficient resource allocation, a parent organization that owns a large chunk of IP addresses may divide its address space among one or more child organizations, which choose different providers and ask them to announce the same prefix. Additionally, a multi-national company may advertise its prefix from multiple locations where it has offices.<a href="#section-4-2.3.1" class="pilcrow">¶</a></p>
+          <p id="section-4-2.3.1"><strong><em>Multi-homing</em></strong>. When multi-homing occur without the use of BGP, it can result in MOAS conflicts. Assuming ASx is connected to two providers, ISP1 and ISP2. ISP1 is connected to ASx using BGP, while ISP2 is connected to ASx through static routes or an Interior Gateway Protocol (IGP). Both ISP1 and ISP2 advertise prefixes that belong to ASx.<a href="#section-4-2.3.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-4-2.4">
-          <p id="section-4-2.4.1"><strong><em>Traffic engineering</em></strong>: An organization may advertise reachability to its prefixes from multiple ASs it owns.<a href="#section-4-2.4.1" class="pilcrow">¶</a></p>
+          <p id="section-4-2.4.1"><strong><em>Internet eXchanges</em></strong>. When a prefix is associated with an exchange point, it becomes directly accessible from all the ASes connected to that exchange point. Each AS at the exchange point has the capability to advertise the prefix as if it originates directly from their own AS.<a href="#section-4-2.4.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-4-2.5">
-          <p id="section-4-2.5.1"><strong><em>Internet exchanges</em></strong>: Internet Exchanges (IX) prefixs can be directly reachable from all ASes at the exchange point. Each AS at the exchange point could advertise the prefix as directly originated from that AS.<a href="#section-4-2.5.1" class="pilcrow">¶</a></p>
+          <p id="section-4-2.5.1"><strong><em>Anycast</em></strong>. Anycast is often employed by content distribution networks (CDNs) to direct the requests of their customers to the nearest servers, ensuring speedy data delivery to their customers.<a href="#section-4-2.5.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-4-2.6">
-          <p id="section-4-2.6.1"><strong><em>Anycast</em></strong>: Anycast prefixes intended to originate from multiple ASes. This approach is potentially employed by content distribution networks (CDNs) to redirect traffic to the nearest servers, ensuring speedy data delivery to their customers.<a href="#section-4-2.6.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="section-4-2.7">
-          <p id="section-4-2.7.1"><strong><em>Prefix hijacking and misconfigurations</em></strong>: Malicious AS may advertise prefixes belonging to another organization, with the intention of attracting its traffic. Similarly, unwanted annoucements can occur due to misconfiguration.<a href="#section-4-2.7.1" class="pilcrow">¶</a></p>
+          <p id="section-4-2.6.1"><strong><em>Prefix hijacking and misconfigurations</em></strong>. A malicious AS may advertise prefixes belonging to another organization to attract its traffic. An AS may also make such annoucements unintentionally due to misconfiguration.<a href="#section-4-2.6.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="section-4-3">Distinguishing between prefix hijacking, misconfigurations, and legitimate MOAS can be a complex task. The challenge arises from the resemblance of these behaviors, as they often display similar characteristics. Moreover, accurately identifying and classifying these situations necessitates a route origin registry with high coverage and accuracy.<a href="#section-4-3" class="pilcrow">¶</a></p>
+<p id="section-4-3">Distinguishing between prefix hijacking, misconfiguration, and legitimate MOAS can be a complex task. The challenge arises from the resemblance of these behaviors, as they often display similar characteristics. Moreover, accurately identifying and classifying these situations necessitates a route origin registry with high coverage and accuracy.<a href="#section-4-3" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="problem-statement-of-current-route-origin-registry">
+<div id="problems-in-current-route-origin-registry">
 <section id="section-5">
-      <h2 id="name-problem-statement-of-curren">
-<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-problem-statement-of-curren" class="section-name selfRef">Problem Statement of current Route Origin Registry</a>
+      <h2 id="name-problems-in-current-route-o">
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-problems-in-current-route-o" class="section-name selfRef">Problems in current Route Origin Registry</a>
       </h2>
-<div id="incompleteness-of-resource-certification">
+<div id="security-risks-from-partial-adoption">
 <section id="section-5.1">
-        <h3 id="name-incompleteness-of-resource-">
-<a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-incompleteness-of-resource-" class="section-name selfRef">Incompleteness of resource certification</a>
-        </h3>
-<p id="section-5.1-1">As mentioned in <span>[<a href="#RFC7682" class="cite xref">RFC7682</a>]</span>, the lack of certification and incentives for maintaining up-to-date data within IRRs leads to lower accuracy of the information. While a few IRRs exhibit regular updates, others have low activity with many Route(6) objects remaining unchanged for several years. Recent measurement <span>[<a href="#IRRegularities" class="cite xref">IRRegularities</a>]</span> reveals that IRRs with low update activity exhibit lower overlap with BGP announcements than those with high update activity. This indicates that IRRs with lower activity may contain a higher proportion of outdated and stale Route(6) objects, thereby impacting the reliability of the route origin registry.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
-<p id="section-5.1-2">RPKI is a hierarchical Public Key Infrastructure (PKI) that binds Internet Number Resources (INRs) such as Autonomous System Numbers (ASNs) and IP addresses to public keys via certificates. However, there is a risk of conflicts in INRs ownership when misconfiguration or malicious operations occur at the upper tier, resulting in multiple lower tiers being allocated the same INRs. Additionally, the existence of legitimate MOAS necessitates the authorization of binding between a prefix with multiple ASes, further complicating the issue. Balancing the protection of legitimate MOAS while minimizing conflicts in INRs allocation presents a challenging problem that requires innovative solutions. Furthermore, it is worth noting that RPKI Relying Parties <span>[<a href="#RFC8897" class="cite xref">RFC8897</a>]</span> have not yet standardized the process of constructing certificate chains and handling exceptions such as Certificate Revocation Lists (CRLs) and Manifests. This lack of standardization has resulted in different views on the RPKI records by Relying Parties (RPs) who adopt different implementations. Consequently, ASes served by different RPs may have varying validation results for the same route announcement.<a href="#section-5.1-2" class="pilcrow">¶</a></p>
-<p id="section-5.1-3">Consequently, the absence of data validation and standardization in operations within the IRR or RPKI framework means that there is no guarantee of the accuracy of the data registered in any route origin registry.<a href="#section-5.1-3" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="security-risks-from-partial-deployment">
-<section id="section-5.2">
         <h3 id="name-security-risks-from-partial">
-<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-security-risks-from-partial" class="section-name selfRef">Security Risks from Partial Deployment</a>
+<a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-security-risks-from-partial" class="section-name selfRef">Security Risks from Partial Adoption</a>
         </h3>
-<p id="section-5.2-1">As the adoption of Resource Public Key Infrastructure (RPKI) continues to grow, the number of address prefixes registered within RPKI is gradually increasing. However, recent reports from the Number Resource Organization (NRO) indicate that the coverage of IP prefixes within ROA has been relatively low. Notably, the protection rate of route origin validation (ROV), as measured by Mutually Agreed Norms for Routing Security (MANRS) <span>[<a href="#MANRS" class="cite xref">MANRS</a>]</span>, is significantly lower than the coverage of ROAs. Additionally, <span>[<a href="#IRRegularities" class="cite xref">IRRegularities</a>]</span> also notes a decreasing trend in IP Prefix coverage in certain IRRs.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
-<p id="section-5.2-2">On the other hand, it becomes evident that currently active IRRs and RPKI offer limited coverage for MOAS, particularly in the case of IPv6. Moreover, the existing authoritative IRRs (maintained by regional Internet registries) and RPKI typically only allow registration of address blocks for self-managed purposes, posing a significant obstacle in supporting many legitimate MOAS prefixes.<a href="#section-5.2-2" class="pilcrow">¶</a></p>
-<p id="section-5.2-3">Limited IP prefix coverage within the current route origin registry, especially for MOAS prefixes, hinders the complete validation of route announcements, significantly limiting the motivation for network operators to utilize route origin registration.<a href="#section-5.2-3" class="pilcrow">¶</a></p>
+<p id="section-5.1-1">As the adoption of Resource Public Key Infrastructure (RPKI) continues to grow, the number of address prefixes registered within RPKI is gradually increasing. However, recent reports from the Number Resource Organization (NRO) indicate that the coverage of IP prefixes within ROAs is still relatively low, and the adoption rate of route origin validation (ROV), as measured by Mutually Agreed Norms for Routing Security (MANRS) <span>[<a href="#MANRS" class="cite xref">MANRS</a>]</span>, is even significantly lower than the coverage of ROAs. Similarly, <span>[<a href="#IRRegularities" class="cite xref">IRRegularities</a>]</span> also notes a decreasing trend in IP Prefix coverage in certain IRRs.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+<p id="section-5.1-2">On the other hand, it becomes evident that currently active IRRs and RPKI offer limited coverage for MOAS, particularly in the case of IPv6. They typically only allow registration of address blocks for self-managed purposes, posing a significant obstacle in supporting many legitimate MOAS prefixes.<a href="#section-5.1-2" class="pilcrow">¶</a></p>
+<p id="section-5.1-3">Limited IP prefix coverage within the current route origin registry, especially for MOAS prefixes, hinders the complete validation of route announcements, significantly limiting the motivation for network operators to utilize route origin registration.<a href="#section-5.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="inconsistency-between-different-route-origin-registries">
-<section id="section-5.3">
+<section id="section-5.2">
         <h3 id="name-inconsistency-between-diffe">
-<a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-inconsistency-between-diffe" class="section-name selfRef">Inconsistency between different Route Origin Registries</a>
+<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-inconsistency-between-diffe" class="section-name selfRef">Inconsistency between different Route Origin Registries</a>
         </h3>
-<p id="section-5.3-1">Based on the analysis presented in the previous sections, it is evident that relying solely on a single source of route origin registry is insufficient in route origin validation. To address this issue effectively, it is recommended to integrate the RPKI and multiple active IRRs. This integration would not only enhance the IP address space coverage and AS participation rate but also improve the accuracy of route origin registry.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
-<p id="section-5.3-2">However, it is important to note that this fusion approach may encounter several limitations. As highlighted in <span>[<a href="#IRRegularities" class="cite xref">IRRegularities</a>]</span>, inconsistencies exist among the Route(6) objects across different IRRs. This inconsistency can be attributed to the chronic neglect by IRR customers. For instance, some companies may register Route(6) objects in some IRRs but fail to update them in all the route origin registries, resulting in outdated and stale Route(6) objects. Furthermore, it is observed that a higher number of IRRs exhibit lower consistency with RPKI. In practice, different networks often use different data and methodologies to perform route validation and filtering, resulting in disparate outcome, especially when ROA and IRR data conflict with each other.<a href="#section-5.3-2" class="pilcrow">¶</a></p>
-<p id="section-5.3-3">As a result, while integrating the RPKI and multiple active IRRs can improve the effectiveness of route origin validation, it is essential to address the issues of inconsistencies between different route origin registries.<a href="#section-5.3-3" class="pilcrow">¶</a></p>
+<p id="section-5.2-1">Based on the analysis presented in the previous sections, it is evident that relying solely on a single source of route origin registry is insufficient in route origin validation. To address this issue effectively, it is recommended to integrate the RPKI and multiple active IRRs by MANRS. This integration would not only enhance the IP address space coverage and AS participation rate but also improve the accuracy of route origin registry.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+<p id="section-5.2-2">However, it is important to note that this fusion approach may encounter several limitations. As highlighted in <span>[<a href="#IRRegularities" class="cite xref">IRRegularities</a>]</span>, inconsistencies exist among the Route(6) objects across different IRRs. This inconsistency can be attributed to the chronic neglect by IRR customers. For instance, some companies may register Route(6) objects in some IRRs but fail to update them in all the route origin registries, resulting in outdated and stale Route(6) objects. Furthermore, it is observed that a higher number of IRRs exhibit lower consistency with RPKI. In practice, different networks often use different data and methodologies to perform route validation and filtering, resulting in disparate outcome, especially when ROA and IRR data conflict with each other.<a href="#section-5.2-2" class="pilcrow">¶</a></p>
+<p id="section-5.2-3">As a result, while integrating the RPKI and multiple active IRRs can improve the effectiveness of route origin validation, it is essential to address the issues of inconsistencies between different route origin registries.<a href="#section-5.2-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="insufficiency-of-resource-certification">
+<section id="section-5.3">
+        <h3 id="name-insufficiency-of-resource-c">
+<a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-insufficiency-of-resource-c" class="section-name selfRef">Insufficiency of resource certification</a>
+        </h3>
+<p id="section-5.3-1">As mentioned in <span>[<a href="#RFC7682" class="cite xref">RFC7682</a>]</span>, the lack of certification and incentives for maintaining up-to-date data within IRRs leads to low accuracy of the information. While a few IRRs exhibit regular updates, others have low activity with many Route(6) objects remaining unchanged for several years. Recent measurement <span>[<a href="#IRRegularities" class="cite xref">IRRegularities</a>]</span> reveals that IRRs with low update activity exhibit lower overlap with BGP announcements than those with high update activity. This indicates that IRRs with lower activity may contain a higher proportion of outdated and stale Route(6) objects, thereby impacting the reliability of the route origin registry.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
+<p id="section-5.3-2">RPKI is a hierarchical Public Key Infrastructure (PKI) that binds Internet Number Resources (INRs) such as Autonomous System Numbers (ASNs) and IP addresses to public keys via certificates. However, there is a risk of conflicts in INRs ownership when misconfiguration or malicious operations occur at the upper tier, resulting in multiple lower tiers being allocated the same INRs. Additionally, the existence of legitimate MOAS necessitates the authorization of binding between a prefix with multiple ASes, further complicating the issue. Balancing the protection of legitimate MOAS while minimizing risks in INRs certificates presents a challenging problem that requires innovative solutions. Furthermore, it is worth noting that RPKI Relying Parties <span>[<a href="#RFC8897" class="cite xref">RFC8897</a>]</span> have not yet standardized the process of constructing certificate chains and handling exceptions such as Certificate Revocation Lists (CRLs) and Manifests. This lack of standardization has resulted in different views on the RPKI records by Relying Parties (RPs) who adopt different implementations. Consequently, ASes served by different RPs may have varying validation results for the same route announcement.<a href="#section-5.3-2" class="pilcrow">¶</a></p>
+<p id="section-5.3-3">Consequently, the absence of data validation and standardization in operations within the IRR or RPKI framework means that there is no guarantee of the accuracy of the data registered in any route origin registry.<a href="#section-5.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="synchronization-and-management">
@@ -1280,10 +1277,10 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
             <p id="section-5.4-2.2.1">The lack of validation of replicated data from mirrored sources in both IRRs and RPKIs is a significant concern. This leaves room for potential inconsistencies and conflicts with the existing data, compromising the consistency of the route origin registry.<a href="#section-5.4-2.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-5.4-2.3">
-            <p id="section-5.4-2.3.1">The absence of application security mechanisms within these protocols is another area of vulnerability. This lack of security measures exposes the system to potential threats (e.g., data integrity) and unauthorized access.<a href="#section-5.4-2.3.1" class="pilcrow">¶</a></p>
+            <p id="section-5.4-2.3.1">The absence of application security mechanisms within these protocols is another area of vulnerability. This lack of security measures exposes the system to unauthorized access and compromise on data integrity.<a href="#section-5.4-2.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-5.4-3">On the other hand, some organizations employ authoritative RPKI or local data <span>[<a href="#RFC8416" class="cite xref">RFC8416</a>]</span> to disable IRR Route objects. This approach, adopted by RIPE NCC and IRRdv4, utilizes RPKI to validate and filter IRR Route objects. Although this approach can partially eliminate outdated information in IRRs, the problem of inconsistency persists due to the limited coverage of RPKI and the absence of effective mechanisms to resolve conflicting data between IRRs. It is crucial to establish a effective communication mechanism among multiple route origin registry, enabling negotiation and cross-validation of conflicting or special-purpose route origin information.<a href="#section-5.4-3" class="pilcrow">¶</a></p>
+<p id="section-5.4-3">Although some approaches attempt to optimise the quality of the route origin registry, e.g. RIPE NCC, IRRdv4 using RPKI to validate/filter IRR Route(6) objects, and RFC8416 proposing that RPs can customise route origin with local data, the problem of inconsistency persists due to the limited coverage of RPKI and the lack of effective mechanisms to resolve conflicting data between IRRs. It is crucial to establish a effective communication mechanism among multiple route origin registry, enabling negotiation and cross-validation of conflicting or special-purpose route origin information.<a href="#section-5.4-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="summary">
@@ -1291,9 +1288,8 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
         <h3 id="name-summary">
 <a href="#section-5.5" class="section-number selfRef">5.5. </a><a href="#name-summary" class="section-name selfRef">Summary</a>
         </h3>
-<p id="section-5.5-1">Currently, Internet Routing Registries (IRRs) and Resource Public Key Infrastructure (RPKI) are the main sources for route origin registries. As the Internet evolves, the occurrence of MOAS prefixes becomes more prevalent, which places increased demands on the route origin registry system. However, these systems face challenges such as incomplete coverage, inaccurate data, as well as global inconsistency.<a href="#section-5.5-1" class="pilcrow">¶</a></p>
-<p id="section-5.5-2">To tackle these challenges, MANRS have been made to integrate multiple route origin registries simultaneously. However, the existing synchronization protocols between these sources lack effective data validation, which impedes the ability to handle inconsistencies resulting from inaccurate data.<a href="#section-5.5-2" class="pilcrow">¶</a></p>
-<p id="section-5.5-3">Hence, it is imperative to continue striving towards the development of a extended route origin registry system that can effectively discern between prefix hijacking and legitimate MOAS, while ensuring a globally unified perspective on routing origins and maintaining a high level of resilience.<a href="#section-5.5-3" class="pilcrow">¶</a></p>
+<p id="section-5.5-1">The current route origin registry systems, namely Internet Routing Registries (IRRs) and Resource Public Key Infrastructure (RPKI), are facing challenges as the increased occurrence of Multiple Origin Autonomous System (MOAS) prefixes. These challenges mainly include low adoption rates, inaccurate data, insufficient resource certification, and incomplete multi-source collaboration mechanisms.<a href="#section-5.5-1" class="pilcrow">¶</a></p>
+<p id="section-5.5-2">To address these challenges, it is imperative to continue striving towards the development of a extended route origin registry system that can effectively discern between prefix hijacking and legitimate MOAS, while ensuring a globally unified perspective on routing origins and maintaining a high level of resilience.<a href="#section-5.5-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1379,7 +1375,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <dd class="break"></dd>
 <dt id="NRTMv4">[NRTMv4]</dt>
         <dd>
-<span class="refAuthor">Romijn, S.</span>, <span class="refAuthor">Snijders, J.</span>, <span class="refAuthor">Shryane, E.</span>, and <span class="refAuthor">S. Konstantaras</span>, <span class="refTitle">"Near Real Time Mirroring (NRTM) version 4"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-grow-nrtm-v4-03</span>, <time datetime="2023-11-26" class="refDate">26 November 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-grow-nrtm-v4-03">https://datatracker.ietf.org/doc/html/draft-ietf-grow-nrtm-v4-03</a>&gt;</span>. </dd>
+<span class="refAuthor">Romijn, S.</span>, <span class="refAuthor">Snijders, J.</span>, <span class="refAuthor">Shryane, E.</span>, and <span class="refAuthor">S. Konstantaras</span>, <span class="refTitle">"Near Real Time Mirroring (NRTM) version 4"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-grow-nrtm-v4-04</span>, <time datetime="2024-05-16" class="refDate">16 May 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-grow-nrtm-v4-04">https://datatracker.ietf.org/doc/html/draft-ietf-grow-nrtm-v4-04</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC1930">[RFC1930]</dt>
         <dd>
