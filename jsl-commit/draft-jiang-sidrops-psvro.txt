@@ -15,15 +15,10 @@ Abstract
 
    Prefix hijacking, i.e., unauthorized announcement of a prefix, has
    emerged as a major security threat in the Border Gateway Protocol
-   (BGP), garnering widespread attention.  To mitigate such attacks,
-   Internet Routing Registries (IRRs) and Resource Public Key
-   Infrastructure (RPKI) have been developed, providing mappings of IP
-   prefixes to authorized Autonomous Systems (ASes).  Nonetheless, the
-   challenges of distinguishing legitimate MOAS from prefix hijacking
-   still persist due to the completeness and accuracy of the route
-   origin information contained within IRRs and RPKI.  This document
-   serves to outline the problem statement for current route origin
-   registry system.
+   (BGP), garnering widespread attention.  To migrate such attacks while
+   supporting legitimate MOAS, higher requirements are placed on the
+   route origin registry system.  This document serves to outline the
+   problem statement for current route origin registry system.
 
 Status of This Memo
 
@@ -110,41 +105,40 @@ Table of Contents
 
 3.  Working Definition of Route Origin Registry
 
-   Route origin registry refers to a repository that records the mapping
-   of IP prefixes to the ASes authorised to announce them.  Resource
+   Route origin registry refers to a system that records the mapping of
+   IP prefixes to the ASes authorised to announce them.  Resource
    holders can register route origin mapping relationships in route
    origin registry by themselves or delegate to others.
 
    IRR and RPKI currently offer functionalities related to route origin
-   registry.  Multiple IRRs, which have been in operation since 1995,
-   serve as a globally distributed database for routing information.
-   They record the binding relationship between IPs and Autonomous
-   Systems (ASes) via Route(6) objects, which are defined by the Routing
-   Policy Specification Language (RPSL).
+   registry.  IRRs, which have been in operation since 1995, serve as a
+   globally distributed database for routing information.  They record
+   the binding relationship between IPs and Autonomous Systems (ASes)
+   via Route(6) objects, which are defined by the Routing Policy
+   Specification Language (RPSL).
 
    On the other hand, the RPKI system, which was developed starting in
-   2008 and began its deployment in 2011, provides a formally verifiable
-   framework.  The RPKI system is based on resource certificates that
-   extend the X.509 standard.  It records the mapping between IP
-   prefixes and their authorised ASes via Route Origin Authorization
-   (ROA) objects.  These ROA objects contain essential information such
-   as the prefix, origin ASN, and MaxLength.
+   2008, provides a formally verifiable framework.  The RPKI system is
+   based on resource certificates that extend the X.509 standard.  It
+   records the mapping between IP prefixes and their authorised ASes via
+   Route Origin Authorization (ROA) objects.  These ROA objects contain
+   essential information such as the prefix, origin ASN, and MaxLength.
 
 4.  Prefix Hijacking and Legitimate MOAS
 
    [RFC1930] suggests that a prefix should typically have a single
    Autonomous System (AS) as its origin, with a few exceptions.
    However, CAIDA's analysis on BGP routing data [CAIDA] reveals that
-   Multi-origin ASes (MOAS) have become a common phenomenon.  There are
-   various reasons that contribute to the emergence of MOAS prefixes:
+   MOAS have become a common phenomenon.  There are various reasons that
+   contribute to the emergence of MOAS prefixes:
 
    *  *_Aggregation_*. According to [RFC1930], aggregation could result
-      in prefix being originated from multiple possible ASes.  For
-      example, if the "Prefix 0/24" originates from AS A and the "Prefix
-      1/24" originates from AS B, aggregating them into "Prefix 0/23"
-      with the originates from [AS A, AS B] may result in the loss of
-      the origin AS information if the ATOMIC_AGGREGATE attributes of
-      the aggregation announcements are not specific.
+      in prefix originated from multiple possible ASes.  For example, if
+      the "Prefix 0/24" originates from ASx and the "Prefix 1/24"
+      originates from ASy, aggregating them into "Prefix 0/23" with the
+      originates from [ASx, ASy] may result in the loss of the specific
+      origin AS information if the ATOMIC_AGGREGATE attributes of the
+      aggregation announcements are not specific.
 
    *  *_Business consideration_*. Companies often choose providers that
       offer high-speed and reliable data services to host their servers.
@@ -158,9 +152,9 @@ Table of Contents
    *  *_Multi-homing_*. When multi-homing occur without the use of BGP,
       it can result in MOAS conflicts.  Assuming ASx is connected to two
       providers, ISP1 and ISP2.  ISP1 is connected to ASx using BGP,
-      while ISP2 is connected to ASx through static routes or an
-      Interior Gateway Protocol (IGP).  Both ISP1 and ISP2 advertise
-      prefixes that belong to ASx.
+      while ISP2 is connected to ASx through static routes or Interior
+      Gateway Protocol (IGP).  Both ISP1 and ISP2 advertise prefixes
+      that belong to ASx.
 
    *  *_Internet eXchanges_*. When a prefix is associated with an
       exchange point, it becomes directly accessible from all the ASes
@@ -215,9 +209,9 @@ Table of Contents
    evident that relying solely on a single source of route origin
    registry is insufficient in route origin validation.  To address this
    issue effectively, it is recommended to integrate the RPKI and
-   multiple active IRRs by MANRS.  This integration would not only
-   enhance the IP address space coverage and AS participation rate but
-   also improve the accuracy of route origin registry.
+   multiple active IRRs.  This integration would not only enhance the IP
+   address space coverage and AS participation rate but also improve the
+   accuracy of route origin registry.
 
    However, it is important to note that this fusion approach may
    encounter several limitations.  As highlighted in [IRRegularities],
@@ -261,13 +255,13 @@ Table of Contents
    issue.  Balancing the protection of legitimate MOAS while minimizing
    risks in INRs certificates presents a challenging problem that
    requires innovative solutions.  Furthermore, it is worth noting that
-   RPKI Relying Parties [RFC8897] have not yet standardized the process
-   of constructing certificate chains and handling exceptions such as
-   Certificate Revocation Lists (CRLs) and Manifests.  This lack of
-   standardization has resulted in different views on the RPKI records
-   by Relying Parties (RPs) who adopt different implementations.
-   Consequently, ASes served by different RPs may have varying
-   validation results for the same route announcement.
+   RPKI Relying Parties (RPs)[RFC8897] have not yet standardized the
+   process of constructing certificate chains and handling exceptions
+   such as Certificate Revocation Lists (CRLs) and Manifests.  This lack
+   of standardization has resulted in different views on the RPKI
+   records by RPs who adopt different implementations.  Consequently,
+   ASes served by different RPs may have varying validation results for
+   the same route announcement.
 
    Consequently, the absence of data validation and standardization in
    operations within the IRR or RPKI framework means that there is no
@@ -288,10 +282,10 @@ Table of Contents
       issues.  This can be problematic when timeliness and accuracy are
       crucial.
 
-   *  The lack of validation of replicated data from mirrored sources in
-      both IRRs and RPKIs is a significant concern.  This leaves room
-      for potential inconsistencies and conflicts with the existing
-      data, compromising the consistency of the route origin registry.
+   *  The absence of validation for replicated data from mirrored
+      sources in both IRRs and RPKI is a legitimate concern.  This
+      situation creates a considerable risk for inconsistencies and
+      conflicts with the current data.
 
    *  The absence of application security mechanisms within these
       protocols is another area of vulnerability.  This lack of security
@@ -300,7 +294,7 @@ Table of Contents
 
    Although some approaches attempt to optimise the quality of the route
    origin registry, e.g.  RIPE NCC, IRRdv4 using RPKI to validate/filter
-   IRR Route(6) objects, and RFC8416 proposing that RPs can customise
+   IRR Route(6) objects, and [RFC8416] proposing that RPs can customise
    route origin with local data, the problem of inconsistency persists
    due to the limited coverage of RPKI and the lack of effective
    mechanisms to resolve conflicting data between IRRs.  It is crucial
@@ -314,7 +308,7 @@ Table of Contents
    Registries (IRRs) and Resource Public Key Infrastructure (RPKI), are
    facing challenges as the increased occurrence of Multiple Origin
    Autonomous System (MOAS) prefixes.  These challenges mainly include
-   low adoption rates, inaccurate data, insufficient resource
+   low adoption rates, global inconsistency, insufficient resource
    certification, and incomplete multi-source collaboration mechanisms.
 
    To address these challenges, it is imperative to continue striving
