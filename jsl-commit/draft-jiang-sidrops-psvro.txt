@@ -4,8 +4,8 @@
 
 SIDROPS                                                         S. Jiang
 Internet-Draft                                   Zhongguancun Laboratory
-Intended status: Informational                               17 May 2024
-Expires: 18 November 2024
+Intended status: Informational                               21 May 2024
+Expires: 22 November 2024
 
 
                 Route Origin Registry Problem Statement
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 18 November 2024.
+   This Internet-Draft will expire on 22 November 2024.
 
 Copyright Notice
 
@@ -84,7 +84,7 @@ Table of Contents
    Internet Routing Registry (IRR) (RFC1786) and Resource Public Key
    Infrastructure (RPKI) (RFC6480), are not effective in distinguishing
    between legitimate MOAS and prefix hijacking.  There is a pressing
-   need for an extended route origin registry system that can support
+   need for an verifiable route origin registry system that can support
    registration and protection of legitimate MOAS, thereby mitigating
    the threats posed by prefix hijacking to the routing system.
 
@@ -312,7 +312,7 @@ Table of Contents
    certification, and incomplete multi-source collaboration mechanisms.
 
    To address these challenges, it is imperative to continue striving
-   towards the development of a extended route origin registry system
+   towards the development of a verifiable route origin registry system
    that can effectively discern between prefix hijacking and legitimate
    MOAS, while ensuring a globally unified perspective on routing
    origins and maintaining a high level of resilience.
