@@ -4,8 +4,14 @@
 
 SIDROPS                                                         S. Jiang
 Internet-Draft                                   Zhongguancun Laboratory
-Intended status: Informational                               21 May 2024
-Expires: 22 November 2024
+Intended status: Informational                                     K. Xu
+Expires: 28 November 2024                                          Q. Li
+                                                     Tsinghua University
+                                                                  X. Shi
+                                                 Zhongguancun Laboratory
+                                                                   D. Ma
+                                                                    ZDNS
+                                                             27 May 2024
 
 
                 Route Origin Registry Problem Statement
@@ -35,7 +41,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 November 2024.
+   This Internet-Draft will expire on 28 November 2024.
 
 Copyright Notice
 
@@ -69,7 +75,7 @@ Table of Contents
      8.1.  Normative References
      8.2.  Informative References
    Acknowledgments
-   Author's Address
+   Authors' Addresses
 
 1.  Introduction
 
@@ -412,10 +418,38 @@ Acknowledgments
 
    TODO acknowledge.
 
-Author's Address
+Authors' Addresses
 
    Shenglin Jiang
    Zhongguancun Laboratory
    Beijing
    China
    Email: jiangshl@zgclab.edu.cn
+
+
+   Ke Xu
+   Tsinghua University
+   Beijing
+   China
+   Email: xuke@tsinghua.edu.cn
+
+
+   Qi Li
+   Tsinghua University
+   Beijing
+   China
+   Email: qli01@tsinghua.edu.cn
+
+
+   Xingang Shi
+   Zhongguancun Laboratory
+   Beijing
+   China
+   Email: shixg@cernet.edu.cn
+
+
+   Di Ma
+   ZDNS
+   Beijing
+   China
+   Email: madi@zdns.cn
