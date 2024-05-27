@@ -44,8 +44,7 @@ author:
     email: qli01@tsinghua.edu.cn
   -
     fullname: Xingang Shi
-    org: Tsinghua University
-    org: Zhongguancun Laboratory
+    org: Tsinghua University &amp; Zhongguancun Laboratory
     city: Beijing
     country: China
     email: shixg@cernet.edu.cn
