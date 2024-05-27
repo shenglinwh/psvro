@@ -45,7 +45,7 @@ author:
   -
     fullname: Xingang Shi
     org: Tsinghua University
-    org: Zhongguancun Laboratory 
+    org: Zhongguancun Laboratory
     city: Beijing
     country: China
     email: shixg@cernet.edu.cn
