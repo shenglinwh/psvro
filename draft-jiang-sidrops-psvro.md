@@ -49,11 +49,11 @@ author:
     country: China
     email: shixg@cernet.edu.cn
   -
-    fullname: Di Ma
-    org: ZDNS
+    fullname: Zhuotao Liu
+    org: Tsinghua University
     city: Beijing
     country: China
-    email: madi@zdns.cn
+    email: zhuotaoliu@tsinghua.edu.cn
 
 
 normative:
