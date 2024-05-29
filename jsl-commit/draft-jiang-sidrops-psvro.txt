@@ -416,7 +416,7 @@ Table of Contents
 
 Acknowledgments
 
-   The authors would like to thank Di Ma, Yangfei Guo, Qi Li, Shuhe
+   The authors would like to thank Yangfei Guo, Di Ma, Qi Li, Shuhe
    Wang, Xiaoliang Wang, Hui Wang, etc. for their valuable comments on
    this document.
 
