@@ -215,9 +215,7 @@ Table of Contents
    evident that relying solely on a single source of route origin
    registry is insufficient in route origin validation.  To address this
    issue effectively, it is recommended to integrate the RPKI and
-   multiple active IRRs.  This integration would not only enhance the IP
-   address space coverage and AS participation rate but also improve the
-   accuracy of route origin registry.
+   multiple active IRRs.
 
    However, it is important to note that this fusion approach may
    encounter several limitations.  As highlighted in [IRRegularities],
@@ -241,14 +239,12 @@ Table of Contents
 
    As mentioned in [RFC7682], the lack of certification and incentives
    for maintaining up-to-date data within IRRs leads to low accuracy of
-   the information.  While a few IRRs exhibit regular updates, others
-   have low activity with many Route(6) objects remaining unchanged for
-   several years.  Recent measurement [IRRegularities] reveals that IRRs
-   with low update activity exhibit lower overlap with BGP announcements
-   than those with high update activity.  This indicates that IRRs with
-   lower activity may contain a higher proportion of outdated and stale
-   Route(6) objects, thereby impacting the reliability of the route
-   origin registry.
+   the information.  Recent measurement [IRRegularities] reveals that
+   IRRs with low update activity exhibit lower overlap with BGP
+   announcements than those with high update activity.  This indicates
+   that IRRs with lower activity may contain a higher proportion of
+   outdated and stale Route(6) objects, thereby impacting the
+   reliability of the route origin registry.
 
    RPKI is a hierarchical Public Key Infrastructure (PKI) that binds
    Internet Number Resources (INRs) such as Autonomous System Numbers
@@ -261,7 +257,7 @@ Table of Contents
    issue.  Balancing the protection of legitimate MOAS while minimizing
    risks in INRs certificates presents a challenging problem that
    requires innovative solutions.  Furthermore, it is worth noting that
-   RPKI Relying Parties (RPs)[RFC8897] have not yet standardized the
+   RPKI Relying Parties (RPs) [RFC8897] have not yet standardized the
    process of constructing certificate chains and handling exceptions
    such as Certificate Revocation Lists (CRLs) and Manifests.  This lack
    of standardization has resulted in different views on the RPKI
