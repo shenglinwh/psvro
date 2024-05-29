@@ -150,7 +150,7 @@ Distinguishing between prefix hijacking, misconfiguration, and legitimate MOAS c
 
 ## Security Risks from Partial Adoption
 
-As the adoption of Resource Public Key Infrastructure (RPKI) continues to grow, the number of address prefixes registered within RPKI is gradually increasing. However, recent reports from the Number Resource Organization (NRO) {{NRO}} indicate that the coverage of IP prefixes within ROAs is still relatively low, and the adoption rate of route origin validation (ROV), as measured by Mutually Agreed Norms for Routing Security (MANRS) {{MANRS}}, is even significantly lower than the coverage of ROAs. Similarly, {{IRRegularities}} also notes a decreasing trend in IP Prefix coverage in certain IRRs.
+As the adoption of RPKI continues to grow, the number of address prefixes registered within RPKI is gradually increasing. However, recent reports from the Number Resource Organization (NRO) {{NRO}} indicate that the coverage of IP prefixes within ROAs is still relatively low, and the adoption rate of route origin validation (ROV), as measured by Mutually Agreed Norms for Routing Security (MANRS) {{MANRS}}, is even significantly lower than the coverage of ROAs. Similarly, {{IRRegularities}} also notes a decreasing trend in IP Prefix coverage in certain IRRs.
 
 On the other hand, it becomes evident that currently active IRRs and RPKI offer limited coverage for MOAS, particularly in the case of IPv6. They typically only allow registration of address blocks for self-managed purposes, posing a significant obstacle in supporting many legitimate MOAS prefixes.
 
@@ -184,9 +184,9 @@ Although some approaches attempt to optimise the quality of the route origin reg
 
 ## Summary
 
-The current route origin registry systems, namely Internet Routing Registries (IRRs) and Resource Public Key Infrastructure (RPKI), are facing challenges as the increased occurrence of Multiple Origin Autonomous System (MOAS) prefixes. These challenges mainly include low adoption rates, global inconsistency, insufficient resource certification, and incomplete multi-source collaboration mechanisms.
+The current route origin registry systems, namely IRRs and RPKI, are facing challenges as the increased occurrence of MOAS prefixes. These challenges mainly include low adoption rates, global inconsistency, insufficient resource certification, and incomplete multi-source collaboration mechanisms.
 
-To address these challenges, it is imperative to continue striving towards the development of a verifiable route origin registry system that can effectively discern between prefix hijacking and legitimate MOAS, while ensuring a globally unified perspective on routing origins and maintaining a high level of resilience.
+To address these challenges, it is imperative to continue striving towards the development of a verifiable route origin registry system that can effectively discern between prefix hijacking and legitimate MOAS, while ensuring a globally unified perspective on route origin and maintaining a high level of resilience.
 
 # Security Considerations
 
