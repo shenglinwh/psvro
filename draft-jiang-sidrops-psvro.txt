@@ -4,8 +4,14 @@
 
 SIDROPS                                                         S. Jiang
 Internet-Draft                                   Zhongguancun Laboratory
-Intended status: Informational                               17 May 2024
-Expires: 18 November 2024
+Intended status: Informational                                     K. Xu
+Expires: 30 November 2024                                          Q. Li
+                                                     Tsinghua University
+                                                                  X. Shi
+                           Tsinghua University & Zhongguancun Laboratory
+                                                                  Z. Liu
+                                                     Tsinghua University
+                                                             29 May 2024
 
 
                 Route Origin Registry Problem Statement
@@ -16,9 +22,10 @@ Abstract
    Prefix hijacking, i.e., unauthorized announcement of a prefix, has
    emerged as a major security threat in the Border Gateway Protocol
    (BGP), garnering widespread attention.  To migrate such attacks while
-   supporting legitimate MOAS, higher requirements are placed on the
-   route origin registry system.  This document serves to outline the
-   problem statement for current route origin registry system.
+   supporting legitimate Multiple Origin ASes (MOAS), higher
+   requirements are placed on the route origin registry system.  This
+   document serves to outline the problem statement for current route
+   origin registry system.
 
 Status of This Memo
 
@@ -35,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 18 November 2024.
+   This Internet-Draft will expire on 30 November 2024.
 
 Copyright Notice
 
@@ -69,7 +76,7 @@ Table of Contents
      8.1.  Normative References
      8.2.  Informative References
    Acknowledgments
-   Author's Address
+   Authors' Addresses
 
 1.  Introduction
 
@@ -81,10 +88,10 @@ Table of Contents
    (MOAS).
 
    Unfortunately, the current route origin registry system, such as
-   Internet Routing Registry (IRR) (RFC1786) and Resource Public Key
-   Infrastructure (RPKI) (RFC6480), are not effective in distinguishing
+   Internet Routing Registry (IRR) [RFC1786] and Resource Public Key
+   Infrastructure (RPKI) [RFC6480], are not effective in distinguishing
    between legitimate MOAS and prefix hijacking.  There is a pressing
-   need for an extended route origin registry system that can support
+   need for an verifiable route origin registry system that can support
    registration and protection of legitimate MOAS, thereby mitigating
    the threats posed by prefix hijacking to the routing system.
 
@@ -182,15 +189,15 @@ Table of Contents
 
 5.1.  Security Risks from Partial Adoption
 
-   As the adoption of Resource Public Key Infrastructure (RPKI)
-   continues to grow, the number of address prefixes registered within
-   RPKI is gradually increasing.  However, recent reports from the
-   Number Resource Organization (NRO) indicate that the coverage of IP
-   prefixes within ROAs is still relatively low, and the adoption rate
-   of route origin validation (ROV), as measured by Mutually Agreed
-   Norms for Routing Security (MANRS) [MANRS], is even significantly
-   lower than the coverage of ROAs.  Similarly, [IRRegularities] also
-   notes a decreasing trend in IP Prefix coverage in certain IRRs.
+   As the adoption of RPKI continues to grow, the number of address
+   prefixes registered within RPKI is gradually increasing.  However,
+   recent reports from the Number Resource Organization (NRO) [NRO]
+   indicate that the coverage of IP prefixes within ROAs is still
+   relatively low, and the adoption rate of route origin validation
+   (ROV), as measured by Mutually Agreed Norms for Routing Security
+   (MANRS) [MANRS], is even significantly lower than the coverage of
+   ROAs.  Similarly, [IRRegularities] also notes a decreasing trend in
+   IP Prefix coverage in certain IRRs.
 
    On the other hand, it becomes evident that currently active IRRs and
    RPKI offer limited coverage for MOAS, particularly in the case of
@@ -201,7 +208,7 @@ Table of Contents
    Limited IP prefix coverage within the current route origin registry,
    especially for MOAS prefixes, hinders the complete validation of
    route announcements, significantly limiting the motivation for
-   network operators to utilize route origin registration.
+   network operators to utilize route origin registry system.
 
 5.2.  Inconsistency between different Route Origin Registries
 
@@ -209,9 +216,7 @@ Table of Contents
    evident that relying solely on a single source of route origin
    registry is insufficient in route origin validation.  To address this
    issue effectively, it is recommended to integrate the RPKI and
-   multiple active IRRs.  This integration would not only enhance the IP
-   address space coverage and AS participation rate but also improve the
-   accuracy of route origin registry.
+   multiple active IRRs.
 
    However, it is important to note that this fusion approach may
    encounter several limitations.  As highlighted in [IRRegularities],
@@ -235,14 +240,12 @@ Table of Contents
 
    As mentioned in [RFC7682], the lack of certification and incentives
    for maintaining up-to-date data within IRRs leads to low accuracy of
-   the information.  While a few IRRs exhibit regular updates, others
-   have low activity with many Route(6) objects remaining unchanged for
-   several years.  Recent measurement [IRRegularities] reveals that IRRs
-   with low update activity exhibit lower overlap with BGP announcements
-   than those with high update activity.  This indicates that IRRs with
-   lower activity may contain a higher proportion of outdated and stale
-   Route(6) objects, thereby impacting the reliability of the route
-   origin registry.
+   the information.  Recent measurement [IRRegularities] reveals that
+   IRRs with low update activity exhibit lower overlap with BGP
+   announcements than those with high update activity.  This indicates
+   that IRRs with lower activity may contain a higher proportion of
+   outdated and stale Route(6) objects, thereby impacting the
+   reliability of the route origin registry.
 
    RPKI is a hierarchical Public Key Infrastructure (PKI) that binds
    Internet Number Resources (INRs) such as Autonomous System Numbers
@@ -255,7 +258,7 @@ Table of Contents
    issue.  Balancing the protection of legitimate MOAS while minimizing
    risks in INRs certificates presents a challenging problem that
    requires innovative solutions.  Furthermore, it is worth noting that
-   RPKI Relying Parties (RPs)[RFC8897] have not yet standardized the
+   RPKI Relying Parties (RPs) [RFC8897] have not yet standardized the
    process of constructing certificate chains and handling exceptions
    such as Certificate Revocation Lists (CRLs) and Manifests.  This lack
    of standardization has resulted in different views on the RPKI
@@ -304,18 +307,17 @@ Table of Contents
 
 5.5.  Summary
 
-   The current route origin registry systems, namely Internet Routing
-   Registries (IRRs) and Resource Public Key Infrastructure (RPKI), are
-   facing challenges as the increased occurrence of Multiple Origin
-   Autonomous System (MOAS) prefixes.  These challenges mainly include
-   low adoption rates, global inconsistency, insufficient resource
-   certification, and incomplete multi-source collaboration mechanisms.
+   The current route origin registry systems, namely IRRs and RPKI, are
+   facing challenges as the increased occurrence of MOAS prefixes.
+   These challenges mainly include low adoption rates, global
+   inconsistency, insufficient resource certification, and incomplete
+   multi-source collaboration mechanisms.
 
    To address these challenges, it is imperative to continue striving
-   towards the development of a extended route origin registry system
+   towards the development of a verifiable route origin registry system
    that can effectively discern between prefix hijacking and legitimate
-   MOAS, while ensuring a globally unified perspective on routing
-   origins and maintaining a high level of resilience.
+   MOAS, while ensuring a globally unified perspective on route origin
+   and maintaining a high level of resilience.
 
 6.  Security Considerations
 
@@ -410,12 +412,42 @@ Table of Contents
 
 Acknowledgments
 
-   TODO acknowledge.
+   The authors would like to thank Yangfei Guo, Di Ma, Qi Li, Shuhe
+   Wang, Xiaoliang Wang, Hui Wang, etc. for their valuable comments on
+   this document.
 
-Author's Address
+Authors' Addresses
 
    Shenglin Jiang
    Zhongguancun Laboratory
    Beijing
    China
    Email: jiangshl@zgclab.edu.cn
+
+
+   Ke Xu
+   Tsinghua University
+   Beijing
+   China
+   Email: xuke@tsinghua.edu.cn
+
+
+   Qi Li
+   Tsinghua University
+   Beijing
+   China
+   Email: qli01@tsinghua.edu.cn
+
+
+   Xingang Shi
+   Tsinghua University & Zhongguancun Laboratory
+   Beijing
+   China
+   Email: shixg@cernet.edu.cn
+
+
+   Zhuotao Liu
+   Tsinghua University
+   Beijing
+   China
+   Email: zhuotaoliu@tsinghua.edu.cn

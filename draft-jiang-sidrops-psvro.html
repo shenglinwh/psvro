@@ -6,8 +6,12 @@
 <meta content="initial-scale=1.0" name="viewport">
 <title>Route Origin Registry Problem Statement</title>
 <meta content="Shenglin Jiang" name="author">
+<meta content="Ke Xu" name="author">
+<meta content="Qi Li" name="author">
+<meta content="Xingang Shi" name="author">
+<meta content="Zhuotao Liu" name="author">
 <meta content="
-       Prefix hijacking, i.e., unauthorized announcement of a prefix, has emerged as a major security threat in the Border Gateway Protocol (BGP), garnering widespread attention. To migrate such attacks while supporting legitimate MOAS, higher requirements are placed on the route origin registry system. This document serves to outline the problem statement for current route origin registry system. 
+       Prefix hijacking, i.e., unauthorized announcement of a prefix, has emerged as a major security threat in the Border Gateway Protocol (BGP), garnering widespread attention. To migrate such attacks while supporting legitimate  Multiple Origin ASes (MOAS), higher requirements are placed on the route origin registry system. This document serves to outline the problem statement for current route origin registry system. 
     " name="description">
 <meta content="xml2rfc 3.21.0" name="generator">
 <meta content="draft-jiang-sidrops-psvro-latest" name="ietf.draft">
@@ -1027,8 +1031,8 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <td class="right">May 2024</td>
 </tr></thead>
 <tfoot><tr>
-<td class="left">Jiang</td>
-<td class="center">Expires 18 November 2024</td>
+<td class="left">Jiang, et al.</td>
+<td class="center">Expires 30 November 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1041,17 +1045,33 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-jiang-sidrops-psvro-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-05-17" class="published">17 May 2024</time>
+<time datetime="2024-05-29" class="published">29 May 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-11-18">18 November 2024</time></dd>
-<dt class="label-authors">Author:</dt>
+<dd class="expires"><time datetime="2024-11-30">30 November 2024</time></dd>
+<dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
       <div class="author-name">S. Jiang</div>
 <div class="org">Zhongguancun Laboratory</div>
+</div>
+<div class="author">
+      <div class="author-name">K. Xu</div>
+<div class="org">Tsinghua University</div>
+</div>
+<div class="author">
+      <div class="author-name">Q. Li</div>
+<div class="org">Tsinghua University</div>
+</div>
+<div class="author">
+      <div class="author-name">X. Shi</div>
+<div class="org">Tsinghua University &amp; Zhongguancun Laboratory</div>
+</div>
+<div class="author">
+      <div class="author-name">Z. Liu</div>
+<div class="org">Tsinghua University</div>
 </div>
 </dd>
 </dl>
@@ -1059,7 +1079,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <h1 id="title">Route Origin Registry Problem Statement</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">Prefix hijacking, i.e., unauthorized announcement of a prefix, has emerged as a major security threat in the Border Gateway Protocol (BGP), garnering widespread attention. To migrate such attacks while supporting legitimate MOAS, higher requirements are placed on the route origin registry system. This document serves to outline the problem statement for current route origin registry system.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">Prefix hijacking, i.e., unauthorized announcement of a prefix, has emerged as a major security threat in the Border Gateway Protocol (BGP), garnering widespread attention. To migrate such attacks while supporting legitimate  Multiple Origin ASes (MOAS), higher requirements are placed on the route origin registry system. This document serves to outline the problem statement for current route origin registry system.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <div id="status-of-memo">
 <section id="section-boilerplate.1">
@@ -1080,7 +1100,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 18 November 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 30 November 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1162,7 +1182,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-toc.1-1.9.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
-            <p id="section-toc.1-1.10.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+            <p id="section-toc.1-1.10.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1174,7 +1194,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
 <p id="section-1-1">The Border Gateway Protocol (BGP) is ubiquitously used for inter-domain routing. However, it lacks built-in security validation on whether its UPDATE information is legitimate <span>[<a href="#RFC4272" class="cite xref">RFC4272</a>]</span>. This poses concerns regarding prefix hijacking, where unauthorized announcements of prefixes can occur, simulating legitimate Multiple Origin ASes (MOAS).<a href="#section-1-1" class="pilcrow">¶</a></p>
-<p id="section-1-2">Unfortunately, the current route origin registry system, such as Internet Routing Registry (IRR) (RFC1786) and Resource Public Key Infrastructure (RPKI) (RFC6480), are not effective in distinguishing between legitimate MOAS and prefix hijacking. There is a pressing need for an extended route origin registry system that can support registration and protection of legitimate MOAS, thereby mitigating the threats posed by prefix hijacking to the routing system.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-2">Unfortunately, the current route origin registry system, such as Internet Routing Registry (IRR) <span>[<a href="#RFC1786" class="cite xref">RFC1786</a>]</span> and Resource Public Key Infrastructure (RPKI) <span>[<a href="#RFC6480" class="cite xref">RFC6480</a>]</span>, are not effective in distinguishing between legitimate MOAS and prefix hijacking. There is a pressing need for an verifiable route origin registry system that can support registration and protection of legitimate MOAS, thereby mitigating the threats posed by prefix hijacking to the routing system.<a href="#section-1-2" class="pilcrow">¶</a></p>
 <p id="section-1-3">This document will primarily analyze the various scenarios of MOAS and highlight the limitations of the current route origin registry system. By examining these issues, our primary objective is to offer valuable insights to network operators, researchers, and policymakers for improving the security and robustness of the global routing system.<a href="#section-1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1238,9 +1258,9 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
         <h3 id="name-security-risks-from-partial">
 <a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-security-risks-from-partial" class="section-name selfRef">Security Risks from Partial Adoption</a>
         </h3>
-<p id="section-5.1-1">As the adoption of Resource Public Key Infrastructure (RPKI) continues to grow, the number of address prefixes registered within RPKI is gradually increasing. However, recent reports from the Number Resource Organization (NRO) indicate that the coverage of IP prefixes within ROAs is still relatively low, and the adoption rate of route origin validation (ROV), as measured by Mutually Agreed Norms for Routing Security (MANRS) <span>[<a href="#MANRS" class="cite xref">MANRS</a>]</span>, is even significantly lower than the coverage of ROAs. Similarly, <span>[<a href="#IRRegularities" class="cite xref">IRRegularities</a>]</span> also notes a decreasing trend in IP Prefix coverage in certain IRRs.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+<p id="section-5.1-1">As the adoption of RPKI continues to grow, the number of address prefixes registered within RPKI is gradually increasing. However, recent reports from the Number Resource Organization (NRO) <span>[<a href="#NRO" class="cite xref">NRO</a>]</span> indicate that the coverage of IP prefixes within ROAs is still relatively low, and the adoption rate of route origin validation (ROV), as measured by Mutually Agreed Norms for Routing Security (MANRS) <span>[<a href="#MANRS" class="cite xref">MANRS</a>]</span>, is even significantly lower than the coverage of ROAs. Similarly, <span>[<a href="#IRRegularities" class="cite xref">IRRegularities</a>]</span> also notes a decreasing trend in IP Prefix coverage in certain IRRs.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
 <p id="section-5.1-2">On the other hand, it becomes evident that currently active IRRs and RPKI offer limited coverage for MOAS, particularly in the case of IPv6. They typically only allow registration of address blocks for self-managed purposes, posing a significant obstacle in supporting many legitimate MOAS prefixes.<a href="#section-5.1-2" class="pilcrow">¶</a></p>
-<p id="section-5.1-3">Limited IP prefix coverage within the current route origin registry, especially for MOAS prefixes, hinders the complete validation of route announcements, significantly limiting the motivation for network operators to utilize route origin registration.<a href="#section-5.1-3" class="pilcrow">¶</a></p>
+<p id="section-5.1-3">Limited IP prefix coverage within the current route origin registry, especially for MOAS prefixes, hinders the complete validation of route announcements, significantly limiting the motivation for network operators to utilize route origin registry system.<a href="#section-5.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="inconsistency-between-different-route-origin-registries">
@@ -1248,7 +1268,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
         <h3 id="name-inconsistency-between-diffe">
 <a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-inconsistency-between-diffe" class="section-name selfRef">Inconsistency between different Route Origin Registries</a>
         </h3>
-<p id="section-5.2-1">Based on the analysis presented in the previous sections, it is evident that relying solely on a single source of route origin registry is insufficient in route origin validation. To address this issue effectively, it is recommended to integrate the RPKI and multiple active IRRs. This integration would not only enhance the IP address space coverage and AS participation rate but also improve the accuracy of route origin registry.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+<p id="section-5.2-1">Based on the analysis presented in the previous sections, it is evident that relying solely on a single source of route origin registry is insufficient in route origin validation. To address this issue effectively, it is recommended to integrate the RPKI and multiple active IRRs.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
 <p id="section-5.2-2">However, it is important to note that this fusion approach may encounter several limitations. As highlighted in <span>[<a href="#IRRegularities" class="cite xref">IRRegularities</a>]</span>, inconsistencies exist among the Route(6) objects across different IRRs. This inconsistency can be attributed to the chronic neglect by IRR customers. For instance, some companies may register Route(6) objects in some IRRs but fail to update them in all the route origin registries, resulting in outdated and stale Route(6) objects. Furthermore, it is observed that a higher number of IRRs exhibit lower consistency with RPKI. In practice, different networks often use different data and methodologies to perform route validation and filtering, resulting in disparate outcome, especially when ROA and IRR data conflict with each other.<a href="#section-5.2-2" class="pilcrow">¶</a></p>
 <p id="section-5.2-3">As a result, while integrating the RPKI and multiple active IRRs can improve the effectiveness of route origin validation, it is essential to address the issues of inconsistencies between different route origin registries.<a href="#section-5.2-3" class="pilcrow">¶</a></p>
 </section>
@@ -1258,8 +1278,8 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
         <h3 id="name-insufficiency-of-resource-c">
 <a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-insufficiency-of-resource-c" class="section-name selfRef">Insufficiency of resource certification</a>
         </h3>
-<p id="section-5.3-1">As mentioned in <span>[<a href="#RFC7682" class="cite xref">RFC7682</a>]</span>, the lack of certification and incentives for maintaining up-to-date data within IRRs leads to low accuracy of the information. While a few IRRs exhibit regular updates, others have low activity with many Route(6) objects remaining unchanged for several years. Recent measurement <span>[<a href="#IRRegularities" class="cite xref">IRRegularities</a>]</span> reveals that IRRs with low update activity exhibit lower overlap with BGP announcements than those with high update activity. This indicates that IRRs with lower activity may contain a higher proportion of outdated and stale Route(6) objects, thereby impacting the reliability of the route origin registry.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
-<p id="section-5.3-2">RPKI is a hierarchical Public Key Infrastructure (PKI) that binds Internet Number Resources (INRs) such as Autonomous System Numbers (ASNs) and IP addresses to public keys via certificates. However, there is a risk of conflicts in INRs ownership when misconfiguration or malicious operations occur at the upper tier, resulting in multiple lower tiers being allocated the same INRs. Additionally, the existence of legitimate MOAS necessitates the authorization of binding between a prefix with multiple ASes, further complicating the issue. Balancing the protection of legitimate MOAS while minimizing risks in INRs certificates presents a challenging problem that requires innovative solutions. Furthermore, it is worth noting that RPKI Relying Parties (RPs)<span>[<a href="#RFC8897" class="cite xref">RFC8897</a>]</span> have not yet standardized the process of constructing certificate chains and handling exceptions such as Certificate Revocation Lists (CRLs) and Manifests. This lack of standardization has resulted in different views on the RPKI records by RPs who adopt different implementations. Consequently, ASes served by different RPs may have varying validation results for the same route announcement.<a href="#section-5.3-2" class="pilcrow">¶</a></p>
+<p id="section-5.3-1">As mentioned in <span>[<a href="#RFC7682" class="cite xref">RFC7682</a>]</span>, the lack of certification and incentives for maintaining up-to-date data within IRRs leads to low accuracy of the information. Recent measurement <span>[<a href="#IRRegularities" class="cite xref">IRRegularities</a>]</span> reveals that IRRs with low update activity exhibit lower overlap with BGP announcements than those with high update activity. This indicates that IRRs with lower activity may contain a higher proportion of outdated and stale Route(6) objects, thereby impacting the reliability of the route origin registry.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
+<p id="section-5.3-2">RPKI is a hierarchical Public Key Infrastructure (PKI) that binds Internet Number Resources (INRs) such as Autonomous System Numbers (ASNs) and IP addresses to public keys via certificates. However, there is a risk of conflicts in INRs ownership when misconfiguration or malicious operations occur at the upper tier, resulting in multiple lower tiers being allocated the same INRs. Additionally, the existence of legitimate MOAS necessitates the authorization of binding between a prefix with multiple ASes, further complicating the issue. Balancing the protection of legitimate MOAS while minimizing risks in INRs certificates presents a challenging problem that requires innovative solutions. Furthermore, it is worth noting that RPKI Relying Parties (RPs) <span>[<a href="#RFC8897" class="cite xref">RFC8897</a>]</span> have not yet standardized the process of constructing certificate chains and handling exceptions such as Certificate Revocation Lists (CRLs) and Manifests. This lack of standardization has resulted in different views on the RPKI records by RPs who adopt different implementations. Consequently, ASes served by different RPs may have varying validation results for the same route announcement.<a href="#section-5.3-2" class="pilcrow">¶</a></p>
 <p id="section-5.3-3">Consequently, the absence of data validation and standardization in operations within the IRR or RPKI framework means that there is no guarantee of the accuracy of the data registered in any route origin registry.<a href="#section-5.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1288,8 +1308,8 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
         <h3 id="name-summary">
 <a href="#section-5.5" class="section-number selfRef">5.5. </a><a href="#name-summary" class="section-name selfRef">Summary</a>
         </h3>
-<p id="section-5.5-1">The current route origin registry systems, namely Internet Routing Registries (IRRs) and Resource Public Key Infrastructure (RPKI), are facing challenges as the increased occurrence of Multiple Origin Autonomous System (MOAS) prefixes. These challenges mainly include low adoption rates, global inconsistency, insufficient resource certification, and incomplete multi-source collaboration mechanisms.<a href="#section-5.5-1" class="pilcrow">¶</a></p>
-<p id="section-5.5-2">To address these challenges, it is imperative to continue striving towards the development of a extended route origin registry system that can effectively discern between prefix hijacking and legitimate MOAS, while ensuring a globally unified perspective on routing origins and maintaining a high level of resilience.<a href="#section-5.5-2" class="pilcrow">¶</a></p>
+<p id="section-5.5-1">The current route origin registry systems, namely IRRs and RPKI, are facing challenges as the increased occurrence of MOAS prefixes. These challenges mainly include low adoption rates, global inconsistency, insufficient resource certification, and incomplete multi-source collaboration mechanisms.<a href="#section-5.5-1" class="pilcrow">¶</a></p>
+<p id="section-5.5-2">To address these challenges, it is imperative to continue striving towards the development of a verifiable route origin registry system that can effectively discern between prefix hijacking and legitimate MOAS, while ensuring a globally unified perspective on route origin and maintaining a high level of resilience.<a href="#section-5.5-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1402,13 +1422,13 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       <h2 id="name-acknowledgments">
 <a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
       </h2>
-<p id="appendix-A-1">TODO acknowledge.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<p id="appendix-A-1">The authors would like to thank Yangfei Guo, Di Ma, Qi Li, Shuhe Wang, Xiaoliang Wang, Hui Wang, etc. for their valuable comments on this document.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">
 <section id="appendix-B">
-      <h2 id="name-authors-address">
-<a href="#name-authors-address" class="section-name selfRef">Author's Address</a>
+      <h2 id="name-authors-addresses">
+<a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
       </h2>
 <address class="vcard">
         <div dir="auto" class="left"><span class="fn nameRole">Shenglin Jiang</span></div>
@@ -1418,6 +1438,46 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <div class="email">
 <span>Email:</span>
 <a href="mailto:jiangshl@zgclab.edu.cn" class="email">jiangshl@zgclab.edu.cn</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Ke Xu</span></div>
+<div dir="auto" class="left"><span class="org">Tsinghua University</span></div>
+<div dir="auto" class="left"><span class="locality">Beijing</span></div>
+<div dir="auto" class="left"><span class="country-name">China</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:xuke@tsinghua.edu.cn" class="email">xuke@tsinghua.edu.cn</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Qi Li</span></div>
+<div dir="auto" class="left"><span class="org">Tsinghua University</span></div>
+<div dir="auto" class="left"><span class="locality">Beijing</span></div>
+<div dir="auto" class="left"><span class="country-name">China</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:qli01@tsinghua.edu.cn" class="email">qli01@tsinghua.edu.cn</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Xingang Shi</span></div>
+<div dir="auto" class="left"><span class="org">Tsinghua University &amp; Zhongguancun Laboratory</span></div>
+<div dir="auto" class="left"><span class="locality">Beijing</span></div>
+<div dir="auto" class="left"><span class="country-name">China</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:shixg@cernet.edu.cn" class="email">shixg@cernet.edu.cn</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Zhuotao Liu</span></div>
+<div dir="auto" class="left"><span class="org">Tsinghua University</span></div>
+<div dir="auto" class="left"><span class="locality">Beijing</span></div>
+<div dir="auto" class="left"><span class="country-name">China</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:zhuotaoliu@tsinghua.edu.cn" class="email">zhuotaoliu@tsinghua.edu.cn</a>
 </div>
 </address>
 </section>
