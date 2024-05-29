@@ -207,7 +207,7 @@ Table of Contents
    Limited IP prefix coverage within the current route origin registry,
    especially for MOAS prefixes, hinders the complete validation of
    route announcements, significantly limiting the motivation for
-   network operators to utilize route origin registration.
+   network operators to utilize route origin registry system.
 
 5.2.  Inconsistency between different Route Origin Registries
 
