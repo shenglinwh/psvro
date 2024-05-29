@@ -1142,16 +1142,16 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-prefix-hijacking-and-legiti" class="internal xref">Prefix Hijacking and Legitimate MOAS</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
-            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-problems-in-current-route-o" class="internal xref">Problems in current Route Origin Registry</a></p>
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-problems-in-current-route-o" class="internal xref">Problems in Current Route Origin Registry</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-security-risks-from-partial" class="internal xref">Security Risks from Partial Adoption</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
-                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-inconsistency-between-diffe" class="internal xref">Inconsistency between different Route Origin Registries</a></p>
+                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-inconsistency-between-diffe" class="internal xref">Inconsistency between Different Route Origin Registries</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3">
-                <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-insufficiency-of-resource-c" class="internal xref">Insufficiency of resource certification</a></p>
+                <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-insufficiency-of-resource-c" class="internal xref">Insufficiency of Resource Certification</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4">
                 <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="auto internal xref">5.4</a>.  <a href="#name-synchronization-and-managem" class="internal xref">Synchronization and Management</a></p>
@@ -1251,7 +1251,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <div id="problems-in-current-route-origin-registry">
 <section id="section-5">
       <h2 id="name-problems-in-current-route-o">
-<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-problems-in-current-route-o" class="section-name selfRef">Problems in current Route Origin Registry</a>
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-problems-in-current-route-o" class="section-name selfRef">Problems in Current Route Origin Registry</a>
       </h2>
 <div id="security-risks-from-partial-adoption">
 <section id="section-5.1">
@@ -1266,7 +1266,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <div id="inconsistency-between-different-route-origin-registries">
 <section id="section-5.2">
         <h3 id="name-inconsistency-between-diffe">
-<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-inconsistency-between-diffe" class="section-name selfRef">Inconsistency between different Route Origin Registries</a>
+<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-inconsistency-between-diffe" class="section-name selfRef">Inconsistency between Different Route Origin Registries</a>
         </h3>
 <p id="section-5.2-1">Based on the analysis presented in the previous sections, it is evident that relying solely on a single source of route origin registry is insufficient in route origin validation. To address this issue effectively, it is recommended to integrate the RPKI and multiple active IRRs.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
 <p id="section-5.2-2">However, it is important to note that this fusion approach may encounter several limitations. As highlighted in <span>[<a href="#IRRegularities" class="cite xref">IRRegularities</a>]</span>, inconsistencies exist among the Route(6) objects across different IRRs. This inconsistency can be attributed to the chronic neglect by IRR customers. For instance, some companies may register Route(6) objects in some IRRs but fail to update them in all the route origin registries, resulting in outdated and stale Route(6) objects. Furthermore, it is observed that a higher number of IRRs exhibit lower consistency with RPKI. In practice, different networks often use different data and methodologies to perform route validation and filtering, resulting in disparate outcome, especially when ROA and IRR data conflict with each other.<a href="#section-5.2-2" class="pilcrow">¶</a></p>
@@ -1276,7 +1276,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <div id="insufficiency-of-resource-certification">
 <section id="section-5.3">
         <h3 id="name-insufficiency-of-resource-c">
-<a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-insufficiency-of-resource-c" class="section-name selfRef">Insufficiency of resource certification</a>
+<a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-insufficiency-of-resource-c" class="section-name selfRef">Insufficiency of Resource Certification</a>
         </h3>
 <p id="section-5.3-1">As mentioned in <span>[<a href="#RFC7682" class="cite xref">RFC7682</a>]</span>, the lack of certification and incentives for maintaining up-to-date data within IRRs leads to low accuracy of the information. Recent measurement <span>[<a href="#IRRegularities" class="cite xref">IRRegularities</a>]</span> reveals that IRRs with low update activity exhibit lower overlap with BGP announcements than those with high update activity. This indicates that IRRs with lower activity may contain a higher proportion of outdated and stale Route(6) objects, thereby impacting the reliability of the route origin registry.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
 <p id="section-5.3-2">RPKI is a hierarchical Public Key Infrastructure (PKI) that binds Internet Number Resources (INRs) such as Autonomous System Numbers (ASNs) and IP addresses to public keys via certificates. However, there is a risk of conflicts in INRs ownership when misconfiguration or malicious operations occur at the upper tier, resulting in multiple lower tiers being allocated the same INRs. Additionally, the existence of legitimate MOAS necessitates the authorization of binding between a prefix with multiple ASes, further complicating the issue. Balancing the protection of legitimate MOAS while minimizing risks in INRs certificates presents a challenging problem that requires innovative solutions. Furthermore, it is worth noting that RPKI Relying Parties (RPs) <span>[<a href="#RFC8897" class="cite xref">RFC8897</a>]</span> have not yet standardized the process of constructing certificate chains and handling exceptions such as Certificate Revocation Lists (CRLs) and Manifests. This lack of standardization has resulted in different views on the RPKI records by RPs who adopt different implementations. Consequently, ASes served by different RPs may have varying validation results for the same route announcement.<a href="#section-5.3-2" class="pilcrow">¶</a></p>
