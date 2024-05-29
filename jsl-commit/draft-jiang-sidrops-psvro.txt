@@ -5,13 +5,13 @@
 SIDROPS                                                         S. Jiang
 Internet-Draft                                   Zhongguancun Laboratory
 Intended status: Informational                                     K. Xu
-Expires: 28 November 2024                                          Q. Li
+Expires: 30 November 2024                                          Q. Li
                                                      Tsinghua University
                                                                   X. Shi
                            Tsinghua University & Zhongguancun Laboratory
                                                                   Z. Liu
                                                      Tsinghua University
-                                                             27 May 2024
+                                                             29 May 2024
 
 
                 Route Origin Registry Problem Statement
@@ -41,7 +41,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 28 November 2024.
+   This Internet-Draft will expire on 30 November 2024.
 
 Copyright Notice
 
@@ -416,7 +416,9 @@ Table of Contents
 
 Acknowledgments
 
-   TODO acknowledge.
+   The authors would like to thank Di Ma, Yangfei Guo, Qi Li, Shuhe
+   Wang, Xiaoliang Wang, Hui Wang etc. for their valuable comments on
+   this document.
 
 Authors' Addresses
 
