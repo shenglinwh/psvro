@@ -365,12 +365,6 @@ Table of Contents
    [CAIDA]    "RouteViews Prefix to AS mappings", 2024,
               <https://catalog.caida.org/dataset/routeviews_prefix2as>.
 
-   [IRRedicator]
-              Kang, M., Li, W., van Rijswijk-Deij, R., TT Kwon, and T.
-              Chung, "IRRedicator: Pruning IRR with RPKI-Valid BGP
-              Insights", Network and Distributed System Security (NDSS)
-              Symposium 2024 , 2024.
-
    [IRRegularities]
               Du, B., Izhikevich, K., Rao, S., Akiwate, G., Testart, C.,
               AC Snoeren, and K. Claffy, "IRRegularities in the internet
