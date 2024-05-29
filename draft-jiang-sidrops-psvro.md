@@ -68,16 +68,16 @@ informative:
     RFC7682:
     RFC8897:
     NRTMv4: I-D.ietf-grow-nrtm-v4
-    IRRedicator:
-        title: "IRRedicator: Pruning IRR with RPKI-Valid BGP Insights"
-        date: 2024
-        seriesinfo: "Network and Distributed System Security (NDSS) Symposium 2024"
-        author:
-          - ins: M. Kang
-          - ins: W. Li
-          - ins: R. van Rijswijk-Deij
-          - ins: TT. Kwon
-          - ins: T. Chung
+    # IRRedicator:
+    #     title: "IRRedicator: Pruning IRR with RPKI-Valid BGP Insights"
+    #     date: 2024
+    #     seriesinfo: "Network and Distributed System Security (NDSS) Symposium 2024"
+    #     author:
+    #       - ins: M. Kang
+    #       - ins: W. Li
+    #       - ins: R. van Rijswijk-Deij
+    #       - ins: TT. Kwon
+    #       - ins: T. Chung
     IRRegularities:
         title: "IRRegularities in the internet routing registry"
         date: 2023
