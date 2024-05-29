@@ -202,4 +202,4 @@ There is no IANA consideration in this draft.
 # Acknowledgments
 {:numbered="false"}
 
-The authors would like to thank Di Ma, Yangfei Guo, Qi Li, Shuhe Wang, Xiaoliang Wang, Hui Wang etc. for their valuable comments on this document.
+The authors would like to thank Di Ma, Yangfei Guo, Qi Li, Shuhe Wang, Xiaoliang Wang, Hui Wang, etc. for their valuable comments on this document.
