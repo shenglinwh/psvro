@@ -59,8 +59,13 @@ author:
 normative:
     RFC1786:
     RFC8182:
+<<<<<<< HEAD
     RFC6480:
     RFC8416:
+=======
+    RFC9319:
+    I-D.ietf-grow-nrtm-v4:
+>>>>>>> f1adb28 (fix)
 
 informative:
     RFC4272:
