@@ -87,8 +87,8 @@ Table of Contents
    (MOAS).
 
    Unfortunately, the current route origin registry system, such as
-   Internet Routing Registry (IRR) (RFC1786) and Resource Public Key
-   Infrastructure (RPKI) (RFC6480), are not effective in distinguishing
+   Internet Routing Registry (IRR) [RFC1786] and Resource Public Key
+   Infrastructure (RPKI) [RFC6480], are not effective in distinguishing
    between legitimate MOAS and prefix hijacking.  There is a pressing
    need for an verifiable route origin registry system that can support
    registration and protection of legitimate MOAS, thereby mitigating
