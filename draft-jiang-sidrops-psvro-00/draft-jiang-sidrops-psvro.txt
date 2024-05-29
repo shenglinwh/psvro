@@ -64,10 +64,10 @@ Table of Contents
    2.  Requirements Language
    3.  Working Definition of Route Origin Registry
    4.  Prefix Hijacking and Legitimate MOAS
-   5.  Problems in current Route Origin Registry
+   5.  Problems in Current Route Origin Registry
      5.1.  Security Risks from Partial Adoption
-     5.2.  Inconsistency between different Route Origin Registries
-     5.3.  Insufficiency of resource certification
+     5.2.  Inconsistency between Different Route Origin Registries
+     5.3.  Insufficiency of Resource Certification
      5.4.  Synchronization and Management
      5.5.  Summary
    6.  Security Considerations
@@ -185,7 +185,7 @@ Table of Contents
    these situations necessitates a route origin registry with high
    coverage and accuracy.
 
-5.  Problems in current Route Origin Registry
+5.  Problems in Current Route Origin Registry
 
 5.1.  Security Risks from Partial Adoption
 
@@ -210,7 +210,7 @@ Table of Contents
    route announcements, significantly limiting the motivation for
    network operators to utilize route origin registry system.
 
-5.2.  Inconsistency between different Route Origin Registries
+5.2.  Inconsistency between Different Route Origin Registries
 
    Based on the analysis presented in the previous sections, it is
    evident that relying solely on a single source of route origin
@@ -236,7 +236,7 @@ Table of Contents
    to address the issues of inconsistencies between different route
    origin registries.
 
-5.3.  Insufficiency of resource certification
+5.3.  Insufficiency of Resource Certification
 
    As mentioned in [RFC7682], the lack of certification and incentives
    for maintaining up-to-date data within IRRs leads to low accuracy of
