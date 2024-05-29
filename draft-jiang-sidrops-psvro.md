@@ -150,7 +150,7 @@ Distinguishing between prefix hijacking, misconfiguration, and legitimate MOAS c
 
 ## Security Risks from Partial Adoption
 
-As the adoption of Resource Public Key Infrastructure (RPKI) continues to grow, the number of address prefixes registered within RPKI is gradually increasing. However, recent reports from the Number Resource Organization (NRO) indicate that the coverage of IP prefixes within ROAs is still relatively low, and the adoption rate of route origin validation (ROV), as measured by Mutually Agreed Norms for Routing Security (MANRS) {{MANRS}}, is even significantly lower than the coverage of ROAs. Similarly, {{IRRegularities}} also notes a decreasing trend in IP Prefix coverage in certain IRRs.
+As the adoption of Resource Public Key Infrastructure (RPKI) continues to grow, the number of address prefixes registered within RPKI is gradually increasing. However, recent reports from the Number Resource Organization (NRO) {{NRO}} indicate that the coverage of IP prefixes within ROAs is still relatively low, and the adoption rate of route origin validation (ROV), as measured by Mutually Agreed Norms for Routing Security (MANRS) {{MANRS}}, is even significantly lower than the coverage of ROAs. Similarly, {{IRRegularities}} also notes a decreasing trend in IP Prefix coverage in certain IRRs.
 
 On the other hand, it becomes evident that currently active IRRs and RPKI offer limited coverage for MOAS, particularly in the case of IPv6. They typically only allow registration of address blocks for self-managed purposes, posing a significant obstacle in supporting many legitimate MOAS prefixes.
 
