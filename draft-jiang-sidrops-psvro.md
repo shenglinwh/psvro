@@ -105,7 +105,7 @@ informative:
 
 --- abstract
 
-Prefix hijacking, i.e., unauthorized announcement of a prefix, has emerged as a major security threat in the Border Gateway Protocol (BGP), garnering widespread attention. To migrate such attacks while supporting legitimate MOAS, higher requirements are placed on the route origin registry system. This document serves to outline the problem statement for current route origin registry system.
+Prefix hijacking, i.e., unauthorized announcement of a prefix, has emerged as a major security threat in the Border Gateway Protocol (BGP), garnering widespread attention. To migrate such attacks while supporting legitimate  Multiple Origin ASes (MOAS), higher requirements are placed on the route origin registry system. This document serves to outline the problem statement for current route origin registry system.
 
 --- middle
 
