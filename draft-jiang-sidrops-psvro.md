@@ -145,7 +145,7 @@ On the other hand, the RPKI system, which was developed starting in 2008, provid
 Distinguishing between prefix hijacking, misconfiguration, and legitimate MOAS can be a complex task. The challenge arises from the resemblance of these behaviors, as they often display similar characteristics. Moreover, accurately identifying and classifying these situations necessitates a route origin registry with high coverage and accuracy.
 
 
-# Problems in current Route Origin Registry
+# Problems in Current Route Origin Registry
 
 
 ## Security Risks from Partial Adoption
@@ -156,7 +156,7 @@ On the other hand, it becomes evident that currently active IRRs and RPKI offer 
 
 Limited IP prefix coverage within the current route origin registry, especially for MOAS prefixes, hinders the complete validation of route announcements, significantly limiting the motivation for network operators to utilize route origin registry system.
 
-## Inconsistency between different Route Origin Registries
+## Inconsistency between Different Route Origin Registries
 
 Based on the analysis presented in the previous sections, it is evident that relying solely on a single source of route origin registry is insufficient in route origin validation. To address this issue effectively, it is recommended to integrate the RPKI and multiple active IRRs.
 
@@ -164,7 +164,7 @@ However, it is important to note that this fusion approach may encounter several
 
 As a result, while integrating the RPKI and multiple active IRRs can improve the effectiveness of route origin validation, it is essential to address the issues of inconsistencies between different route origin registries.
 
-## Insufficiency of resource certification
+## Insufficiency of Resource Certification
 
 As mentioned in {{RFC7682}}, the lack of certification and incentives for maintaining up-to-date data within IRRs leads to low accuracy of the information. Recent measurement {{IRRegularities}} reveals that IRRs with low update activity exhibit lower overlap with BGP announcements than those with high update activity. This indicates that IRRs with lower activity may contain a higher proportion of outdated and stale Route(6) objects, thereby impacting the reliability of the route origin registry.
 
