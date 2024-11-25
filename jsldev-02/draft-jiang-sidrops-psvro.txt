@@ -5,13 +5,13 @@
 SIDROPS                                                         S. Jiang
 Internet-Draft                                   Zhongguancun Laboratory
 Intended status: Informational                                     K. Xu
-Expires: 30 November 2024                                          Q. Li
+Expires: 29 May 2025                                               Q. Li
                                                      Tsinghua University
                                                                   X. Shi
                            Tsinghua University & Zhongguancun Laboratory
                                                                   Z. Liu
                                                      Tsinghua University
-                                                             29 May 2024
+                                                        25 November 2024
 
 
                 Route Origin Registry Problem Statement
@@ -23,9 +23,9 @@ Abstract
    emerged as a major security threat in the Border Gateway Protocol
    (BGP), garnering widespread attention.  To migrate such attacks while
    supporting legitimate Multiple Origin ASes (MOAS), higher
-   requirements are placed on the route origin registry system.  This
-   document serves to outline the problem statement for current route
-   origin registry system.
+   requirements are placed on the route origin registry.  This document
+   serves to outline the problem statement for current route origin
+   registry.
 
 Status of This Memo
 
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 30 November 2024.
+   This Internet-Draft will expire on 29 May 2025.
 
 Copyright Notice
 
@@ -64,17 +64,21 @@ Table of Contents
    2.  Requirements Language
    3.  Working Definition of Route Origin Registry
    4.  Prefix Hijacking and Legitimate MOAS
-   5.  Problems in current Route Origin Registry
+   5.  Problems in Current Route Origin Registry
      5.1.  Security Risks from Partial Adoption
-     5.2.  Inconsistency between different Route Origin Registries
-     5.3.  Insufficiency of resource certification
+     5.2.  Inconsistency between Different Route Origin Registries
+     5.3.  Insufficiency of Resource Certification
      5.4.  Synchronization and Management
      5.5.  Summary
-   6.  Security Considerations
-   7.  IANA Considerations
-   8.  References
-     8.1.  Normative References
-     8.2.  Informative References
+   6.  Requirements for New Route Origin Registry Mechanisms
+     6.1.  Allowlist Mechanism
+     6.2.  Blocklist Mechanism
+     6.3.  Multi-party Governance
+   7.  Security Considerations
+   8.  IANA Considerations
+   9.  References
+     9.1.  Normative References
+     9.2.  Informative References
    Acknowledgments
    Authors' Addresses
 
@@ -87,20 +91,19 @@ Table of Contents
    of prefixes can occur, simulating legitimate Multiple Origin ASes
    (MOAS).
 
-   Unfortunately, the current route origin registry system, such as
-   Internet Routing Registry (IRR) [RFC1786] and Resource Public Key
+   Unfortunately, the current route origin registry, such as Internet
+   Routing Registry (IRR) [RFC1786] and Resource Public Key
    Infrastructure (RPKI) [RFC6480], are not effective in distinguishing
    between legitimate MOAS and prefix hijacking.  There is a pressing
-   need for an verifiable route origin registry system that can support
+   need for an verifiable route origin registry that can support
    registration and protection of legitimate MOAS, thereby mitigating
    the threats posed by prefix hijacking to the routing system.
 
    This document will primarily analyze the various scenarios of MOAS
-   and highlight the limitations of the current route origin registry
-   system.  By examining these issues, our primary objective is to offer
-   valuable insights to network operators, researchers, and policymakers
-   for improving the security and robustness of the global routing
-   system.
+   and highlight the limitations of the current route origin registry.
+   By examining these issues, our primary objective is to offer valuable
+   insights to network operators, researchers, and policymakers for
+   improving the security and robustness of the global routing system.
 
 2.  Requirements Language
 
@@ -124,11 +127,11 @@ Table of Contents
    via Route(6) objects, which are defined by the Routing Policy
    Specification Language (RPSL).
 
-   On the other hand, the RPKI system, which was developed starting in
-   2008, provides a formally verifiable framework.  The RPKI system is
-   based on resource certificates that extend the X.509 standard.  It
-   records the mapping between IP prefixes and their authorised ASes via
-   Route Origin Authorization (ROA) objects.  These ROA objects contain
+   On the other hand, the RPKI, which was developed starting in 2008,
+   provides a formally verifiable framework.  The RPKI is based on
+   resource certificates that extend the X.509 standard.  It records the
+   mapping between IP prefixes and their authorised ASes via Route
+   Origin Authorization (ROA) objects.  These ROA objects contain
    essential information such as the prefix, origin ASN, and MaxLength.
 
 4.  Prefix Hijacking and Legitimate MOAS
@@ -185,7 +188,11 @@ Table of Contents
    these situations necessitates a route origin registry with high
    coverage and accuracy.
 
-5.  Problems in current Route Origin Registry
+5.  Problems in Current Route Origin Registry
+
+   This section outlines several challenges faced by the current route
+   origin registration mechanisms in distinguishing legitimate MOAS
+   events from malicious MOAS incidents, such as route hijacking.
 
 5.1.  Security Risks from Partial Adoption
 
@@ -197,20 +204,16 @@ Table of Contents
    (ROV), as measured by Mutually Agreed Norms for Routing Security
    (MANRS) [MANRS], is even significantly lower than the coverage of
    ROAs.  Similarly, [IRRegularities] also notes a decreasing trend in
-   IP Prefix coverage in certain IRRs.
-
-   On the other hand, it becomes evident that currently active IRRs and
-   RPKI offer limited coverage for MOAS, particularly in the case of
-   IPv6.  They typically only allow registration of address blocks for
-   self-managed purposes, posing a significant obstacle in supporting
-   many legitimate MOAS prefixes.
+   IP Prefix coverage in certain IRRs.  When focusing on MOAS (Multiple
+   Origin AS), their coverage is significantly lower and insufficient to
+   distinguish between legitimate MOAS and route hijacking.
 
    Limited IP prefix coverage within the current route origin registry,
    especially for MOAS prefixes, hinders the complete validation of
    route announcements, significantly limiting the motivation for
-   network operators to utilize route origin registry system.
+   network operators to utilize route origin registry.
 
-5.2.  Inconsistency between different Route Origin Registries
+5.2.  Inconsistency between Different Route Origin Registries
 
    Based on the analysis presented in the previous sections, it is
    evident that relying solely on a single source of route origin
@@ -236,7 +239,7 @@ Table of Contents
    to address the issues of inconsistencies between different route
    origin registries.
 
-5.3.  Insufficiency of resource certification
+5.3.  Insufficiency of Resource Certification
 
    As mentioned in [RFC7682], the lack of certification and incentives
    for maintaining up-to-date data within IRRs leads to low accuracy of
@@ -275,9 +278,9 @@ Table of Contents
 
    The current practice in IRRs involves the use of the Near-Real-Time
    Mirroring (NRTM) protocol [NRTMv4] to replicate and synchronize
-   Route(6) object from other IRRs.  Similarly, the RPKI system relies
-   on the RPKI Repository Delta Protocol (RRDP) [RFC8182] to synchronize
-   and update data.  However, these network protocols exhibit several
+   Route(6) object from other IRRs.  Similarly, the RPKI relies on the
+   RPKI Repository Delta Protocol (RRDP) [RFC8182] to synchronize and
+   update data.  However, these network protocols exhibit several
    weaknesses that need to be addressed.
 
    *  The absence of a mechanism to notify other mirrors when updates
@@ -313,23 +316,53 @@ Table of Contents
    inconsistency, insufficient resource certification, and incomplete
    multi-source collaboration mechanisms.
 
-   To address these challenges, it is imperative to continue striving
-   towards the development of a verifiable route origin registry system
-   that can effectively discern between prefix hijacking and legitimate
-   MOAS, while ensuring a globally unified perspective on route origin
-   and maintaining a high level of resilience.
+6.  Requirements for New Route Origin Registry Mechanisms
 
-6.  Security Considerations
+   This section lists the requirements designed to guide the improvement
+   of current route origin registry mechanisms.  These enhancements
+   should prioritize multi-party collaboration to safeguard legitimate
+   MOAS events while effectively filtering out malicious MOAS incidents.
+
+6.1.  Allowlist Mechanism
+
+   To ensure robust protection for legitimate MOAS events, prefix users
+   should implement an allowlist mechanism as a complementary to the
+   current resource-owner-centric systems.  This mechanism permits
+   multiple users to be authorized to announce the same prefix
+   concurrently.  Moreover, users should be able to dynamically join or
+   leave the allowlist based on practical business consideration.
+
+6.2.  Blocklist Mechanism
+
+   One of the primary objectives of route origin validation is to
+   suppress the propagation of malicious MOAS incidents and mitigate
+   their impact.  To enhance the efficiency and precision of anomaly
+   detection, network participants should employ real-time anomaly
+   monitoring and rapid consensus mechanisms to construct a blocklist.
+   This blocklist enables the timely de-prioritization of anomalous
+   routes, thereby reducing their disruptive effects on the routing
+   system.
+
+6.3.  Multi-party Governance
+
+   Multi-party governance plays a pivotal role in the development of new
+   route origin mechanisms.  By integrating and cross-verifying data
+   from multiple sources, this approach facilitates effective
+   negotiation and resolution of data duplication and conflicts.  It
+   ensures the full utilization of the strengths of each data source,
+   thereby enhancing the reliability and functionality of the system.
+
+7.  Security Considerations
 
    There is no security consideration in this draft.
 
-7.  IANA Considerations
+8.  IANA Considerations
 
    There is no IANA consideration in this draft.
 
-8.  References
+9.  References
 
-8.1.  Normative References
+9.1.  Normative References
 
    [RFC1786]  Bates, T., Gerich, E., Joncheray, L., Jouanigot, J.,
               Karrenberg, D., Terpstra, M., and J. Yu, "Representation
@@ -360,7 +393,7 @@ Table of Contents
               (SLURM)", RFC 8416, DOI 10.17487/RFC8416, August 2018,
               <https://www.rfc-editor.org/rfc/rfc8416>.
 
-8.2.  Informative References
+9.2.  Informative References
 
    [CAIDA]    "RouteViews Prefix to AS mappings", 2024,
               <https://catalog.caida.org/dataset/routeviews_prefix2as>.
@@ -380,9 +413,9 @@ Table of Contents
    [NRTMv4]   Romijn, S., Snijders, J., Shryane, E., and S.
               Konstantaras, "Near Real Time Mirroring (NRTM) version 4",
               Work in Progress, Internet-Draft, draft-ietf-grow-nrtm-
-              v4-04, 16 May 2024,
+              v4-05, 13 November 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-grow-
-              nrtm-v4-04>.
+              nrtm-v4-05>.
 
    [RFC1930]  Hawkinson, J. and T. Bates, "Guidelines for creation,
               selection, and registration of an Autonomous System (AS)",
