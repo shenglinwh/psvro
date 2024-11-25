@@ -105,7 +105,7 @@ informative:
 
 --- abstract
 
-Prefix hijacking, i.e., unauthorized announcement of a prefix, has emerged as a major security threat in the Border Gateway Protocol (BGP), garnering widespread attention. To migrate such attacks while supporting legitimate  Multiple Origin ASes (MOAS), higher requirements are placed on the route origin registry system. This document serves to outline the problem statement for current route origin registry system.
+Prefix hijacking, i.e., unauthorized announcement of a prefix, has emerged as a major security threat in the Border Gateway Protocol (BGP), garnering widespread attention. To migrate such attacks while supporting legitimate  Multiple Origin ASes (MOAS), higher requirements are placed on the route origin registry. This document serves to outline the problem statement for current route origin registry.
 
 --- middle
 
@@ -114,9 +114,9 @@ Prefix hijacking, i.e., unauthorized announcement of a prefix, has emerged as a 
 
 The Border Gateway Protocol (BGP) is ubiquitously used for inter-domain routing. However, it lacks built-in security validation on whether its UPDATE information is legitimate {{RFC4272}}. This poses concerns regarding prefix hijacking, where unauthorized announcements of prefixes can occur, simulating legitimate Multiple Origin ASes (MOAS).
 
-Unfortunately, the current route origin registry system, such as Internet Routing Registry (IRR) {{RFC1786}} and Resource Public Key Infrastructure (RPKI) {{RFC6480}}, are not effective in distinguishing between legitimate MOAS and prefix hijacking. There is a pressing need for an verifiable route origin registry system that can support registration and protection of legitimate MOAS, thereby mitigating the threats posed by prefix hijacking to the routing system.
+Unfortunately, the current route origin registry, such as Internet Routing Registry (IRR) {{RFC1786}} and Resource Public Key Infrastructure (RPKI) {{RFC6480}}, are not effective in distinguishing between legitimate MOAS and prefix hijacking. There is a pressing need for an verifiable route origin registry that can support registration and protection of legitimate MOAS, thereby mitigating the threats posed by prefix hijacking to the routing system.
 
-This document will primarily analyze the various scenarios of MOAS and highlight the limitations of the current route origin registry system. By examining these issues, our primary objective is to offer valuable insights to network operators, researchers, and policymakers for improving the security and robustness of the global routing system.
+This document will primarily analyze the various scenarios of MOAS and highlight the limitations of the current route origin registry. By examining these issues, our primary objective is to offer valuable insights to network operators, researchers, and policymakers for improving the security and robustness of the global routing system.
 
 # Requirements Language
 
@@ -128,7 +128,7 @@ Route origin registry refers to a system that records the mapping of IP prefixes
 
 IRR and RPKI currently offer functionalities related to route origin registry. IRRs, which have been in operation since 1995, serve as a globally distributed database for routing information. They record the binding relationship between IPs and Autonomous Systems (ASes) via Route(6) objects, which are defined by the Routing Policy Specification Language (RPSL).
 
-On the other hand, the RPKI system, which was developed starting in 2008, provides a formally verifiable framework. The RPKI system is based on resource certificates that extend the X.509 standard. It records the mapping between IP prefixes and their authorised ASes via Route Origin Authorization (ROA) objects. These ROA objects contain essential information such as the prefix, origin ASN, and MaxLength.
+On the other hand, the RPKI, which was developed starting in 2008, provides a formally verifiable framework. The RPKI is based on resource certificates that extend the X.509 standard. It records the mapping between IP prefixes and their authorised ASes via Route Origin Authorization (ROA) objects. These ROA objects contain essential information such as the prefix, origin ASN, and MaxLength.
 
 
 # Prefix Hijacking and Legitimate MOAS
@@ -147,14 +147,13 @@ Distinguishing between prefix hijacking, misconfiguration, and legitimate MOAS c
 
 # Problems in Current Route Origin Registry
 
+This section outlines several challenges faced by the current route origin registration mechanisms in distinguishing legitimate MOAS events from malicious MOAS incidents, such as route hijacking.
 
 ## Security Risks from Partial Adoption
 
-As the adoption of RPKI continues to grow, the number of address prefixes registered within RPKI is gradually increasing. However, recent reports from the Number Resource Organization (NRO) {{NRO}} indicate that the coverage of IP prefixes within ROAs is still relatively low, and the adoption rate of route origin validation (ROV), as measured by Mutually Agreed Norms for Routing Security (MANRS) {{MANRS}}, is even significantly lower than the coverage of ROAs. Similarly, {{IRRegularities}} also notes a decreasing trend in IP Prefix coverage in certain IRRs.
+As the adoption of RPKI continues to grow, the number of address prefixes registered within RPKI is gradually increasing. However, recent reports from the Number Resource Organization (NRO) {{NRO}} indicate that the coverage of IP prefixes within ROAs is still relatively low, and the adoption rate of route origin validation (ROV), as measured by Mutually Agreed Norms for Routing Security (MANRS) {{MANRS}}, is even significantly lower than the coverage of ROAs. Similarly, {{IRRegularities}} also notes a decreasing trend in IP Prefix coverage in certain IRRs. When focusing on MOAS (Multiple Origin AS), their coverage is significantly lower and insufficient to distinguish between legitimate MOAS and route hijacking.
 
-On the other hand, it becomes evident that currently active IRRs and RPKI offer limited coverage for MOAS, particularly in the case of IPv6. They typically only allow registration of address blocks for self-managed purposes, posing a significant obstacle in supporting many legitimate MOAS prefixes.
-
-Limited IP prefix coverage within the current route origin registry, especially for MOAS prefixes, hinders the complete validation of route announcements, significantly limiting the motivation for network operators to utilize route origin registry system.
+Limited IP prefix coverage within the current route origin registry, especially for MOAS prefixes, hinders the complete validation of route announcements, significantly limiting the motivation for network operators to utilize route origin registry.
 
 ## Inconsistency between Different Route Origin Registries
 
@@ -174,7 +173,7 @@ Consequently, the absence of data validation and standardization in operations w
 
 ## Synchronization and Management
 
-The current practice in IRRs involves the use of the Near-Real-Time Mirroring (NRTM) protocol {{NRTMv4}} to replicate and synchronize Route(6) object from other IRRs. Similarly, the RPKI system relies on the RPKI Repository Delta Protocol (RRDP) {{RFC8182}} to synchronize and update data. However, these network protocols exhibit several weaknesses that need to be addressed.
+The current practice in IRRs involves the use of the Near-Real-Time Mirroring (NRTM) protocol {{NRTMv4}} to replicate and synchronize Route(6) object from other IRRs. Similarly, the RPKI relies on the RPKI Repository Delta Protocol (RRDP) {{RFC8182}} to synchronize and update data. However, these network protocols exhibit several weaknesses that need to be addressed.
 
 - The absence of a mechanism to notify other mirrors when updates occur results in synchronization delays and data inconsistency issues. This can be problematic when timeliness and accuracy are crucial.
 - The absence of validation for replicated data from mirrored sources in both IRRs and RPKI is a legitimate concern. This situation creates a considerable risk for inconsistencies and conflicts with the current data.
@@ -186,7 +185,22 @@ Although some approaches attempt to optimise the quality of the route origin reg
 
 The current route origin registry systems, namely IRRs and RPKI, are facing challenges as the increased occurrence of MOAS prefixes. These challenges mainly include low adoption rates, global inconsistency, insufficient resource certification, and incomplete multi-source collaboration mechanisms.
 
-To address these challenges, it is imperative to continue striving towards the development of a verifiable route origin registry system that can effectively discern between prefix hijacking and legitimate MOAS, while ensuring a globally unified perspective on route origin and maintaining a high level of resilience.
+
+# Requirements for New Route Origin Registry Mechanisms
+
+This section lists the requirements designed to guide the improvement of current route origin registry mechanisms. These enhancements should prioritize multi-party collaboration to safeguard legitimate MOAS events while effectively filtering out malicious MOAS incidents.
+
+## Allowlist Mechanism
+
+To ensure robust protection for legitimate MOAS events, prefix users should implement an allowlist mechanism as a complementary to the current resource-owner-centric systems. This mechanism permits multiple users to be authorized to announce the same  prefix concurrently. Moreover, users should be able to dynamically join or leave the allowlist based on practical business consideration.
+
+## Blocklist Mechanism
+
+One of the primary objectives of route origin validation is to suppress the propagation of malicious MOAS incidents and mitigate their impact. To enhance the efficiency and precision of anomaly detection, network participants should employ real-time anomaly monitoring and rapid consensus mechanisms to construct a blocklist. This blocklist enables the timely de-prioritization of anomalous routes, thereby reducing their disruptive effects on the routing system.
+
+## Multi-party Governance
+
+Multi-party governance plays a pivotal role in the development of new route origin mechanisms. By integrating and cross-verifying data from multiple sources, this approach facilitates effective negotiation and resolution of data duplication and conflicts. It ensures the full utilization of the strengths of each data source, thereby enhancing the reliability and functionality of the system.
 
 # Security Considerations
 
