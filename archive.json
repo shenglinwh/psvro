@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-11-24T01:37:14.695709+00:00",
+  "timestamp": "2024-11-26T01:25:47.839018+00:00",
   "repo": "shenglinwh/psvro",
   "labels": [
     {
@@ -326,6 +326,34 @@
       "mergedBy": "shenglinwh",
       "mergeCommit": {
         "oid": "85d1e7dede9ffd3c2e786d54ee5a368e5319c674"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 8,
+      "id": "PR_kwDOLfHRQ86DAP5c",
+      "title": "add requirement",
+      "url": "https://github.com/shenglinwh/psvro/pull/8",
+      "state": "MERGED",
+      "author": "shenglinwh",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-11-25T09:16:16Z",
+      "updatedAt": "2024-11-25T09:16:33Z",
+      "baseRepository": "shenglinwh/psvro",
+      "baseRefName": "main",
+      "baseRefOid": "05fae12c0ca45073b5852d51a6e2fedc3045af58",
+      "headRepository": "shenglinwh/psvro",
+      "headRefName": "jsldev-02",
+      "headRefOid": "2d43681f55d9e7ce5d13dd2c759d0758132ec553",
+      "closedAt": "2024-11-25T09:16:32Z",
+      "mergedAt": "2024-11-25T09:16:32Z",
+      "mergedBy": "shenglinwh",
+      "mergeCommit": {
+        "oid": "6088b557216b6dfc35097c1ef4538193c09e48f3"
       },
       "comments": [],
       "reviews": []
