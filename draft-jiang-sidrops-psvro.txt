@@ -62,9 +62,9 @@ Table of Contents
 
    1.  Introduction
    2.  Requirements Language
-   3.  Working Definition of Route Origin try
+   3.  Working Definition of Route Origin Registry
    4.  Prefix Hijacking and Legitimate MOAS
-   5.  Problems in Current Route Origin try
+   5.  Problems in Current Route Origin Registry
      5.1.  Security Risks from Partial Adoption
      5.2.  Inconsistency between Different Route Origin Registries
      5.3.  Insufficiency of Resource Certification
@@ -91,17 +91,17 @@ Table of Contents
    of prefixes can occur, simulating legitimate Multiple Origin ASes
    (MOAS).
 
-   Unfortunately, the current route origin try, such as Internet Routing
-   try (IRR) [RFC1786] and Resource Public Key Infrastructure (RPKI)
-   [RFC6480], are not effective in distinguishing between legitimate
-   MOAS and prefix hijacking.  There is a pressing need for an
-   verifiable route origin try that can support tration and protection
-   of legitimate MOAS, thereby mitigating the threats posed by prefix
-   hijacking to the routing system.
+   Unfortunately, the current route origin registry, such as Internet
+   Routing Registry (IRR) [RFC1786] and Resource Public Key
+   Infrastructure (RPKI) [RFC6480], are not effective in distinguishing
+   between legitimate MOAS and prefix hijacking.  There is a pressing
+   need for an verifiable route origin registry that can support
+   registration and protection of legitimate MOAS, thereby mitigating
+   the threats posed by prefix hijacking to the routing system.
 
    This document will primarily analyze the various scenarios of MOAS
-   and highlight the limitations of the current route origin try.  By
-   examining these issues, our primary objective is to offer valuable
+   and highlight the limitations of the current route origin registry.
+   By examining these issues, our primary objective is to offer valuable
    insights to network operators, researchers, and policymakers for
    improving the security and robustness of the global routing system.
 
@@ -113,15 +113,15 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-3.  Working Definition of Route Origin try
+3.  Working Definition of Route Origin Registry
 
-   Route origin try refers to a system that records the mapping of IP
-   prefixes to the ASes authorised to announce them.  Resource holders
-   can ter route origin mapping relationships in route origin try by
-   themselves or delegate to others.
+   Route origin registry refers to a system that records the mapping of
+   IP prefixes to the ASes authorised to announce them.  Resource
+   holders can register route origin mapping relationships in route
+   origin registry by themselves or delegate to others.
 
    IRR and RPKI currently offer functionalities related to route origin
-   try.  IRRs, which have been in operation since 1995, serve as a
+   registry.  IRRs, which have been in operation since 1995, serve as a
    globally distributed database for routing information.  They record
    the binding relationship between IPs and Autonomous Systems (ASes)
    via Route(6) objects, which are defined by the Routing Policy
@@ -185,10 +185,10 @@ Table of Contents
    legitimate MOAS is a complex task.  The challenge arises from the
    resemblance of these behaviors, as they often display similar
    characteristics.  Moreover, accurately identifying and classifying
-   these situations necessitates a route origin try with high coverage
-   and accuracy.
+   these situations necessitates a route origin registry with high
+   coverage and accuracy.
 
-5.  Problems in Current Route Origin try
+5.  Problems in Current Route Origin Registry
 
    This section outlines several challenges faced by the current route
    origin registries in distinguishing legitimate MOAS events from
@@ -204,9 +204,9 @@ Table of Contents
    (ROV), as measured by Mutually Agreed Norms for Routing Security
    (MANRS) [MANRS], is even significantly lower than the coverage of
    ROAs.  Similarly, [IRRegularities] also notes a decreasing trend in
-   IP Prefix coverage in certain IRRs.  When focusing on MOAS (Multiple
-   Origin AS), their coverage is significantly lower and insufficient to
-   distinguish between legitimate MOAS and route hijacking.
+   IP Prefix coverage in certain IRRs.  When focusing on MOAS, their
+   coverage is significantly lower and insufficient to distinguish
+   between legitimate MOAS and route hijacking.
 
    Limited IP prefix coverage within the current route origin registry,
    especially for MOAS prefixes, hinders the complete validation of
