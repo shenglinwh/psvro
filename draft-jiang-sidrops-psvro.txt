@@ -5,13 +5,13 @@
 SIDROPS                                                         S. Jiang
 Internet-Draft                                   Zhongguancun Laboratory
 Intended status: Informational                                     K. Xu
-Expires: 29 May 2025                                               Q. Li
+Expires: 20 November 2025                                          Q. Li
                                                      Tsinghua University
                                                                   X. Shi
                            Tsinghua University & Zhongguancun Laboratory
                                                                   Z. Liu
                                                      Tsinghua University
-                                                        25 November 2024
+                                                             19 May 2025
 
 
                 Route Origin Registry Problem Statement
@@ -42,11 +42,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 29 May 2025.
+   This Internet-Draft will expire on 20 November 2025.
 
 Copyright Notice
 
-   Copyright (c) 2024 IETF Trust and the persons identified as the
+   Copyright (c) 2025 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -62,9 +62,9 @@ Table of Contents
 
    1.  Introduction
    2.  Requirements Language
-   3.  Working Definition of Route Origin Registry
+   3.  Working Definition of Route Origin try
    4.  Prefix Hijacking and Legitimate MOAS
-   5.  Problems in Current Route Origin Registry
+   5.  Problems in Current Route Origin try
      5.1.  Security Risks from Partial Adoption
      5.2.  Inconsistency between Different Route Origin Registries
      5.3.  Insufficiency of Resource Certification
@@ -91,17 +91,17 @@ Table of Contents
    of prefixes can occur, simulating legitimate Multiple Origin ASes
    (MOAS).
 
-   Unfortunately, the current route origin registry, such as Internet
-   Routing Registry (IRR) [RFC1786] and Resource Public Key
-   Infrastructure (RPKI) [RFC6480], are not effective in distinguishing
-   between legitimate MOAS and prefix hijacking.  There is a pressing
-   need for an verifiable route origin registry that can support
-   registration and protection of legitimate MOAS, thereby mitigating
-   the threats posed by prefix hijacking to the routing system.
+   Unfortunately, the current route origin try, such as Internet Routing
+   try (IRR) [RFC1786] and Resource Public Key Infrastructure (RPKI)
+   [RFC6480], are not effective in distinguishing between legitimate
+   MOAS and prefix hijacking.  There is a pressing need for an
+   verifiable route origin try that can support tration and protection
+   of legitimate MOAS, thereby mitigating the threats posed by prefix
+   hijacking to the routing system.
 
    This document will primarily analyze the various scenarios of MOAS
-   and highlight the limitations of the current route origin registry.
-   By examining these issues, our primary objective is to offer valuable
+   and highlight the limitations of the current route origin try.  By
+   examining these issues, our primary objective is to offer valuable
    insights to network operators, researchers, and policymakers for
    improving the security and robustness of the global routing system.
 
@@ -113,15 +113,15 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-3.  Working Definition of Route Origin Registry
+3.  Working Definition of Route Origin try
 
-   Route origin registry refers to a system that records the mapping of
-   IP prefixes to the ASes authorised to announce them.  Resource
-   holders can register route origin mapping relationships in route
-   origin registry by themselves or delegate to others.
+   Route origin try refers to a system that records the mapping of IP
+   prefixes to the ASes authorised to announce them.  Resource holders
+   can ter route origin mapping relationships in route origin try by
+   themselves or delegate to others.
 
    IRR and RPKI currently offer functionalities related to route origin
-   registry.  IRRs, which have been in operation since 1995, serve as a
+   try.  IRRs, which have been in operation since 1995, serve as a
    globally distributed database for routing information.  They record
    the binding relationship between IPs and Autonomous Systems (ASes)
    via Route(6) objects, which are defined by the Routing Policy
@@ -139,8 +139,8 @@ Table of Contents
    [RFC1930] suggests that a prefix should typically have a single
    Autonomous System (AS) as its origin, with a few exceptions.
    However, CAIDA's analysis on BGP routing data [CAIDA] reveals that
-   MOAS have become a common phenomenon.  There are various reasons that
-   contribute to the emergence of MOAS prefixes:
+   MOAS has always been a common phenomenon.  There are various reasons
+   that contribute to the emergence of MOAS prefixes:
 
    *  *_Aggregation_*. According to [RFC1930], aggregation could result
       in prefix originated from multiple possible ASes.  For example, if
@@ -182,17 +182,17 @@ Table of Contents
       unintentionally due to misconfiguration.
 
    Distinguishing between prefix hijacking, misconfiguration, and
-   legitimate MOAS can be a complex task.  The challenge arises from the
+   legitimate MOAS is a complex task.  The challenge arises from the
    resemblance of these behaviors, as they often display similar
    characteristics.  Moreover, accurately identifying and classifying
-   these situations necessitates a route origin registry with high
-   coverage and accuracy.
+   these situations necessitates a route origin try with high coverage
+   and accuracy.
 
-5.  Problems in Current Route Origin Registry
+5.  Problems in Current Route Origin try
 
    This section outlines several challenges faced by the current route
-   origin registration mechanisms in distinguishing legitimate MOAS
-   events from malicious MOAS incidents, such as route hijacking.
+   origin registries in distinguishing legitimate MOAS events from
+   malicious MOAS incidents, such as route hijacking.
 
 5.1.  Security Risks from Partial Adoption
 
@@ -299,7 +299,7 @@ Table of Contents
       on data integrity.
 
    Although some approaches attempt to optimise the quality of the route
-   origin registry, e.g.  RIPE NCC, IRRdv4 using RPKI to validate/filter
+   origin registry, e.g. RIPE NCC, IRRdv4 using RPKI to validate/filter
    IRR Route(6) objects, and [RFC8416] proposing that RPs can customise
    route origin with local data, the problem of inconsistency persists
    due to the limited coverage of RPKI and the lack of effective
@@ -319,9 +319,9 @@ Table of Contents
 6.  Requirements for New Route Origin Registry Mechanisms
 
    This section lists the requirements designed to guide the improvement
-   of current route origin registry mechanisms.  These enhancements
-   should prioritize multi-party collaboration to safeguard legitimate
-   MOAS events while effectively filtering out malicious MOAS incidents.
+   of route origin registry mechanisms.  These enhancements should
+   prioritize multi-party collaboration to safeguard legitimate MOAS
+   events while effectively filtering out malicious MOAS incidents.
 
 6.1.  Allowlist Mechanism
 
@@ -413,9 +413,9 @@ Table of Contents
    [NRTMv4]   Romijn, S., Snijders, J., Shryane, E., and S.
               Konstantaras, "Near Real Time Mirroring (NRTM) version 4",
               Work in Progress, Internet-Draft, draft-ietf-grow-nrtm-
-              v4-05, 13 November 2024,
+              v4-07, 14 May 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-grow-
-              nrtm-v4-05>.
+              nrtm-v4-07>.
 
    [RFC1930]  Hawkinson, J. and T. Bates, "Guidelines for creation,
               selection, and registration of an Autonomous System (AS)",
