@@ -5,13 +5,13 @@
 SIDROPS                                                         S. Jiang
 Internet-Draft                                   Zhongguancun Laboratory
 Intended status: Informational                                     K. Xu
-Expires: 29 May 2025                                               Q. Li
+Expires: 20 November 2025                                          Q. Li
                                                      Tsinghua University
                                                                   X. Shi
                            Tsinghua University & Zhongguancun Laboratory
                                                                   Z. Liu
                                                      Tsinghua University
-                                                        25 November 2024
+                                                             19 May 2025
 
 
                 Route Origin Registry Problem Statement
@@ -42,11 +42,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 29 May 2025.
+   This Internet-Draft will expire on 20 November 2025.
 
 Copyright Notice
 
-   Copyright (c) 2024 IETF Trust and the persons identified as the
+   Copyright (c) 2025 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -299,7 +299,7 @@ Table of Contents
       on data integrity.
 
    Although some approaches attempt to optimise the quality of the route
-   origin registry, e.g.  RIPE NCC, IRRdv4 using RPKI to validate/filter
+   origin registry, e.g. RIPE NCC, IRRdv4 using RPKI to validate/filter
    IRR Route(6) objects, and [RFC8416] proposing that RPs can customise
    route origin with local data, the problem of inconsistency persists
    due to the limited coverage of RPKI and the lack of effective
@@ -413,9 +413,9 @@ Table of Contents
    [NRTMv4]   Romijn, S., Snijders, J., Shryane, E., and S.
               Konstantaras, "Near Real Time Mirroring (NRTM) version 4",
               Work in Progress, Internet-Draft, draft-ietf-grow-nrtm-
-              v4-05, 13 November 2024,
+              v4-07, 14 May 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-grow-
-              nrtm-v4-05>.
+              nrtm-v4-07>.
 
    [RFC1930]  Hawkinson, J. and T. Bates, "Guidelines for creation,
               selection, and registration of an Autonomous System (AS)",
