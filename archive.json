@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-11-11T00:53:50.318535+00:00",
+  "timestamp": "2025-11-13T00:53:35.824832+00:00",
   "repo": "shenglinwh/psvro",
   "labels": [
     {
@@ -398,7 +398,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2025-05-19T03:52:33Z",
-      "updatedAt": "2025-05-19T03:56:13Z",
+      "updatedAt": "2025-11-12T01:13:18Z",
       "baseRepository": "shenglinwh/psvro",
       "baseRefName": "main",
       "baseRefOid": "81233525604b7d9256874a76806dee767b1cabc5",
@@ -410,6 +410,34 @@
       "mergedBy": "shenglinwh",
       "mergeCommit": {
         "oid": "e2b91af42f76e6b4c010321a3dc64f74622468f9"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 11,
+      "id": "PR_kwDOLfHRQ86y7IUW",
+      "title": "update details",
+      "url": "https://github.com/shenglinwh/psvro/pull/11",
+      "state": "MERGED",
+      "author": "shenglinwh",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-11-12T08:11:58Z",
+      "updatedAt": "2025-11-12T08:14:59Z",
+      "baseRepository": "shenglinwh/psvro",
+      "baseRefName": "main",
+      "baseRefOid": "e2b91af42f76e6b4c010321a3dc64f74622468f9",
+      "headRepository": "shenglinwh/psvro",
+      "headRefName": "jsl-dev-03",
+      "headRefOid": "0879c06e5a8a1861d86d5f9533fa3cb7b4f52c18",
+      "closedAt": "2025-11-12T08:14:59Z",
+      "mergedAt": "2025-11-12T08:14:59Z",
+      "mergedBy": "shenglinwh",
+      "mergeCommit": {
+        "oid": "2e87c0ae21689d6d3a200c1fc87dc337895e9231"
       },
       "comments": [],
       "reviews": []
