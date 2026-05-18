@@ -5,13 +5,13 @@
 SIDROPS                                                         S. Jiang
 Internet-Draft                                   Zhongguancun Laboratory
 Intended status: Informational                                     K. Xu
-Expires: 16 May 2026                                               Q. Li
+Expires: 19 November 2026                                          Q. Li
                                                      Tsinghua University
                                                                   X. Shi
                            Tsinghua University & Zhongguancun Laboratory
                                                                   Z. Liu
                                                      Tsinghua University
-                                                        12 November 2025
+                                                             18 May 2026
 
 
                 Route Origin Registry Problem Statement
@@ -41,11 +41,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 May 2026.
+   This Internet-Draft will expire on 19 November 2026.
 
 Copyright Notice
 
-   Copyright (c) 2025 IETF Trust and the persons identified as the
+   Copyright (c) 2026 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -69,15 +69,11 @@ Table of Contents
      5.3.  Insufficiency of Resource Certification
      5.4.  Synchronization and Management
      5.5.  Summary
-   6.  Requirements for New Route Origin Registry Mechanisms
-     6.1.  Allowlist Mechanism
-     6.2.  Blocklist Mechanism
-     6.3.  Multi-party Governance
-   7.  Security Considerations
-   8.  IANA Considerations
-   9.  References
-     9.1.  Normative References
-     9.2.  Informative References
+   6.  Security Considerations
+   7.  IANA Considerations
+   8.  References
+     8.1.  Normative References
+     8.2.  Informative References
    Acknowledgments
    Authors' Addresses
 
@@ -91,10 +87,10 @@ Table of Contents
    (MOAS).
 
    Unfortunately, the current route origin registry, such as Internet
-   Routing Registry (IRR) [RFC1786] and Resource Public Key
+   Routing Registry (IRR) [RFC2622] and Resource Public Key
    Infrastructure (RPKI) [RFC6480], are not effective in distinguishing
    between legitimate MOAS and prefix hijacking.  There is a pressing
-   need for an verifiable route origin registry that can support
+   need for a verifiable route origin registry that can support
    registration and protection of legitimate MOAS, thereby mitigating
    the threats posed by prefix hijacking to the routing infrastructure.
 
@@ -114,7 +110,7 @@ Table of Contents
 
 3.  Working Definition of Route Origin Registry
 
-   Route origin registry refers to a infrastructure that records the
+   Route origin registry refers to an infrastructure that records the
    mapping of IP prefixes to the ASes authorised to announce them.
    Resource holders can register prefix-origin pairs in route origin
    registry by themselves or delegate to others.
@@ -141,13 +137,14 @@ Table of Contents
    phenomenon.  There are various reasons that contribute to the
    emergence of MOAS prefixes:
 
-   *  *_Aggregation_*. According to [RFC1930], aggregation could result
-      in prefix originated from multiple possible ASes.  For example, if
-      the "Prefix 0/24" originates from ASx and the "Prefix 1/24"
-      originates from ASy, aggregating them into "Prefix 0/23" with the
-      originates from [ASx, ASy] may result in the loss of the specific
-      origin AS information if the ATOMIC_AGGREGATE attributes of the
-      aggregation announcements are not specific.
+   *  *_Aggregation_*. For example, if "Prefix 0/24" originates from ASx
+      and "Prefix 1/24" originates from ASy, an aggregating router may
+      combine them into "Prefix 0/23".  In this case, the aggregating
+      router has two options: it may include an AS_SET attribute
+      containing both ASx and ASy in the aggregated announcement,
+      resulting in a MOAS prefix; or it may omit the AS_SET and attach
+      the ATOMIC_AGGREGATE attribute instead, indicating that route
+      information has been suppressed.
 
    *  *_Business consideration_*. Companies often choose providers that
       offer high-speed and reliable data services to host their servers.
@@ -190,7 +187,7 @@ Table of Contents
 5.  Problems in Current Route Origin Registry
 
    This section outlines several challenges faced by the current route
-   origin registries in distinguishing legitimate MOAS events from
+   origin registry in distinguishing legitimate MOAS events from
    malicious MOAS incidents, such as route hijacking.
 
 5.1.  Security Risks from Partial Adoption
@@ -303,77 +300,40 @@ Table of Contents
    route origin with local data, the problem of inconsistency persists
    due to the limited coverage of RPKI and the lack of effective
    mechanisms to resolve conflicting data between IRRs.  It is crucial
-   to establish a effective communication mechanism among multiple route
-   origin registry, enabling negotiation and cross-validation of
+   to establish an effective communication mechanism among multiple
+   route origin registry, enabling negotiation and cross-validation of
    conflicting or special-purpose route origin information.
 
 5.5.  Summary
 
    The current route origin registry infrastructure, namely IRRs and
-   RPKI, are facing challenges as the increased occurrence of MOAS
+   RPKI, are facing challenges due to the increased occurrence of MOAS
    prefixes.  These challenges mainly include low adoption rates, global
    inconsistency, insufficient resource certification, and incomplete
    multi-source collaboration mechanisms.
 
-6.  Requirements for New Route Origin Registry Mechanisms
-
-   This section lists the requirements designed to guide the improvement
-   of route origin registry mechanisms.  These enhancements should
-   prioritize multi-party collaboration to safeguard legitimate MOAS
-   events while effectively filtering out malicious MOAS incidents.
-
-6.1.  Allowlist Mechanism
-
-   To ensure robust protection for legitimate MOAS events, prefix users
-   should implement an allowlist mechanism as a complementary to the
-   current resource-owner-centric infrastructure.  This mechanism
-   permits multiple users to be authorized to announce the same prefix
-   concurrently.  Moreover, users should be able to dynamically join or
-   leave the allowlist based on practical business consideration.
-
-6.2.  Blocklist Mechanism
-
-   One of the primary objectives of route origin validation is to
-   suppress the propagation of malicious MOAS incidents and mitigate
-   their impact.  To enhance the efficiency and precision of anomaly
-   detection, network participants should employ real-time anomaly
-   monitoring and rapid consensus mechanisms to construct a blocklist.
-   This blocklist enables the timely de-prioritization of anomalous
-   routes, thereby reducing their disruptive effects on the routing
-   infrastructure.
-
-6.3.  Multi-party Governance
-
-   Multi-party governance plays a pivotal role in the development of new
-   route origin mechanisms.  By integrating and cross-verifying data
-   from multiple sources, this approach facilitates effective
-   negotiation and resolution of data duplication and conflicts.  It
-   ensures the full utilization of the strengths of each data source,
-   thereby enhancing the reliability and functionality of the
-   infrastructure.
-
-7.  Security Considerations
+6.  Security Considerations
 
    There is no security consideration in this draft.
 
-8.  IANA Considerations
+7.  IANA Considerations
 
    There is no IANA consideration in this draft.
 
-9.  References
+8.  References
 
-9.1.  Normative References
-
-   [RFC1786]  Bates, T., Gerich, E., Joncheray, L., Jouanigot, J.,
-              Karrenberg, D., Terpstra, M., and J. Yu, "Representation
-              of IP Routing Policies in a Routing Registry (ripe-81++)",
-              RFC 1786, DOI 10.17487/RFC1786, March 1995,
-              <https://www.rfc-editor.org/rfc/rfc1786>.
+8.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/rfc/rfc2119>.
+
+   [RFC2622]  Alaettinoglu, C., Villamizar, C., Gerich, E., Kessens, D.,
+              Meyer, D., Bates, T., Karrenberg, D., and M. Terpstra,
+              "Routing Policy Specification Language (RPSL)", RFC 2622,
+              DOI 10.17487/RFC2622, June 1999,
+              <https://www.rfc-editor.org/rfc/rfc2622>.
 
    [RFC6480]  Lepinski, M. and S. Kent, "An Infrastructure to Support
               Secure Internet Routing", RFC 6480, DOI 10.17487/RFC6480,
@@ -393,10 +353,11 @@ Table of Contents
               (SLURM)", RFC 8416, DOI 10.17487/RFC8416, August 2018,
               <https://www.rfc-editor.org/rfc/rfc8416>.
 
-9.2.  Informative References
+8.2.  Informative References
 
-   [CAIDA]    "RouteViews Prefix to AS mappings", 2024,
-              <https://catalog.caida.org/dataset/routeviews_prefix2as>.
+   [CAIDA]    "RouteViews Prefix to AS mappings", 2026,
+              <https://doi.org/10.21986/CAIDA.DATA.ROUTEVIEWS-PFX2AS-
+              MAPPING>.
 
    [IRRegularities]
               Du, B., Izhikevich, K., Rao, S., Akiwate, G., Testart, C.,
@@ -404,18 +365,18 @@ Table of Contents
               routing registry", Proceedings of the 2023 ACM on internet
               measurement conference , 2023.
 
-   [MANRS]    "MANRS Observatory", 2024,
+   [MANRS]    "MANRS Observatory", 2026,
               <https://observatory.manrs.org/>.
 
-   [NRO]      "RIR Statistics", 2024,
+   [NRO]      "NRO RIR Statistics", 2026,
               <https://www.nro.net/about/rirs/statistics/>.
 
    [NRTMv4]   Romijn, S., Snijders, J., Shryane, E., and S.
               Konstantaras, "Near Real Time Mirroring (NRTM) version 4",
               Work in Progress, Internet-Draft, draft-ietf-grow-nrtm-
-              v4-07, 14 May 2025,
+              v4-11, 17 April 2026,
               <https://datatracker.ietf.org/doc/html/draft-ietf-grow-
-              nrtm-v4-07>.
+              nrtm-v4-11>.
 
    [RFC1930]  Hawkinson, J. and T. Bates, "Guidelines for creation,
               selection, and registration of an Autonomous System (AS)",
