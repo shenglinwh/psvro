@@ -105,16 +105,16 @@ informative:
 
 --- abstract
 
-Prefix hijacking, i.e., unauthorized announcement of a prefix, has emerged as a major security threat in the Border Gateway Protocol (BGP), garnering widespread attention. To migrate such attacks while supporting legitimate Multiple Origin AS (MOAS), higher requirements are placed on the route origin registry. This document serves to outline the problem statement for current route origin registry.
+Prefix hijacking, i.e., unauthorized announcement of a prefix, has emerged as a major security threat in the Border Gateway Protocol (BGP), garnering widespread attention. To mitigate such attacks while supporting legitimate Multiple Origin AS (MOAS), higher requirements are placed on the route origin registry. This document describes the limitations of existing route origin registries.
 
 --- middle
 
 
 # Introduction
 
-The Border Gateway Protocol (BGP) is ubiquitously used for inter-domain routing. However, it lacks built-in security validation on whether its UPDATE information is legitimate {{RFC4272}}. This poses concerns regarding prefix hijacking, where unauthorized announcements of prefixes can occur, simulating legitimate Multiple Origin AS (MOAS).
+The Border Gateway Protocol (BGP) is ubiquitously used for inter-domain routing. However, it lacks a built-in mechanism to verify whether the information carried in BGP UPDATE messages is legitimate {{RFC4272}}. This poses concerns regarding prefix hijacking, where unauthorized announcements of prefixes can occur, simulating legitimate Multiple Origin AS (MOAS).
 
-Unfortunately, the current route origin registry, such as Internet Routing Registry (IRR) {{RFC2622}} and Resource Public Key Infrastructure (RPKI) {{RFC6480}}, are not effective in distinguishing between legitimate MOAS and prefix hijacking. There is a pressing need for a verifiable route origin registry that can support registration and protection of legitimate MOAS, thereby mitigating the threats posed by prefix hijacking to the routing infrastructure.
+Unfortunately, existing route origin registries, such as Internet Routing Registry (IRR) {{RFC2622}} and Resource Public Key Infrastructure (RPKI) {{RFC6480}}, are not effective in distinguishing between legitimate MOAS and prefix hijacking. There is a pressing need for a verifiable route origin registry that can support registration and protection of legitimate MOAS, thereby mitigating the threats posed by prefix hijacking to the routing infrastructure.
 
 This document analyzes multiple scenarios involving MOAS events and identifies limitations inherent in the current route origin registry mechanisms. The intent is to provide guidance and insights to network operators, researchers, and policymakers aimed at enhancing the security and resilience of the global routing infrastructure.
 
@@ -183,7 +183,7 @@ Although some approaches attempt to optimise the quality of the route origin reg
 
 ## Summary
 
-The current route origin registry infrastructure, namely IRRs and RPKI, are facing challenges due to the increased occurrence of MOAS prefixes. These challenges mainly include low adoption rates, global inconsistency, insufficient resource certification, and incomplete multi-source collaboration mechanisms.
+Existing IRRs and the RPKI face several challenges. These challenges mainly include low adoption rates, global inconsistency, insufficient resource certification, and incomplete multi-source collaboration mechanisms.
 
 
 # Security Considerations
